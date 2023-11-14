@@ -1,3 +1,25 @@
-[gd_scene format=3 uid="uid://dei3j88yw6omf"]
+[gd_scene load_steps=4 format=3 uid="uid://dei3j88yw6omf"]
+
+[ext_resource type="PackedScene" uid="uid://bvg5dny32iw0x" path="res://Scenes/Player/Player.tscn" id="1_i4wd1"]
+[ext_resource type="FontFile" uid="uid://ci60w53hdbiqe" path="res://Art/Fonts/m3x6.ttf" id="2_d4w8a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8dwhr"]
+font = ExtResource("2_d4w8a")
+font_size = 32
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_i4wd1")]
+position = Vector2(3, -6)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+texture_filter = 1
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = -117.0
+offset_top = -83.0
+offset_right = 151.0
+offset_bottom = -57.0
+text = "Welcome to the top-down project!"
+label_settings = SubResource("LabelSettings_8dwhr")

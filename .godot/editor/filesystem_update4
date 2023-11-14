@@ -1,1 +1,7 @@
+res://Scenes/Player/Player.tscn
+res://Scripts/FiniteStateMachine.gd
 res://Scenes/MainFloor.tscn
+res://Scenes/Player/Scripts/PlayerMovement.gd
+res://Scenes/Player/Scripts/States/PlayerAttacking.gd
+res://Scenes/Player/Scripts/States/player_idle.gd
+res://Scenes/Player/Scripts/States/player_walking.gd

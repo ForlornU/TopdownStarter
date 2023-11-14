@@ -1,0 +1,10 @@
+Node
+Label
+Camera2D
+RichTextLabel
+AnimatedSprite2D
+CollisionShape2D
+Area2D
+CharacterBody2D
+Sprite2D
+AnimationPlayer
