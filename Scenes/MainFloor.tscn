@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dei3j88yw6omf"]
+[gd_scene load_steps=6 format=3 uid="uid://dei3j88yw6omf"]
 
 [ext_resource type="PackedScene" uid="uid://bvg5dny32iw0x" path="res://Scenes/Player/Player.tscn" id="1_i4wd1"]
 [ext_resource type="FontFile" uid="uid://ci60w53hdbiqe" path="res://Art/Fonts/m3x6.ttf" id="2_d4w8a"]
+[ext_resource type="PackedScene" uid="uid://ckp2r52hlcfxn" path="res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn" id="3_mwoku"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8dwhr"]
 font = ExtResource("2_d4w8a")
 font_size = 32
+
+[sub_resource type="Environment" id="Environment_8bd8l"]
+background_mode = 3
+tonemap_mode = 3
 
 [node name="Node2D" type="Node2D"]
 
@@ -23,3 +28,9 @@ offset_right = 151.0
 offset_bottom = -57.0
 text = "Welcome to the top-down project!"
 label_settings = SubResource("LabelSettings_8dwhr")
+
+[node name="Node2D" parent="." instance=ExtResource("3_mwoku")]
+position = Vector2(-33, -7)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8bd8l")

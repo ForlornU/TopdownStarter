@@ -117,6 +117,7 @@ radius = 8.0
 size = Vector2(20, 28)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+top_level = true
 script = ExtResource("1_h0qed")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -149,4 +150,6 @@ sprite = NodePath("../../AnimatedSprite2D")
 
 [node name="Moving" type="Node" parent="FSM" node_paths=PackedStringArray("player_sprite")]
 script = ExtResource("24_cprpa")
+movespeed = 200
+dashspeed = 400
 player_sprite = NodePath("../../AnimatedSprite2D")

@@ -55,7 +55,7 @@ func change_state(old_state, new_state_name):
 	new_state.Enter()
 	
 	current_state = new_state
-	print(new_state.name + " is our new state")
+	#print(new_state.name + " is our new state")
 
 func _on_idle_state_transition():
 	pass # Replace with function body.

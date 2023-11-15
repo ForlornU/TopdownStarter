@@ -1,4 +1,4 @@
 res://Scenes/MainFloor.tscn
 res://Scenes/Player/Player.tscn
-res://Scripts/FiniteStateMachine.gd
-res://Scenes/Player/Scripts/States/PlayerAttacking.gd
+res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn
+res://Scenes/Enemy/Enemy.tscn
