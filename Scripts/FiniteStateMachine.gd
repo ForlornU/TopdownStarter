@@ -7,6 +7,8 @@ var current_state : State
 
 #TODO Change behaviour of Change_state and Force_change_state
 
+#NOTE This is a generic finite_state_machine, it handles all states, changes to this code will affect
+	# everything that uses a state machine!
 
 func _ready():
 	for child in get_children():

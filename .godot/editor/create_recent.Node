@@ -1,12 +1,12 @@
 CollisionShape2D
+Area2D
+Node
 CharacterBody2D
 AnimatedSprite2D
 WorldEnvironment
 StaticBody2D
-Node
 Label
 Camera2D
 RichTextLabel
-Area2D
 Sprite2D
 AnimationPlayer
