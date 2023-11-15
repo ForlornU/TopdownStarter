@@ -46,9 +46,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_raqqn")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -122,9 +122,8 @@ script = ExtResource("1_h0qed")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_vax36")
-animation = &"Walk"
+animation = &"Attack"
 autoplay = "Idle"
-frame_progress = 0.339993
 
 [node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)

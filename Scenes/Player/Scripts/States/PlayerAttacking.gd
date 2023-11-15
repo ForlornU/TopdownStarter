@@ -5,13 +5,10 @@ class_name PlayerAttacking
 
 func Enter():
 	sprite.play("Attack")
-	pass
-	
+	await sprite.animation_finished
+	state_transition.emit(self, "Idle")
+
 func Exit():
 	pass
-	
-func Update(delta : float):
-	if sprite.is_playing() and sprite.animation == "Attack":
-		await sprite.animation_looped
-		state_transition.emit(self, "Idle")
+
 

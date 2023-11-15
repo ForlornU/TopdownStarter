@@ -24,6 +24,7 @@ func _process(delta):
 		current_state.Update(delta)
 
 func force_change_state(new_state : String):
+	print("Forcing state change")
 	var newState = states.get(new_state.to_lower())
 	if !newState:
 		print(new_state + " does not exist in the dictionary of states")
@@ -40,7 +41,7 @@ func force_change_state(new_state : String):
 		
 func change_state(old_state, new_state_name):
 	if old_state != current_state:
-		print("States are not the same")
+		print("Invalid change_state, moving from: " + old_state.name + " but we are currently in: " + current_state.name)
 		return
 	
 	var new_state = states.get(new_state_name.to_lower())
@@ -54,7 +55,7 @@ func change_state(old_state, new_state_name):
 	new_state.Enter()
 	
 	current_state = new_state
-
+	print(new_state.name + " is our new state")
 
 func _on_idle_state_transition():
 	pass # Replace with function body.
