@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var fsm = $FSM as FiniteStateMachine
-@onready var sprite = $AnimatedSprite2D
+@onready var sprite = $AnimatedSprite2D as AnimatedSprite2D
 var PlayerInRange = false
 
 func _ready():
@@ -11,12 +11,13 @@ func _physics_process(delta):
 	Turn()
 
 func Turn():
-	#Moving left or right	
-	#Fun fact, this sprite is flipped the wrong way, values are inverted
+	#Moving left or right, we flip the sprite to left or right
+	#This enemy sprite is flipped the wrong way, values are inverted
+	# We don't flip the sprite normally like we do on the player, instead we change the entire scale, which also moves our attack hit-box to the other side 
 	if(velocity.x < 0):
-		sprite.flip_h = false
+		sprite.scale.x = 1
 	elif(velocity.x > 0):
-		sprite.flip_h = true
+		sprite.scale.x = -1
 
 func finished_attacking():
 	if(PlayerInRange == true):

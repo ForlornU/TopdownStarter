@@ -38,10 +38,10 @@ animations = [{
 "texture": ExtResource("3_sc4cj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_8pt6c")
+"texture": ExtResource("4_nu70l")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_nu70l")
+"texture": ExtResource("5_8pt6c")
 }, {
 "duration": 1.0,
 "texture": ExtResource("6_v15sy")
@@ -106,7 +106,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqf5a"]
-size = Vector2(18.5, 29.25)
+size = Vector2(37.5, 44.5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4mbmt"]
 radius = 7.0
@@ -122,13 +122,15 @@ script = ExtResource("1_2r3hw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_toimg")
-animation = &"Walk"
+animation = &"Attack"
 autoplay = "Idle"
+frame = 2
+frame_progress = 0.546647
 
 [node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HitBox"]
-position = Vector2(-14.75, 4.625)
+position = Vector2(-6.25, 2.25)
 shape = SubResource("RectangleShape2D_cqf5a")
 disabled = true
 
