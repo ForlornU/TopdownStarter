@@ -1,8 +1,9 @@
 extends State
 class_name enemy_chase_state
 
-@export var attackRange := float(40)
-@export var moveSpeed := float(40)
+@export var attackRange := float(50)
+@export var moveSpeed := float(30)
+
 @onready var sprite = $"../../AnimatedSprite2D"
 @onready var body = $"../.."
 

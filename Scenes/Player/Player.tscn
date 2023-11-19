@@ -111,11 +111,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_r6nax"]
-radius = 8.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bnp4c"]
 size = Vector2(20, 28)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r6nax"]
+radius = 8.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ub6e5"]
 bg_color = Color(0.0352941, 0.0156863, 0.00784314, 0.427451)
@@ -130,18 +130,19 @@ script = ExtResource("1_h0qed")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_vax36")
-animation = &"Death"
+animation = &"Attack"
 autoplay = "Idle"
+
+[node name="Hitbox" type="Area2D" parent="AnimatedSprite2D"]
+position = Vector2(21, 0)
+
+[node name="hitboxShape" type="CollisionShape2D" parent="AnimatedSprite2D/Hitbox"]
+shape = SubResource("RectangleShape2D_bnp4c")
+disabled = true
 
 [node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
 shape = SubResource("CircleShape2D_r6nax")
-
-[node name="Hitbox" type="Area2D" parent="."]
-
-[node name="hitboxShape" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("RectangleShape2D_bnp4c")
-disabled = true
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("21_54cjv")
@@ -176,3 +177,5 @@ step = 1.0
 value = 51.0
 fill_mode = 2
 show_percentage = false
+
+[connection signal="body_entered" from="AnimatedSprite2D/Hitbox" to="FSM/Attacking" method="_on_hitbox_body_entered"]

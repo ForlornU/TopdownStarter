@@ -13,18 +13,16 @@ func _ready():
 	healthbar.value = health;
 
 func Turn():
-	#Moving left or right	
 	if(velocity.x < 0):
-		player_sprite.flip_h = true
+		player_sprite.scale.x = -1
 	elif(velocity.x > 0):
-		player_sprite.flip_h = false
+		player_sprite.scale.x = 1
 
 func ConnectToEnemy(node):
 	node.DealDamage.connect(TakeDamage)
 	pass
 
 func TakeDamage(amount):
-	print(amount)
 	health -= amount
 	healthbar.value = health;
 	if(health <= 0):

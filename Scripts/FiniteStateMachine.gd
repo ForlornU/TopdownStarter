@@ -28,7 +28,6 @@ func _process(delta):
 		current_state.Update(delta)
 
 func force_change_state(new_state : String):
-	print("Forcing state change")
 	var newState = states.get(new_state.to_lower())
 	if !newState:
 		print(new_state + " does not exist in the dictionary of states")

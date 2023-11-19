@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bvt7e871e6jeg"]
+[gd_scene load_steps=30 format=3 uid="uid://bvt7e871e6jeg"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy/Scripts/Enemy_main.gd" id="1_2r3hw"]
 [ext_resource type="Texture2D" uid="uid://d3u5e5gpffpwe" path="res://Scenes/Enemy/Sprites/Enemy09.png" id="1_chwbu"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" path="res://Scenes/Enemy/Scripts/States/enemy_idle.gd" id="21_mks5l"]
 [ext_resource type="Script" path="res://Scenes/Enemy/Scripts/States/enemy_chase.gd" id="22_svjvw"]
 [ext_resource type="Script" path="res://Scenes/Enemy/Scripts/States/enemy_attack.gd" id="23_qnihw"]
+[ext_resource type="Script" path="res://Scenes/Enemy/Node.gd" id="25_w5swx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_toimg"]
 animations = [{
@@ -71,6 +72,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("13_hsklp")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": false,
 "name": &"Death",
@@ -115,17 +119,14 @@ height = 24.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_imcar"]
 radius = 87.4371
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 texture_filter = 1
 scale = Vector2(2, 2)
 script = ExtResource("1_2r3hw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_toimg")
-animation = &"Attack"
-autoplay = "Idle"
-frame = 2
-frame_progress = 0.546647
+animation = &"Death"
 
 [node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
 
@@ -156,6 +157,9 @@ script = ExtResource("22_svjvw")
 
 [node name="enemy_attack_state" type="Node" parent="FSM"]
 script = ExtResource("23_qnihw")
+
+[node name="enemy_death_state" type="Node" parent="FSM"]
+script = ExtResource("25_w5swx")
 
 [connection signal="body_entered" from="AnimatedSprite2D/HitBox" to="FSM/enemy_attack_state" method="_on_hit_box_body_entered"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

@@ -1,11 +1,11 @@
+Node
+State
 Camera2D
 ProgressBar
 TextureProgressBar
 ColorRect
-State
 CollisionShape2D
 Area2D
-Node
 CharacterBody2D
 AnimatedSprite2D
 WorldEnvironment

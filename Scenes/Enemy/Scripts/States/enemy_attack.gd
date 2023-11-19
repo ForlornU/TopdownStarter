@@ -3,6 +3,7 @@ class_name enemy_attack_state
 
 var has_dealt_damage
 signal DealDamage
+@export var damage = 25
 
 @onready var enemy = $"../.."
 @onready var sprite = $"../../AnimatedSprite2D"
@@ -16,7 +17,6 @@ func Enter():
 	await sprite.animation_finished
 	enemy.finished_attacking()
 	
-	
 func Exit():
 	has_dealt_damage = false
 	HitBox.disabled = true
@@ -28,12 +28,16 @@ func Update(delta):
 	else:
 		HitBox.disabled = true
 
+#During attack animation, Hitbox is activated and tries to find the player
 func _on_hit_box_body_entered(body):
 	if body.is_in_group("Player") and has_dealt_damage == false:
 		var player = body as PlayerMain
+		deal_damage_to_player(player)
+
+#Connect and deal damage to the player
+func deal_damage_to_player(player):
 		player.ConnectToEnemy(self)
-		emit_signal("DealDamage", 50)
+		emit_signal("DealDamage", damage)
 		has_dealt_damage = true
-		print("hit")
 
 

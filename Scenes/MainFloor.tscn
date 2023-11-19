@@ -16,7 +16,7 @@ tonemap_mode = 3
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_i4wd1")]
-position = Vector2(-55, -30)
+position = Vector2(-128, 72)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 1
