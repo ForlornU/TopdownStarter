@@ -1,9 +1,9 @@
+res://Scenes/Enemy/Scripts/States/enemy_attack.gd
+res://Scenes/Enemy/Enemy.tscn
 res://Scenes/MainFloor.tscn
 res://Scenes/Player/Player.tscn
 res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn
-res://Scenes/Enemy/Enemy.tscn
+res://Scenes/Player/Scripts/PlayerMovement.gd
 res://Scenes/Enemy/Scripts/Enemy_main.gd
-res://Scenes/Enemy/Scripts/States/enemy_idle.gd
-res://Scripts/FiniteStateMachine.gd
-res://Scenes/Enemy/Scripts/States/enemy_attack.gd
-res://Scenes/Enemy/Scripts/States/enemy_chase.gd
+res://Scripts/State.gd
+res://Scenes/Player/Die.gd

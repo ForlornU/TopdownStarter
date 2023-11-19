@@ -16,7 +16,7 @@ tonemap_mode = 3
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_i4wd1")]
-position = Vector2(-169, 5)
+position = Vector2(-55, -30)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 1
@@ -30,8 +30,8 @@ offset_bottom = -57.0
 text = "Welcome to the top-down project!"
 label_settings = SubResource("LabelSettings_8dwhr")
 
-[node name="Node2D" parent="." instance=ExtResource("3_mwoku")]
-position = Vector2(-33, -7)
+[node name="NPC" parent="." instance=ExtResource("3_mwoku")]
+position = Vector2(-16, -29)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8bd8l")

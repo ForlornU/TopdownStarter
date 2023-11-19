@@ -105,15 +105,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqf5a"]
+size = Vector2(18.5, 29.25)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4mbmt"]
 radius = 7.0
 height = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_imcar"]
 radius = 87.4371
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cqf5a"]
-size = Vector2(18.5, 29.25)
 
 [node name="Enemy" type="CharacterBody2D"]
 texture_filter = 1
@@ -124,6 +124,13 @@ script = ExtResource("1_2r3hw")
 sprite_frames = SubResource("SpriteFrames_toimg")
 animation = &"Walk"
 autoplay = "Idle"
+
+[node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HitBox"]
+position = Vector2(-14.75, 4.625)
+shape = SubResource("RectangleShape2D_cqf5a")
+disabled = true
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
 position = Vector2(1, 3)
@@ -148,12 +155,6 @@ script = ExtResource("22_svjvw")
 [node name="enemy_attack_state" type="Node" parent="FSM"]
 script = ExtResource("23_qnihw")
 
-[node name="HitBox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-14.75, 4.625)
-shape = SubResource("RectangleShape2D_cqf5a")
-disabled = true
-
+[connection signal="body_entered" from="AnimatedSprite2D/HitBox" to="FSM/enemy_attack_state" method="_on_hit_box_body_entered"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

@@ -15,6 +15,8 @@ func _ready():
 		if child is State:
 			states[child.name.to_lower()] = child
 			child.state_transition.connect(change_state)
+	#print(states.values())
+	#print(states.keys())
 
 	if initial_state:
 		initial_state.Enter()
@@ -40,8 +42,27 @@ func force_change_state(new_state : String):
 	newState.Enter()
 	
 	current_state = newState
+	
+
+func change_state_by_string(old_state : String, new_state_name : String):
+	if old_state != current_state.name:
+		print("Invalid change_state, moving from: " + old_state + " but we are currently in: " + current_state.name)
+		return
+	
+	var new_state = states.get(new_state_name.to_lower())
+	if !new_state:
+		print("New state is empty")
+		return
 		
-func change_state(old_state, new_state_name):
+	if current_state:
+		current_state.Exit()
+		
+	new_state.Enter()
+	
+	current_state = new_state
+	#print(new_state.name + " is our new state")
+
+func change_state(old_state : State, new_state_name : String):
 	if old_state != current_state:
 		print("Invalid change_state, moving from: " + old_state.name + " but we are currently in: " + current_state.name)
 		return
@@ -59,5 +80,3 @@ func change_state(old_state, new_state_name):
 	current_state = new_state
 	#print(new_state.name + " is our new state")
 
-func _on_idle_state_transition():
-	pass # Replace with function body.

@@ -13,7 +13,7 @@ config_version=5
 config/name="Topdown Starter"
 run/main_scene="res://Scenes/MainFloor.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Thumbnailicon.png"
 
 [display]
 

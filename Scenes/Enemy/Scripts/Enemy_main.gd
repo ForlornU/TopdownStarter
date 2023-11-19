@@ -19,13 +19,10 @@ func Turn():
 		sprite.flip_h = true
 
 func finished_attacking():
-	print("Done attacking, switching states")
 	if(PlayerInRange == true):
-		#fsm.change_state(enemy_attack_state, "enemy_chase_state")
-		fsm.force_change_state("enemy_chase_state")
+		fsm.change_state_by_string("enemy_attack_state", "enemy_chase_state");
 	else:
-		#fsm.change_state(enemy_attack_state, "enemy_idle_state")
-		fsm.force_change_state("enemy_idle_state")
+		fsm.change_state_by_string("enemy_attack_state", "enemy_idle_state");
 
 func _on_detection_area_body_entered(body):
 	print(body.name)
@@ -37,3 +34,6 @@ func _on_detection_area_body_entered(body):
 func _on_detection_area_body_exited(body):
 	if body.is_in_group("Player"):
 		PlayerInRange = false
+		#fsm.force_change_state("enemy_idle_state")	
+		fsm.change_state_by_string("enemy_chase_state", "enemy_idle_state");
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bvg5dny32iw0x"]
+[gd_scene load_steps=31 format=3 uid="uid://bvg5dny32iw0x"]
 
 [ext_resource type="Texture2D" uid="uid://b4rhu7tb8453t" path="res://Scenes/Player/Sprite/Player_Idle1.png" id="1_8ujai"]
 [ext_resource type="Texture2D" uid="uid://cgwb0bq0pw036" path="res://Scenes/Player/Sprite/Player_attack1.png" id="1_8w3ed"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_idle.gd" id="22_h12a8"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerAttacking.gd" id="23_yfq0n"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_walking.gd" id="24_cprpa"]
+[ext_resource type="Script" path="res://Scenes/Player/Die.gd" id="25_kf1r7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vax36"]
 animations = [{
@@ -80,9 +81,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("14_mf356")
 }],
-"loop": true,
+"loop": false,
 "name": &"Death",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -116,6 +117,12 @@ radius = 8.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bnp4c"]
 size = Vector2(20, 28)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ub6e5"]
+bg_color = Color(0.0352941, 0.0156863, 0.00784314, 0.427451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0guox"]
+bg_color = Color(1, 0, 0, 1)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 top_level = true
 script = ExtResource("1_h0qed")
@@ -123,7 +130,7 @@ script = ExtResource("1_h0qed")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_vax36")
-animation = &"Attack"
+animation = &"Death"
 autoplay = "Idle"
 
 [node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
@@ -153,3 +160,19 @@ script = ExtResource("24_cprpa")
 movespeed = 200
 dashspeed = 400
 player_sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="Die" type="Node" parent="FSM"]
+script = ExtResource("25_kf1r7")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -41.0
+offset_top = -22.0
+offset_right = -33.0
+offset_bottom = 58.0
+rotation = -1.57079
+theme_override_styles/background = SubResource("StyleBoxFlat_ub6e5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0guox")
+step = 1.0
+value = 51.0
+fill_mode = 2
+show_percentage = false

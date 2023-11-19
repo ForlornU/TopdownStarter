@@ -20,7 +20,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_pxhik"]
 radius = 13.0
 
-[node name="Node2D" type="AnimatedSprite2D"]
+[node name="NPC" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_l6yr8")
 autoplay = "default"
 frame = 1
