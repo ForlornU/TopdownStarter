@@ -4,11 +4,10 @@ class_name EnemyMain
 @onready var fsm = $FSM as FiniteStateMachine
 var PlayerInRange = false
 
-func _ready():
-	init_character()
+#func _ready():
+#	init_character()
 
-func _process(delta):
-	Turn()
+#func _process(delta):
 
 func finished_attacking():
 	if(PlayerInRange == true):

@@ -7,6 +7,7 @@ class_name CharacterBase
 @export var flipped_horizontal : bool
 
 func _ready():
+	init_character()
 	pass
 	
 func init_character():
@@ -37,4 +38,5 @@ func ConnectForDamage(node):
 	node.DealDamage.connect(_take_damage)
 
 func _process(delta):
+	Turn()
 	pass
