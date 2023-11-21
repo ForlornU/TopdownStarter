@@ -2,8 +2,9 @@ extends State
 class_name PlayerWalking
 
 @export var movespeed := int(350)
-@export var dashspeed := int(100)
+var dashspeed := int(100)
 @export var dashMax := int(500)
+
 var canDash := bool(false)
 var dashDir := Vector2(0,0)
 
@@ -23,12 +24,20 @@ func Update(delta : float):
 		dashspeed = dashMax
 		dashDir = player.velocity.normalized()
 		player_sprite.play("Dash")
+		canDash = false
 		
 	if Input.is_action_just_pressed("Attack"):
 		Transition("Attacking")
 	
 func Move():
 	var input_dir = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown").normalized()
+	
+	#Suddenly turning mid dash
+	if(dashDir != Vector2.ZERO and dashDir != input_dir):
+		dashDir = Vector2.ZERO
+		dashspeed = 0
+		print("Turned mid-dash")
+		
 	player.velocity = input_dir * movespeed + dashDir * dashspeed 
 	player.move_and_slide()
 
@@ -37,10 +46,12 @@ func Move():
 
 
 func LessenDash(delta):
-	var multiplier = 3
-	var timemultiplier := float(2)
+	#Higher multiplier values makes the dash shorter
+	var multiplier = 4
+	var timemultiplier := float(4)
 	
-	dashspeed -= dashspeed * multiplier * delta + delta * timemultiplier
+	#slow down the dash over time, both with a multiplier of dashspeed and also time
+	dashspeed -= (dashspeed * multiplier * delta) + (delta * timemultiplier)
 	dashspeed = clamp(dashspeed, 0, dashMax)
 	
 	if(dashspeed <= 0):
@@ -48,7 +59,7 @@ func LessenDash(delta):
 		dashDir = Vector2.ZERO
 		
 	if(player_sprite.animation == "Dash"):
-		await player_sprite.animation_looped
+		await player_sprite.animation_finished
 		player_sprite.play("Walk")
 
 func Transition(newstate):

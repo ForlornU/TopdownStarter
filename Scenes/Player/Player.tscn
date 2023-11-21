@@ -30,7 +30,7 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_vax36"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("1_8w3ed")
 }, {
 "duration": 1.0,
@@ -39,7 +39,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_651u7")
 }, {
-"duration": 1.0,
+"duration": 1.25,
 "texture": ExtResource("4_uudrv")
 }, {
 "duration": 1.0,
@@ -65,7 +65,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("10_cdaiw")
 }],
-"loop": true,
+"loop": false,
 "name": &"Dash",
 "speed": 8.0
 }, {
@@ -135,7 +135,7 @@ health = 200
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_vax36")
-animation = &"Dash"
+animation = &"Attack"
 autoplay = "Idle"
 
 [node name="Hitbox" type="Area2D" parent="AnimatedSprite2D"]
@@ -168,7 +168,6 @@ sprite = NodePath("../../AnimatedSprite2D")
 [node name="Moving" type="Node" parent="FSM" node_paths=PackedStringArray("player_sprite")]
 script = ExtResource("24_cprpa")
 movespeed = 150
-dashspeed = 150
 player_sprite = NodePath("../../AnimatedSprite2D")
 
 [node name="Die" type="Node" parent="FSM"]
