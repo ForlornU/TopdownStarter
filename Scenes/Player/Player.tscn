@@ -125,6 +125,7 @@ bg_color = Color(1, 0, 0, 1)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 top_level = true
+texture_filter = 1
 script = ExtResource("1_h0qed")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -158,8 +159,7 @@ sprite = NodePath("../../AnimatedSprite2D")
 
 [node name="Moving" type="Node" parent="FSM" node_paths=PackedStringArray("player_sprite")]
 script = ExtResource("24_cprpa")
-movespeed = 200
-dashspeed = 400
+movespeed = 50
 player_sprite = NodePath("../../AnimatedSprite2D")
 
 [node name="Die" type="Node" parent="FSM"]

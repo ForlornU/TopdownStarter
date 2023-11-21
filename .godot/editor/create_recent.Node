@@ -1,7 +1,7 @@
+Camera2D
 TileMap
 Node
 State
-Camera2D
 ProgressBar
 TextureProgressBar
 ColorRect
@@ -12,4 +12,3 @@ AnimatedSprite2D
 WorldEnvironment
 StaticBody2D
 Label
-RichTextLabel
