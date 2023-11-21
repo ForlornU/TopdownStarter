@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bvg5dny32iw0x"]
+[gd_scene load_steps=37 format=3 uid="uid://bvg5dny32iw0x"]
 
 [ext_resource type="Texture2D" uid="uid://b4rhu7tb8453t" path="res://Scenes/Player/Sprite/Player_Idle1.png" id="1_8ujai"]
 [ext_resource type="Texture2D" uid="uid://cgwb0bq0pw036" path="res://Scenes/Player/Sprite/Player_attack1.png" id="1_8w3ed"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://1f765f0dmf76" path="res://Scenes/Player/Sprite/Player_walk1.png" id="14_0v64p"]
 [ext_resource type="Texture2D" uid="uid://qe62u7g8d0dn" path="res://Scenes/Player/Sprite/Player_Death4.png" id="14_mf356"]
 [ext_resource type="Texture2D" uid="uid://bunnpmn3orp7m" path="res://Scenes/Player/Sprite/Player_walk2.png" id="15_1pdxl"]
+[ext_resource type="Texture2D" uid="uid://bw36ig60cpuaq" path="res://Art/Sprites/Square.png" id="21_1aepa"]
 [ext_resource type="Script" path="res://Scripts/FiniteStateMachine.gd" id="21_54cjv"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_idle.gd" id="22_h12a8"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerAttacking.gd" id="23_yfq0n"]
@@ -114,6 +115,35 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bnp4c"]
 size = Vector2(20, 28)
 
+[sub_resource type="Curve" id="Curve_k5kjr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.986667, 0), -3.2967, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_f1gln"]
+curve = SubResource("Curve_k5kjr")
+
+[sub_resource type="Curve" id="Curve_c54tk"]
+min_value = -604.54
+max_value = -199.99
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.12, -24.1758), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3hhbe"]
+curve = SubResource("Curve_c54tk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wjc7x"]
+particle_flag_disable_z = true
+spread = 120.0
+initial_velocity_min = 30.0
+initial_velocity_max = 160.0
+gravity = Vector3(0, 50, 0)
+radial_accel_curve = SubResource("CurveTexture_3hhbe")
+damping_min = 1.0
+damping_max = 50.0
+scale_min = 0.1
+scale_max = 1.1
+alpha_curve = SubResource("CurveTexture_f1gln")
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_r6nax"]
 radius = 8.0
 
@@ -131,9 +161,10 @@ script = ExtResource("1_h0qed")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_vax36")
-animation = &"Walk"
+animation = &"Attack"
 autoplay = "Idle"
-frame_progress = 0.346368
+frame = 4
+frame_progress = 0.1778
 
 [node name="Hitbox" type="Area2D" parent="AnimatedSprite2D"]
 position = Vector2(21, 0)
@@ -141,6 +172,17 @@ position = Vector2(21, 0)
 [node name="hitboxShape" type="CollisionShape2D" parent="AnimatedSprite2D/Hitbox"]
 shape = SubResource("RectangleShape2D_bnp4c")
 disabled = true
+
+[node name="HitParticles" type="GPUParticles2D" parent="AnimatedSprite2D"]
+position = Vector2(17, 4)
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_wjc7x")
+texture = ExtResource("21_1aepa")
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+visibility_rect = Rect2(0, 0, 1, 1)
 
 [node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
