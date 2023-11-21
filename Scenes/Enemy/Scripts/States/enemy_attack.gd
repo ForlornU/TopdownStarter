@@ -8,6 +8,7 @@ signal DealDamage
 @onready var enemy = $"../.."
 @onready var sprite = $"../../AnimatedSprite2D"
 @onready var HitBox = $"../../AnimatedSprite2D/HitBox/CollisionShape2D"
+@onready var hit_particles = $"../../AnimatedSprite2D/HitParticles"
 
 func Enter():
 	has_dealt_damage = false
@@ -36,8 +37,9 @@ func _on_hit_box_body_entered(body):
 
 #Connect and deal damage to the player
 func deal_damage_to_player(player):
-		player.ConnectToEnemy(self)
-		emit_signal("DealDamage", damage)
-		has_dealt_damage = true
+	hit_particles.emitting = true
+	player.ConnectForDamage(self)
+	emit_signal("DealDamage", damage)
+	has_dealt_damage = true
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bvg5dny32iw0x"]
+[gd_scene load_steps=32 format=3 uid="uid://bvg5dny32iw0x"]
 
 [ext_resource type="Texture2D" uid="uid://b4rhu7tb8453t" path="res://Scenes/Player/Sprite/Player_Idle1.png" id="1_8ujai"]
 [ext_resource type="Texture2D" uid="uid://cgwb0bq0pw036" path="res://Scenes/Player/Sprite/Player_attack1.png" id="1_8w3ed"]
@@ -20,8 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://1f765f0dmf76" path="res://Scenes/Player/Sprite/Player_walk1.png" id="14_0v64p"]
 [ext_resource type="Texture2D" uid="uid://qe62u7g8d0dn" path="res://Scenes/Player/Sprite/Player_Death4.png" id="14_mf356"]
 [ext_resource type="Texture2D" uid="uid://bunnpmn3orp7m" path="res://Scenes/Player/Sprite/Player_walk2.png" id="15_1pdxl"]
-[ext_resource type="Texture2D" uid="uid://bw36ig60cpuaq" path="res://Art/Sprites/Square.png" id="21_1aepa"]
 [ext_resource type="Script" path="res://Scripts/FiniteStateMachine.gd" id="21_54cjv"]
+[ext_resource type="PackedScene" uid="uid://b82yimbxiflml" path="res://Art/Particles/hit_particles.tscn" id="21_gooki"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_idle.gd" id="22_h12a8"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerAttacking.gd" id="23_yfq0n"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_walking.gd" id="24_cprpa"]
@@ -53,7 +53,7 @@ animations = [{
 "speed": 8.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.25,
 "texture": ExtResource("7_mf1tp")
 }, {
 "duration": 1.0,
@@ -67,7 +67,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Dash",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -115,35 +115,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bnp4c"]
 size = Vector2(20, 28)
 
-[sub_resource type="Curve" id="Curve_k5kjr"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.986667, 0), -3.2967, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_f1gln"]
-curve = SubResource("Curve_k5kjr")
-
-[sub_resource type="Curve" id="Curve_c54tk"]
-min_value = -604.54
-max_value = -199.99
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.12, -24.1758), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_3hhbe"]
-curve = SubResource("Curve_c54tk")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wjc7x"]
-particle_flag_disable_z = true
-spread = 120.0
-initial_velocity_min = 30.0
-initial_velocity_max = 160.0
-gravity = Vector3(0, 50, 0)
-radial_accel_curve = SubResource("CurveTexture_3hhbe")
-damping_min = 1.0
-damping_max = 50.0
-scale_min = 0.1
-scale_max = 1.1
-alpha_curve = SubResource("CurveTexture_f1gln")
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_r6nax"]
 radius = 8.0
 
@@ -153,18 +124,19 @@ bg_color = Color(0.0352941, 0.0156863, 0.00784314, 0.427451)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0guox"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "healthbar") groups=["Player"]]
 top_level = true
 texture_filter = 1
 script = ExtResource("1_h0qed")
+sprite = NodePath("AnimatedSprite2D")
+healthbar = NodePath("ProgressBar")
+health = 200
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_vax36")
-animation = &"Attack"
+animation = &"Dash"
 autoplay = "Idle"
-frame = 4
-frame_progress = 0.1778
 
 [node name="Hitbox" type="Area2D" parent="AnimatedSprite2D"]
 position = Vector2(21, 0)
@@ -173,16 +145,9 @@ position = Vector2(21, 0)
 shape = SubResource("RectangleShape2D_bnp4c")
 disabled = true
 
-[node name="HitParticles" type="GPUParticles2D" parent="AnimatedSprite2D"]
-position = Vector2(17, 4)
-emitting = false
-amount = 200
-process_material = SubResource("ParticleProcessMaterial_wjc7x")
-texture = ExtResource("21_1aepa")
-lifetime = 0.25
-one_shot = true
-explosiveness = 1.0
-visibility_rect = Rect2(0, 0, 1, 1)
+[node name="HitParticles" parent="AnimatedSprite2D" instance=ExtResource("21_gooki")]
+position = Vector2(15, 5)
+rotation = 0.0
 
 [node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
@@ -202,22 +167,23 @@ sprite = NodePath("../../AnimatedSprite2D")
 
 [node name="Moving" type="Node" parent="FSM" node_paths=PackedStringArray("player_sprite")]
 script = ExtResource("24_cprpa")
-movespeed = 50
+movespeed = 150
+dashspeed = 150
 player_sprite = NodePath("../../AnimatedSprite2D")
 
 [node name="Die" type="Node" parent="FSM"]
 script = ExtResource("25_kf1r7")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -41.0
-offset_top = -22.0
-offset_right = -33.0
-offset_bottom = 58.0
+offset_left = -32.0
+offset_top = -21.0
+offset_right = -26.0
+offset_bottom = 43.0
 rotation = -1.57079
 theme_override_styles/background = SubResource("StyleBoxFlat_ub6e5")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0guox")
 step = 1.0
-value = 51.0
+value = 25.0
 fill_mode = 2
 show_percentage = false
 

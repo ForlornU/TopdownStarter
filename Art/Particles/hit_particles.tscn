@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://b82yimbxiflml"]
+
+[ext_resource type="Texture2D" uid="uid://bw36ig60cpuaq" path="res://Art/Sprites/Square.png" id="1_ofkul"]
+
+[sub_resource type="Curve" id="Curve_8xg4l"]
+min_value = -604.54
+max_value = -199.99
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.12, -24.1758), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3hhbe"]
+curve = SubResource("Curve_8xg4l")
+
+[sub_resource type="Curve" id="Curve_hm3l0"]
+_data = [Vector2(0, 1), 0.0, -0.0659341, 0, 0, Vector2(1, 0), -2.04795, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_l6idf"]
+curve = SubResource("Curve_hm3l0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jpb8y"]
+particle_flag_disable_z = true
+spread = 120.0
+initial_velocity_min = 30.0
+initial_velocity_max = 160.0
+gravity = Vector3(0, 50, 0)
+radial_accel_curve = SubResource("CurveTexture_3hhbe")
+damping_min = 1.0
+damping_max = 50.0
+scale_min = 0.1
+scale_max = 1.1
+scale_curve = SubResource("CurveTexture_l6idf")
+
+[node name="HitParticles" type="GPUParticles2D"]
+position = Vector2(-14.5, 6)
+rotation = 3.14159
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_jpb8y")
+texture = ExtResource("1_ofkul")
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+visibility_rect = Rect2(0, 0, 1, 1)

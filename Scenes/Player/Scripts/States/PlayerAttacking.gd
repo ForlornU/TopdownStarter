@@ -32,13 +32,13 @@ func Update(_delta):
 		hitbox.disabled = true
 
 func _on_hitbox_body_entered(body):
-	print(body)
+	#print(body)
 	if body.is_in_group("Enemy") and has_dealt_damage == false:
 		var enemy = body as EnemyMain
 		deal_damage(enemy)
 
 func deal_damage(enemy):
 	hit_particles.emitting = true
-	enemy.ConnectToPlayer(self)
+	enemy.ConnectForDamage(self)
 	emit_signal("DealDamage", damage)
 	has_dealt_damage = true
