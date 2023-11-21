@@ -9,7 +9,7 @@ var health = 100
 func _ready():
 	pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	Turn()
 
 func Turn():

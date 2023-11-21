@@ -23,7 +23,7 @@ func Exit():
 	has_dealt_damage = false
 	hitbox.disabled = true
 	
-func Update(delta):
+func Update(_delta):
 	if sprite.frame == 3 || sprite.frame == 4: #Damage frames
 		if has_dealt_damage == false:
 			hitbox.disabled = false

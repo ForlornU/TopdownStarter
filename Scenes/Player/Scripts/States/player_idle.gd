@@ -7,7 +7,7 @@ func Enter():
 	sprite.play("Idle")
 	pass
 	
-func Update(delta : float):
+func Update(_delta : float):
 	if(Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown").normalized()):
 		state_transition.emit(self, "Moving")
 		

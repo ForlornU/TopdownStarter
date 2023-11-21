@@ -131,8 +131,9 @@ script = ExtResource("1_h0qed")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_vax36")
-animation = &"Attack"
+animation = &"Walk"
 autoplay = "Idle"
+frame_progress = 0.346368
 
 [node name="Hitbox" type="Area2D" parent="AnimatedSprite2D"]
 position = Vector2(21, 0)

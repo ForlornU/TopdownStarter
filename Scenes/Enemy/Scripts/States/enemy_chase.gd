@@ -11,7 +11,7 @@ func Enter():
 	sprite.play("Walk")
 	print("Entered chase state")
 
-func Update(delta):
+func Update(_delta):
 	var player = get_tree().get_first_node_in_group("Player") as CharacterBody2D
 	var chase_direction = player.position - body.position as Vector2
 

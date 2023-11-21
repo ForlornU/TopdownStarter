@@ -8,5 +8,5 @@ func Enter():
 	sprite.play("Idle")
 	pass
 
-func Update(delta):
+func Update(_delta):
 	pass

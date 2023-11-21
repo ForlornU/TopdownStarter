@@ -6,7 +6,7 @@ var health = 100
 @onready var fsm = $FSM as FiniteStateMachine
 @onready var healthbar = $ProgressBar
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	Turn()
 	
 func _ready():
