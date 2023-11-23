@@ -1,8 +1,7 @@
-res://Scenes/Npc_OfficeWorker/NpcDialogueScript.gd
-res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn
+res://Scenes/Enemy/Scripts/Enemy_main.gd
 res://Scenes/MainFloor.tscn
+res://Art/Fonts/pixelized_label.tres
 res://Scenes/Player/Player.tscn
+res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn
 res://Scenes/Enemy/Enemy.tscn
-res://Scripts/CharacterBase.gd
-res://Scenes/Player/Scripts/States/player_walking.gd
 res://Scripts/FiniteStateMachine.gd

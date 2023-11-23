@@ -126,10 +126,12 @@ bg_color = Color(0.0352941, 0.0156863, 0.00784314, 0.427451)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w435t"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "healthbar") groups=["Enemy"]]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("attack_node", "chase_node", "sprite", "healthbar") groups=["Enemy"]]
 texture_filter = 1
 scale = Vector2(2, 2)
 script = ExtResource("1_2r3hw")
+attack_node = NodePath("FSM/enemy_attack_state")
+chase_node = NodePath("FSM/enemy_chase_state")
 sprite = NodePath("AnimatedSprite2D")
 healthbar = NodePath("ProgressBar")
 health = 75

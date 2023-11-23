@@ -27,10 +27,15 @@ func _process(delta):
 
 func force_change_state(new_state : String):
 	var newState = states.get(new_state.to_lower())
+	
 	if !newState:
 		print(new_state + " does not exist in the dictionary of states")
 		return
 	
+	if current_state == newState:
+		print("State is same, aborting")
+		return
+		
 	if current_state:
 		current_state.Exit()
 
@@ -40,25 +45,6 @@ func force_change_state(new_state : String):
 	
 	current_state = newState
 	
-
-func change_state_by_string(old_state : String, new_state_name : String):
-	if old_state != current_state.name:
-		print("Invalid change_state, moving from: " + old_state + " but we are currently in: " + current_state.name)
-		return
-	
-	var new_state = states.get(new_state_name.to_lower())
-	if !new_state:
-		print("New state is empty")
-		return
-		
-	if current_state:
-		current_state.Exit()
-		
-	new_state.Enter()
-	
-	current_state = new_state
-	#print(new_state.name + " is our new state")
-
 func change_state(old_state : State, new_state_name : String):
 	if old_state != current_state:
 		print("Invalid change_state, moving from: " + old_state.name + " but we are currently in: " + current_state.name)
