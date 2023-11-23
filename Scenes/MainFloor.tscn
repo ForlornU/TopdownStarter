@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ckp2r52hlcfxn" path="res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn" id="3_mwoku"]
 [ext_resource type="PackedScene" uid="uid://bvt7e871e6jeg" path="res://Scenes/Enemy/Enemy.tscn" id="4_va67l"]
 [ext_resource type="Texture2D" uid="uid://cmjdg3be3dipu" path="res://Art/Sprites/TileSheet-Sheet.png" id="5_7p67y"]
-[ext_resource type="PackedScene" uid="uid://bblpsy4fvi76f" path="res://Scenes/floating_test.tscn" id="6_agbed"]
+[ext_resource type="PackedScene" uid="uid://bblpsy4fvi76f" path="res://Scenes/pickup_object.tscn" id="6_agbed"]
 
 [sub_resource type="Environment" id="Environment_8bd8l"]
 background_mode = 3
@@ -205,7 +205,7 @@ sources/0 = SubResource("TileSetAtlasSource_vrq6h")
 texture_filter = 1
 
 [node name="Player" parent="." instance=ExtResource("1_i4wd1")]
-position = Vector2(-128, 72)
+position = Vector2(-190, 53)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 scale = Vector2(2, 2)
@@ -228,7 +228,7 @@ position = Vector2(44, 217)
 environment = SubResource("Environment_8bd8l")
 
 [node name="Enemy" parent="." instance=ExtResource("4_va67l")]
-position = Vector2(186, 55)
+position = Vector2(67, 71)
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -2
@@ -246,5 +246,18 @@ position = Vector2(115, -275)
 [node name="Enemy4" parent="." instance=ExtResource("4_va67l")]
 position = Vector2(-46, -241)
 
-[node name="FloatingTest" parent="." instance=ExtResource("6_agbed")]
-position = Vector2(-182, 78)
+[node name="Pickup" parent="." instance=ExtResource("6_agbed")]
+position = Vector2(18, -232)
+amplitude = 12.0
+
+[node name="Pickup4" parent="." instance=ExtResource("6_agbed")]
+position = Vector2(2, 74)
+amplitude = 12.0
+
+[node name="Pickup2" parent="." instance=ExtResource("6_agbed")]
+position = Vector2(195, 68)
+amplitude = 12.0
+
+[node name="Pickup3" parent="." instance=ExtResource("6_agbed")]
+position = Vector2(84, 238)
+amplitude = 12.0

@@ -8,7 +8,9 @@ class_name CharacterBase
 
 func _ready():
 	init_character()
-	pass
+	
+func _process(delta):
+	Turn()
 	
 func init_character():
 	healthbar.max_value = health
@@ -37,6 +39,3 @@ func _die():
 func ConnectForDamage(node):
 	node.DealDamage.connect(_take_damage)
 
-func _process(delta):
-	Turn()
-	pass
