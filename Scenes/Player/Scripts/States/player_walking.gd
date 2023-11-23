@@ -21,10 +21,7 @@ func Update(delta : float):
 	LessenDash(delta)
 
 	if(Input.is_action_just_pressed("Dash") && canDash):
-		dashspeed = dashMax
-		dashDir = player.velocity.normalized()
-		player_sprite.play("Dash")
-		canDash = false
+		start_dash()
 		
 	if Input.is_action_just_pressed("Attack"):
 		Transition("Attacking")
@@ -36,7 +33,6 @@ func Move():
 	if(dashDir != Vector2.ZERO and dashDir != input_dir):
 		dashDir = Vector2.ZERO
 		dashspeed = 0
-		print("Turned mid-dash")
 		
 	player.velocity = input_dir * movespeed + dashDir * dashspeed 
 	player.move_and_slide()
@@ -44,6 +40,11 @@ func Move():
 	if(input_dir.length() <= 0):
 		Transition("Idle")
 
+func start_dash():
+	dashDir = player.velocity.normalized()
+	dashspeed = dashMax
+	player_sprite.play("Dash")
+	canDash = false
 
 func LessenDash(delta):
 	#Higher multiplier values makes the dash shorter

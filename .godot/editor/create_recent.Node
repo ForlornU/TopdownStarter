@@ -1,3 +1,7 @@
+CollisionShape2D
+Area2D
+CenterContainer
+Label
 GPUParticles2D
 Camera2D
 TileMap
@@ -6,10 +10,5 @@ State
 ProgressBar
 TextureProgressBar
 ColorRect
-CollisionShape2D
-Area2D
 CharacterBody2D
 AnimatedSprite2D
-WorldEnvironment
-StaticBody2D
-Label

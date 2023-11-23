@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://da8inon5cmt2r"]
+
+[ext_resource type="FontFile" uid="uid://ci60w53hdbiqe" path="res://Art/Fonts/m3x6.ttf" id="1_bikjy"]
+
+[resource]
+font = ExtResource("1_bikjy")
+font_size = 32

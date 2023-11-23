@@ -1,10 +1,7 @@
-res://Scripts/CharacterBase.gd
-res://Scenes/Player/Scripts/PlayerMovement.gd
+res://Scenes/Npc_OfficeWorker/NpcDialogueScript.gd
+res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn
 res://Scenes/MainFloor.tscn
 res://Scenes/Player/Player.tscn
-res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn
 res://Scenes/Enemy/Enemy.tscn
-res://Scenes/Player/Scripts/States/PlayerAttacking.gd
-res://Scenes/Enemy/Scripts/Enemy_main.gd
-res://Scenes/Enemy/Scripts/States/enemy_attack.gd
+res://Scripts/CharacterBase.gd
 res://Scenes/Player/Scripts/States/player_walking.gd

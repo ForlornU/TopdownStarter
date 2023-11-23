@@ -111,7 +111,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqf5a"]
-size = Vector2(37.5, 44.5)
+size = Vector2(27, 36.5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4mbmt"]
 radius = 7.0
@@ -144,7 +144,7 @@ frame_progress = 0.0660752
 [node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HitBox"]
-position = Vector2(-6.25, 2.25)
+position = Vector2(-11.5, 0.75)
 shape = SubResource("RectangleShape2D_cqf5a")
 disabled = true
 

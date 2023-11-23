@@ -36,6 +36,7 @@ func _on_body_exited(body):
 #Movement
 func _ready():
 	initial_position = position
+	speech.text = ""
 	randomize()
 
 #func _process(delta):

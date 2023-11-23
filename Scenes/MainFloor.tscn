@@ -1,14 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dei3j88yw6omf"]
+[gd_scene load_steps=9 format=3 uid="uid://dei3j88yw6omf"]
 
 [ext_resource type="PackedScene" uid="uid://bvg5dny32iw0x" path="res://Scenes/Player/Player.tscn" id="1_i4wd1"]
-[ext_resource type="FontFile" uid="uid://ci60w53hdbiqe" path="res://Art/Fonts/m3x6.ttf" id="2_d4w8a"]
+[ext_resource type="LabelSettings" uid="uid://da8inon5cmt2r" path="res://Art/Fonts/pixelized_label.tres" id="2_31quc"]
 [ext_resource type="PackedScene" uid="uid://ckp2r52hlcfxn" path="res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn" id="3_mwoku"]
 [ext_resource type="PackedScene" uid="uid://bvt7e871e6jeg" path="res://Scenes/Enemy/Enemy.tscn" id="4_va67l"]
 [ext_resource type="Texture2D" uid="uid://cmjdg3be3dipu" path="res://Art/Sprites/TileSheet-Sheet.png" id="5_7p67y"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_8dwhr"]
-font = ExtResource("2_d4w8a")
-font_size = 32
 
 [sub_resource type="Environment" id="Environment_8bd8l"]
 background_mode = 3
@@ -217,15 +213,15 @@ position_smoothing_speed = 10.0
 
 [node name="Label" type="Label" parent="."]
 texture_filter = 1
-offset_left = -117.0
-offset_top = -83.0
-offset_right = 151.0
-offset_bottom = -57.0
+offset_left = -224.0
+offset_top = -29.0
+offset_right = 44.0
+offset_bottom = -3.0
 text = "Welcome to the top-down project!"
-label_settings = SubResource("LabelSettings_8dwhr")
+label_settings = ExtResource("2_31quc")
 
 [node name="NPC" parent="." instance=ExtResource("3_mwoku")]
-position = Vector2(-16, -29)
+position = Vector2(44, 217)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8bd8l")
@@ -239,3 +235,12 @@ texture_filter = 1
 tile_set = SubResource("TileSet_163go")
 format = 2
 layer_0/tile_data = PackedInt32Array(262143, 65536, 2, 131065, 0, 1, 196601, 0, 1, 65529, 0, 0, 65530, 262144, 0, 65531, 458752, 0, 65532, 393216, 0, 65533, 327680, 0, 0, 131072, 0, 131066, 131072, 1, 131067, 393216, 1, 131068, 393216, 1, 131069, 393216, 1, 196602, 393216, 1, 196603, 393216, 1, 196604, 393216, 1, 196605, 393216, 1, 196606, 393216, 1, 196607, 393216, 1, 262137, 0, 2, 262138, 65536, 2, 262139, 65536, 2, 262140, 65536, 2, 262141, 65536, 2, 262142, 65536, 2, 131072, 393216, 1, 196608, 327680, 2, 65536, 65536, 1, 196609, 262144, 2, 131073, 393216, 2, 65537, 131072, 1, 2, 196608, 0, 65538, 196608, 1, 131074, 196608, 1, 196610, 327680, 2, 1, 262144, 0, 393210, 196608, 4, 393211, 262144, 4, 393212, 327680, 4, 393213, 393216, 4, 393214, 458752, 4, 458746, 196608, 5, 458747, 262144, 5, 458748, 262144, 5, 458749, 262144, 5, 458750, 458752, 5, 65534, 458752, 0, 131070, 393216, 1, 65535, 262144, 0, 131071, 131072, 1, 524286, 589824, 5, 589821, 327680, 5, 524285, 327680, 5, 458753, 65536, 2, 589822, 393216, 6, 524284, 262144, 5, 524283, 327680, 5, 524282, 196608, 5, 589818, 196608, 5, 655354, 196608, 6, 655355, 262144, 6, 655356, 327680, 6, 655357, 262144, 6, 655358, 327680, 6, 458754, 196608, 2, 589819, 393216, 6, 589820, 393216, 6, 262145, 262144, 3, 327681, 589824, 2, 327682, 655360, 2, 327680, 655360, 2, 393217, 393216, 1, 393216, 0, 1, 393218, 196608, 1, 458752, 0, 2, 196611, 327680, 2, 196612, 327680, 2, 131075, 458752, 2, 65539, 458752, 2, 3, 458752, 0, 4, 393216, 0, 5, 262144, 0, 65541, 131072, 1, 6, 196608, 0, 65542, 196608, 1, 131078, 524288, 2, 196614, 196608, 2, 196613, 327680, 2, 65540, 393216, 1, 131076, 393216, 1, 131077, 393216, 1)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_va67l")]
+position = Vector2(-145, -170)
+
+[node name="Enemy3" parent="." instance=ExtResource("4_va67l")]
+position = Vector2(115, -275)
+
+[node name="Enemy4" parent="." instance=ExtResource("4_va67l")]
+position = Vector2(-46, -241)
