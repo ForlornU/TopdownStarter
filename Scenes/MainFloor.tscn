@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dei3j88yw6omf"]
+[gd_scene load_steps=10 format=3 uid="uid://dei3j88yw6omf"]
 
 [ext_resource type="PackedScene" uid="uid://bvg5dny32iw0x" path="res://Scenes/Player/Player.tscn" id="1_i4wd1"]
 [ext_resource type="LabelSettings" uid="uid://da8inon5cmt2r" path="res://Art/Fonts/pixelized_label.tres" id="2_31quc"]
 [ext_resource type="PackedScene" uid="uid://ckp2r52hlcfxn" path="res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn" id="3_mwoku"]
 [ext_resource type="PackedScene" uid="uid://bvt7e871e6jeg" path="res://Scenes/Enemy/Enemy.tscn" id="4_va67l"]
 [ext_resource type="Texture2D" uid="uid://cmjdg3be3dipu" path="res://Art/Sprites/TileSheet-Sheet.png" id="5_7p67y"]
+[ext_resource type="PackedScene" uid="uid://bblpsy4fvi76f" path="res://Scenes/floating_test.tscn" id="6_agbed"]
 
 [sub_resource type="Environment" id="Environment_8bd8l"]
 background_mode = 3
@@ -244,3 +245,6 @@ position = Vector2(115, -275)
 
 [node name="Enemy4" parent="." instance=ExtResource("4_va67l")]
 position = Vector2(-46, -241)
+
+[node name="FloatingTest" parent="." instance=ExtResource("6_agbed")]
+position = Vector2(-182, 78)

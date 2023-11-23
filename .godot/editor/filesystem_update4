@@ -5,3 +5,6 @@ res://Scenes/Player/Player.tscn
 res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn
 res://Scenes/Enemy/Enemy.tscn
 res://Scripts/FiniteStateMachine.gd
+res://Scripts/Hover.gd
+res://Scenes/floating_test.tscn
+res://Scenes/Npc_OfficeWorker/NpcDialogueScript.gd

@@ -5,8 +5,6 @@ var states : Dictionary = {}
 var current_state : State
 @export var initial_state : State
 
-#TODO Change behaviour of Change_state and Force_change_state
-
 #NOTE This is a generic finite_state_machine, it handles all states, changes to this code will affect
 	# everything that uses a state machine!
 
@@ -39,8 +37,6 @@ func force_change_state(new_state : String):
 	if current_state:
 		current_state.Exit()
 
-	print(current_state.name + " forced into: " + newState.name)
-		
 	newState.Enter()
 	
 	current_state = newState
@@ -61,5 +57,4 @@ func change_state(old_state : State, new_state_name : String):
 	new_state.Enter()
 	
 	current_state = new_state
-	#print(new_state.name + " is our new state")
 

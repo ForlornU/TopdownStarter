@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bblpsy4fvi76f"]
+
+[ext_resource type="Texture2D" uid="uid://bw36ig60cpuaq" path="res://Art/Sprites/Square.png" id="1_4gerp"]
+[ext_resource type="Script" path="res://Scripts/Hover.gd" id="1_jlt05"]
+
+[node name="Sprite2D" type="Sprite2D"]
+rotation = 0.785398
+scale = Vector2(2, 2)
+texture = ExtResource("1_4gerp")
+script = ExtResource("1_jlt05")
