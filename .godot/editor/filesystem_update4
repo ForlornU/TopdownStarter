@@ -5,3 +5,4 @@ res://Scenes/Player/Player.tscn
 res://Scenes/Enemy/Enemy.tscn
 res://Scripts/CharacterBase.gd
 res://Scenes/Player/Scripts/States/player_walking.gd
+res://Scripts/FiniteStateMachine.gd

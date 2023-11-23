@@ -6,10 +6,10 @@ var talking = false
 @export var line1 = []
 
 #Movement
-var time_passed = 0
-var initial_position := Vector2.ZERO
-@export var amplitude := 4
-@export var frequency := 5
+#var time_passed = 0
+#var initial_position := Vector2.ZERO
+#@export var amplitude := 4
+#@export var frequency := 5
 
 #AreaSignal
 func _on_body_entered(body):
@@ -35,15 +35,15 @@ func _on_body_exited(body):
 	
 #Movement
 func _ready():
-	initial_position = position
+#	initial_position = position
 	speech.text = ""
 	randomize()
 
 #func _process(delta):
 	#body_hover(delta)
 
-func body_hover(delta):
-	time_passed += delta
+#func body_hover(delta):
+#	time_passed += delta
 	
-	var new_y = initial_position.y + amplitude * sin(frequency * time_passed)
-	position.y = new_y
+#	var new_y = initial_position.y + amplitude * sin(frequency * time_passed)
+#	position.y = new_y

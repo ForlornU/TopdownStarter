@@ -30,10 +30,10 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_toimg"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 1.5,
 "texture": ExtResource("1_chwbu")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": ExtResource("2_jk28b")
 }, {
 "duration": 1.0,

@@ -2,9 +2,9 @@ extends State
 class_name PlayerWalking
 
 @export var movespeed := int(350)
+
 var dashspeed := int(100)
 @export var dashMax := int(500)
-
 var canDash := bool(false)
 var dashDir := Vector2(0,0)
 
@@ -29,13 +29,11 @@ func Update(delta : float):
 		Transition("Attacking")
 	
 func Move(input_dir):
-	#var input_dir = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown").normalized()
-	
 	#Suddenly turning mid dash
 	if(dashDir != Vector2.ZERO and dashDir != input_dir):
 		dashDir = Vector2.ZERO
 		dashspeed = 0
-		
+
 	player.velocity = input_dir * movespeed + dashDir * dashspeed 
 	player.move_and_slide()
 
@@ -43,18 +41,18 @@ func Move(input_dir):
 		Transition("Idle")
 
 func start_dash(input_dir):
-	dashDir = input_dir.normalized() #player.velocity.normalized()
-	print(dashDir)
+	dashDir = input_dir.normalized()
 	dashspeed = dashMax
 	player_sprite.play("Dash")
 	canDash = false
 
 func LessenDash(delta):
 	#Higher multiplier values makes the dash shorter
-	var multiplier = 4
-	var timemultiplier := float(4)
+	var multiplier = 4.0
+	var timemultiplier = 4.1
 	
 	#slow down the dash over time, both as a fraction of dashspeed and also time
+	#While clamping it between 0 and dashMax
 	dashspeed -= (dashspeed * multiplier * delta) + (delta * timemultiplier)
 	dashspeed = clamp(dashspeed, 0, dashMax)
 	
@@ -66,6 +64,7 @@ func LessenDash(delta):
 		await player_sprite.animation_finished
 		player_sprite.play("Walk")
 
+#We cannot allow a transition before the dash is complete and the animation has stopped playing
 func Transition(newstate):
 	if(dashspeed <= 0):
 		state_transition.emit(self, newstate)
