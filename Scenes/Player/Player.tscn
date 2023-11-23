@@ -137,6 +137,8 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_vax36")
 animation = &"Attack"
 autoplay = "Idle"
+frame = 4
+frame_progress = 0.39679
 
 [node name="Hitbox" type="Area2D" parent="AnimatedSprite2D"]
 position = Vector2(21, 0)

@@ -17,17 +17,19 @@ func Enter():
 	pass
 
 func Update(delta : float):
-	Move()
+	var input_dir = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown").normalized()
+	
+	Move(input_dir)
 	LessenDash(delta)
 
 	if(Input.is_action_just_pressed("Dash") && canDash):
-		start_dash()
+		start_dash(input_dir)
 		
 	if Input.is_action_just_pressed("Attack"):
 		Transition("Attacking")
 	
-func Move():
-	var input_dir = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown").normalized()
+func Move(input_dir):
+	#var input_dir = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown").normalized()
 	
 	#Suddenly turning mid dash
 	if(dashDir != Vector2.ZERO and dashDir != input_dir):
@@ -40,8 +42,9 @@ func Move():
 	if(input_dir.length() <= 0):
 		Transition("Idle")
 
-func start_dash():
-	dashDir = player.velocity.normalized()
+func start_dash(input_dir):
+	dashDir = input_dir.normalized() #player.velocity.normalized()
+	print(dashDir)
 	dashspeed = dashMax
 	player_sprite.play("Dash")
 	canDash = false
@@ -51,7 +54,7 @@ func LessenDash(delta):
 	var multiplier = 4
 	var timemultiplier := float(4)
 	
-	#slow down the dash over time, both with a multiplier of dashspeed and also time
+	#slow down the dash over time, both as a fraction of dashspeed and also time
 	dashspeed -= (dashspeed * multiplier * delta) + (delta * timemultiplier)
 	dashspeed = clamp(dashspeed, 0, dashMax)
 	
