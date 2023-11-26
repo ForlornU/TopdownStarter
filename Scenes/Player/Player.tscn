@@ -174,7 +174,8 @@ sprite = NodePath("../../AnimatedSprite2D")
 
 [node name="Moving" type="Node" parent="FSM" node_paths=PackedStringArray("player_sprite")]
 script = ExtResource("24_cprpa")
-movespeed = 150
+movespeed = 140
+dashMax = 400
 player_sprite = NodePath("../../AnimatedSprite2D")
 
 [node name="Die" type="Node" parent="FSM"]

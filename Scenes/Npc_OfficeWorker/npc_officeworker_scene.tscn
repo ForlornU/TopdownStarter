@@ -59,7 +59,6 @@ grow_vertical = 0
 
 [node name="Label" type="Label" parent="NPC/CenterContainer"]
 layout_mode = 2
-text = "asdasasdasdasdasdasdssssssssssssssssss"
 label_settings = ExtResource("4_lx2dj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
