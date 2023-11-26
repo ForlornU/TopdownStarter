@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Topdown Starter"
-run/main_scene="res://Scenes/MainFloor.tscn"
+run/main_scene="res://Scenes/Levels/MainFloor.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/use_filter=false
 config/icon="res://Thumbnailicon.png"

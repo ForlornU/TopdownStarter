@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx8kkqawojm0m"]
+
+[sub_resource type="Environment" id="Environment_8bd8l"]
+background_mode = 3
+
+[node name="SceneSettings" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8bd8l")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.619608, 0.596078, 0.498039, 1)

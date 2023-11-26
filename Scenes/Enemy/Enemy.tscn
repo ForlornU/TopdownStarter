@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bvt7e871e6jeg"]
+[gd_scene load_steps=34 format=3 uid="uid://bvt7e871e6jeg"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy/Scripts/Enemy_main.gd" id="1_2r3hw"]
 [ext_resource type="Texture2D" uid="uid://d3u5e5gpffpwe" path="res://Scenes/Enemy/Sprites/Enemy09.png" id="1_chwbu"]
@@ -113,6 +113,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqf5a"]
 size = Vector2(27, 36.5)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_e04wa"]
+cull_mode = 2
+polygon = PackedVector2Array(3, -8, 6.5, -4, 7.5, 3.5, 4.5, 10, -1.5, 10.5, -6, 4, -4.5, -6, -1, -8.5)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4mbmt"]
 radius = 7.0
 height = 24.0
@@ -139,9 +143,8 @@ flipped_horizontal = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_toimg")
-animation = &"Attack"
-frame = 4
-frame_progress = 0.0660752
+animation = &"Idle"
+autoplay = "Idle"
 
 [node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
 
@@ -151,6 +154,9 @@ shape = SubResource("RectangleShape2D_cqf5a")
 disabled = true
 
 [node name="HitParticles" parent="AnimatedSprite2D" instance=ExtResource("21_d5isq")]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite2D"]
+occluder = SubResource("OccluderPolygon2D_e04wa")
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
 position = Vector2(1, 3)
