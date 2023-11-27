@@ -21,8 +21,9 @@
 - Examples of signals connected both through editor and code
 - Use of callables
 
-![Screenshot](https://github.com/ForlornU/Images/blob/5aa19b63af0e5c04387c91e10b24adf1ae322eef/basementPic.png)
-![Screenshot](https://github.com/ForlornU/Images/blob/5aa19b63af0e5c04387c91e10b24adf1ae322eef/basement02pic.png)
+![Screenshot](https://github.com/ForlornU/Images/blob/6402e2b16b4515ed8c3ad3dccde223aca574fdc0/basementPic.png)
+
+![Screenshot](https://github.com/ForlornU/Images/blob/6402e2b16b4515ed8c3ad3dccde223aca574fdc0/basement02pic.png)
 
 ## Getting Started
 
