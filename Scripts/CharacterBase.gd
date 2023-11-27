@@ -36,6 +36,8 @@ func _take_damage(amount):
 func _die():
 	pass #Called on inheriting subclasses
 	
-func ConnectForDamage(node):
-	node.DealDamage.connect(_take_damage)
+func ConnectForDamage(node : Node):
+	#Make sure we are not already connected
+	if(not node.is_connected("DealDamage", _take_damage)):
+		node.DealDamage.connect(_take_damage)
 
