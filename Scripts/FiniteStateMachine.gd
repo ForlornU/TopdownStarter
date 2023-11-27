@@ -34,9 +34,12 @@ func force_change_state(new_state : String):
 		print("State is same, aborting")
 		return
 		
+	#NOTE Calling exit like so: (current_state.Exit()) may cause warnings when flushing queries, like when the enemy is being removed after death. 
+	#call_deferred is safe and prevents this from occuring. We get the Exit function from the state as a callable and then call it in a thread-safe manner
 	if current_state:
-		current_state.Exit()
-
+		var exit_callable = Callable(current_state, "Exit")
+		exit_callable.call_deferred()
+	
 	newState.Enter()
 	
 	current_state = newState
