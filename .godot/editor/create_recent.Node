@@ -1,8 +1,8 @@
+Node
 Label
 CollisionShape2D
 Area2D
 StaticBody2D
-Node
 TileMap
 LightOccluder2D
 DirectionalLight2D

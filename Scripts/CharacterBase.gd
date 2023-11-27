@@ -9,7 +9,7 @@ class_name CharacterBase
 func _ready():
 	init_character()
 	
-func _process(delta):
+func _process(_delta):
 	Turn()
 	
 func init_character():
@@ -29,12 +29,12 @@ func _take_damage(amount):
 	healthbar.value = health;
 	if(health <= 0):
 		_die()
-		print("Character died")
 		await get_tree().create_timer(1.0).timeout
-		queue_free()
+		if(is_instance_valid(self)):
+			queue_free()
 	
 func _die():
-	pass
+	pass #Called on inheriting subclasses
 	
 func ConnectForDamage(node):
 	node.DealDamage.connect(_take_damage)

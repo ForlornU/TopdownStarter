@@ -25,7 +25,7 @@
 [ext_resource type="Script" path="res://Scenes/Enemy/Scripts/States/enemy_idle.gd" id="21_mks5l"]
 [ext_resource type="Script" path="res://Scenes/Enemy/Scripts/States/enemy_chase.gd" id="22_svjvw"]
 [ext_resource type="Script" path="res://Scenes/Enemy/Scripts/States/enemy_attack.gd" id="23_qnihw"]
-[ext_resource type="Script" path="res://Scenes/Enemy/Node.gd" id="25_w5swx"]
+[ext_resource type="Script" path="res://Scenes/Enemy/Scripts/States/enemy_death.gd" id="26_rci8i"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_toimg"]
 animations = [{
@@ -182,7 +182,7 @@ script = ExtResource("22_svjvw")
 script = ExtResource("23_qnihw")
 
 [node name="enemy_death_state" type="Node" parent="FSM"]
-script = ExtResource("25_w5swx")
+script = ExtResource("26_rci8i")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -14.0

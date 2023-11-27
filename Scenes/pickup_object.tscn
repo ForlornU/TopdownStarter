@@ -6,7 +6,7 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ea2ve"]
 
-[node name="Sprite2D" type="Sprite2D"]
+[node name="Pickup" type="Sprite2D"]
 rotation = 0.785398
 scale = Vector2(2, 2)
 texture = ExtResource("1_4gerp")

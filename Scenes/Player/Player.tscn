@@ -25,8 +25,11 @@
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_idle.gd" id="22_h12a8"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerAttacking.gd" id="23_yfq0n"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_walking.gd" id="24_cprpa"]
-[ext_resource type="Script" path="res://Scenes/Player/Die.gd" id="25_kf1r7"]
+[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_death_state.gd" id="26_7iikd"]
 [ext_resource type="Texture2D" uid="uid://dyb5iqfj3tmwj" path="res://Art/Sprites/light.png" id="27_on0bn"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uky13"]
+polygon = PackedVector2Array(-2, -13, -8, -13, -10, -11, -10, -2, -4, 2, -4, 10, 5, 10, 5, 2, 10, -1, 10, -10, 8, -13)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vax36"]
 animations = [{
@@ -116,9 +119,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bnp4c"]
 size = Vector2(20, 28)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uky13"]
-polygon = PackedVector2Array(-2, -13, -8, -13, -10, -11, -10, -2, -4, 2, -4, 10, 5, 10, 5, 2, 10, -1, 10, -10, 8, -13)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_r6nax"]
 radius = 8.0
 
@@ -136,6 +136,9 @@ sprite = NodePath("AnimatedSprite2D")
 healthbar = NodePath("ProgressBar")
 health = 200
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_uky13")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_vax36")
@@ -152,9 +155,6 @@ disabled = true
 [node name="HitParticles" parent="AnimatedSprite2D" instance=ExtResource("21_gooki")]
 position = Vector2(15, 5)
 rotation = 0.0
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite2D"]
-occluder = SubResource("OccluderPolygon2D_uky13")
 
 [node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
@@ -175,11 +175,10 @@ sprite = NodePath("../../AnimatedSprite2D")
 [node name="Moving" type="Node" parent="FSM" node_paths=PackedStringArray("player_sprite")]
 script = ExtResource("24_cprpa")
 movespeed = 140
-dashMax = 400
 player_sprite = NodePath("../../AnimatedSprite2D")
 
 [node name="Die" type="Node" parent="FSM"]
-script = ExtResource("25_kf1r7")
+script = ExtResource("26_7iikd")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 light_mask = 2

@@ -2,7 +2,7 @@ extends Sprite2D
 var starting_scale : Vector2
 
 func _ready():
-	#visible = false
+	visible = false
 	starting_scale = scale
 	grow()
 

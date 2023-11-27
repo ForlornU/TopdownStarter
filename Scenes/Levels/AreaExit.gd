@@ -6,7 +6,7 @@ extends Area2D
 func _ready():
 	label.visible = false
 
-func _process(delta):
+func _process(_delta):
 	if(Input.is_action_just_pressed("Enter") and label.visible == true):
 		GameManager.load_next_level(basement_scene)
 

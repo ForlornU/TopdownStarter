@@ -4,9 +4,9 @@ class_name PlayerWalking
 @export var movespeed := int(350)
 
 var dashspeed := int(100)
-@export var dashMax := int(500)
-var canDash := bool(false)
-var dashDir := Vector2(0,0)
+@export var dash_max := int(500)
+var can_dash := bool(false)
+var dash_direction := Vector2(0,0)
 
 var player : CharacterBody2D
 @export var player_sprite : AnimatedSprite2D
@@ -22,7 +22,7 @@ func Update(delta : float):
 	Move(input_dir)
 	LessenDash(delta)
 
-	if(Input.is_action_just_pressed("Dash") && canDash):
+	if(Input.is_action_just_pressed("Dash") && can_dash):
 		start_dash(input_dir)
 		
 	if Input.is_action_just_pressed("Attack"):
@@ -30,21 +30,21 @@ func Update(delta : float):
 	
 func Move(input_dir):
 	#Suddenly turning mid dash
-	if(dashDir != Vector2.ZERO and dashDir != input_dir):
-		dashDir = Vector2.ZERO
+	if(dash_direction != Vector2.ZERO and dash_direction != input_dir):
+		dash_direction = Vector2.ZERO
 		dashspeed = 0
 
-	player.velocity = input_dir * movespeed + dashDir * dashspeed 
+	player.velocity = input_dir * movespeed + dash_direction * dashspeed 
 	player.move_and_slide()
 
 	if(input_dir.length() <= 0):
 		Transition("Idle")
 
 func start_dash(input_dir):
-	dashDir = input_dir.normalized()
-	dashspeed = dashMax
+	dash_direction = input_dir.normalized()
+	dashspeed = dash_max
 	player_sprite.play("Dash")
-	canDash = false
+	can_dash = false
 
 func LessenDash(delta):
 	#Higher multiplier values makes the dash shorter
@@ -52,13 +52,13 @@ func LessenDash(delta):
 	var timemultiplier = 4.1
 	
 	#slow down the dash over time, both as a fraction of dashspeed and also time
-	#While clamping it between 0 and dashMax
+	#While clamping it between 0 and dash_max
 	dashspeed -= (dashspeed * multiplier * delta) + (delta * timemultiplier)
-	dashspeed = clamp(dashspeed, 0, dashMax)
+	dashspeed = clamp(dashspeed, 0, dash_max)
 	
 	if(dashspeed <= 0):
-		canDash = true
-		dashDir = Vector2.ZERO
+		can_dash = true
+		dash_direction = Vector2.ZERO
 		
 	if(player_sprite.animation == "Dash"):
 		await player_sprite.animation_finished

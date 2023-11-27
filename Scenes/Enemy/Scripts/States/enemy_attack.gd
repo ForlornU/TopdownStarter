@@ -7,12 +7,12 @@ signal DealDamage
 
 @onready var enemy = $"../.."
 @onready var sprite = $"../../AnimatedSprite2D"
-@onready var HitBox = $"../../AnimatedSprite2D/HitBox/CollisionShape2D"
+@onready var hitbox = $"../../AnimatedSprite2D/HitBox/CollisionShape2D"
 @onready var hit_particles = $"../../AnimatedSprite2D/HitParticles"
 
 func Enter():
 	has_dealt_damage = false
-	HitBox.disabled = true
+	hitbox.disabled = true
 
 	sprite.play("Attack")
 	await sprite.animation_finished
@@ -20,14 +20,14 @@ func Enter():
 	
 func Exit():
 	has_dealt_damage = false
-	HitBox.disabled = true
+	hitbox.disabled = true
 	
 func Update(_delta):
 	if sprite.frame == 3 || sprite.frame == 4: #Damage frames
 		if has_dealt_damage == false:
-			HitBox.disabled = false
+			hitbox.disabled = false
 	else:
-		HitBox.disabled = true
+		hitbox.disabled = true
 
 #During attack animation, Hitbox is activated and tries to find the player
 func _on_hit_box_body_entered(body):
