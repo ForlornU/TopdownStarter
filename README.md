@@ -1,7 +1,9 @@
 # TopdownStarter
- This 2D Pixelart, TopDown action Starter Project include all the basics you need to get started creating a game.
+![Top-down Starter Project By ForlornU](https://github.com/ForlornU/TopdownStarter/assets/101473036/5158caec-a7d6-42a1-af80-54cbdb25588b)
 
- ![Screenshot](https://github.com/ForlornU/Images/blob/5aa19b63af0e5c04387c91e10b24adf1ae322eef/GameplayPic.png)
+This 2D Pixelart, TopDown action Starter Project include all the basics you need to get started creating a game.
+
+![Screenshot](https://github.com/ForlornU/Images/blob/5aa19b63af0e5c04387c91e10b24adf1ae322eef/GameplayPic.png)
 
 # Notice!
 This is still a preview, running on the 4.2-beta6 snapshot
