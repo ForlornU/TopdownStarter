@@ -13,9 +13,9 @@ config_version=5
 config/name="Topdown Starter"
 run/main_scene="res://Scenes/Levels/MainFloor.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-boot_splash/image="res://Art/starter_icon.png"
+boot_splash/image="res://icon.png"
 boot_splash/use_filter=false
-config/icon="res://Art/starter_icon.png"
+config/icon="res://icon.png"
 
 [autoload]
 
