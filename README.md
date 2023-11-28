@@ -3,6 +3,11 @@
 
  ![Screenshot](https://github.com/ForlornU/Images/blob/5aa19b63af0e5c04387c91e10b24adf1ae322eef/GameplayPic.png)
 
+# Notice!
+This is still a preview, running on the 4.2-beta6 snapshot
+It lacks some features, notably it has no audio and pickups don't give anything.
+Full version to be released following the official 4.2 release
+
 # This project includes:
 - 2 Levels with different tile-sets
 - A simple but fully functional enemy
@@ -33,7 +38,7 @@ To get started with this project, follow these steps:
 2. Open the project with Godot 4.2 or later
 3. Play the included levels, explore the different scripts
 
-I am also creating a series of videos to walk you though the different parts of this project
+I am also creating a series of videos to walk you though the different parts of this project as well as a written guide
 - TODO
 
 Created by ForlornU
