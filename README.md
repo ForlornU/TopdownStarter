@@ -45,3 +45,6 @@ I am also creating a series of videos to walk you though the different parts of 
 - TODO
 
 Created by ForlornU
+
+m3x6 font was created by Daniel Linssen
+https://managore.itch.io/m3x6
