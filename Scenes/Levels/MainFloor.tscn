@@ -40,7 +40,11 @@ position = Vector2(195, 68)
 amplitude = 12.0
 
 [node name="Pickup3" parent="Pickups" instance=ExtResource("3_qfkdr")]
-position = Vector2(84, 238)
+position = Vector2(-284, 218)
+amplitude = 12.0
+
+[node name="Pickup5" parent="Pickups" instance=ExtResource("3_qfkdr")]
+position = Vector2(192, 255)
 amplitude = 12.0
 
 [node name="SceneSettings" parent="." instance=ExtResource("4_8uhxl")]

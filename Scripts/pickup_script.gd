@@ -1,5 +1,7 @@
 extends Sprite2D
 
+@export var value = 5
+
 #Movement
 var time_passed = 0
 var initial_position := Vector2.ZERO
@@ -19,4 +21,5 @@ func body_hover(delta):
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
+		GameManager.add_money(5)
 		queue_free()

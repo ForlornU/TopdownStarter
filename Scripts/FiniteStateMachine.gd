@@ -23,6 +23,8 @@ func _process(delta):
 	if current_state:
 		current_state.Update(delta)
 
+#region State Management
+
 func force_change_state(new_state : String):
 	var newState = states.get(new_state.to_lower())
 	
@@ -61,3 +63,4 @@ func change_state(old_state : State, new_state_name : String):
 	
 	current_state = new_state
 
+#endregion

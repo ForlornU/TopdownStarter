@@ -39,13 +39,13 @@ position = Vector2(545, -38)
 [node name="Pickups" type="Node" parent="."]
 
 [node name="Sprite2D" parent="Pickups" instance=ExtResource("4_hswsu")]
-position = Vector2(47, -5)
+position = Vector2(93, -37)
 
 [node name="Sprite2D2" parent="Pickups" instance=ExtResource("4_hswsu")]
-position = Vector2(273, -5)
+position = Vector2(311, -25)
 
 [node name="Sprite2D3" parent="Pickups" instance=ExtResource("4_hswsu")]
-position = Vector2(499, 0)
+position = Vector2(551, 2)
 
 [node name="Player" parent="." instance=ExtResource("3_ppqb8")]
 position = Vector2(-90, -18)

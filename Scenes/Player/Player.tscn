@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bvg5dny32iw0x"]
+[gd_scene load_steps=35 format=3 uid="uid://bvg5dny32iw0x"]
 
 [ext_resource type="Texture2D" uid="uid://b4rhu7tb8453t" path="res://Scenes/Player/Sprite/Player_Idle1.png" id="1_8ujai"]
 [ext_resource type="Texture2D" uid="uid://cgwb0bq0pw036" path="res://Scenes/Player/Sprite/Player_attack1.png" id="1_8w3ed"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_walking.gd" id="24_cprpa"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_death_state.gd" id="26_7iikd"]
 [ext_resource type="Texture2D" uid="uid://dyb5iqfj3tmwj" path="res://Art/Sprites/light.png" id="27_on0bn"]
+[ext_resource type="LabelSettings" uid="uid://da8inon5cmt2r" path="res://Art/Fonts/pixelized_label.tres" id="28_5mc6f"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uky13"]
 polygon = PackedVector2Array(-2, -13, -8, -13, -10, -11, -10, -2, -4, 2, -4, 10, 5, 10, 5, 2, 10, -1, 10, -10, 8, -13)
@@ -133,7 +134,7 @@ top_level = true
 texture_filter = 1
 script = ExtResource("1_h0qed")
 sprite = NodePath("AnimatedSprite2D")
-healthbar = NodePath("ProgressBar")
+healthbar = NodePath("Camera2D/ProgressBar")
 health = 200
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
@@ -180,21 +181,6 @@ player_sprite = NodePath("../../AnimatedSprite2D")
 [node name="Die" type="Node" parent="FSM"]
 script = ExtResource("26_7iikd")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-light_mask = 2
-visibility_layer = 2
-offset_left = -32.0
-offset_top = -21.0
-offset_right = -26.0
-offset_bottom = 43.0
-rotation = -1.57079
-theme_override_styles/background = SubResource("StyleBoxFlat_ub6e5")
-theme_override_styles/fill = SubResource("StyleBoxFlat_0guox")
-step = 1.0
-value = 25.0
-fill_mode = 2
-show_percentage = false
-
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 energy = 0.3
 shadow_enabled = true
@@ -204,5 +190,28 @@ texture = ExtResource("27_on0bn")
 scale = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+
+[node name="ProgressBar" type="ProgressBar" parent="Camera2D"]
+light_mask = 2
+visibility_layer = 2
+offset_left = -153.0
+offset_top = 84.5
+offset_right = -147.0
+offset_bottom = 148.5
+rotation = -1.57079
+theme_override_styles/background = SubResource("StyleBoxFlat_ub6e5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0guox")
+step = 1.0
+value = 25.0
+fill_mode = 2
+show_percentage = false
+
+[node name="Label" type="Label" parent="Camera2D"]
+offset_left = -153.0
+offset_top = 65.5
+offset_right = -107.0
+offset_bottom = 78.5
+text = "Health"
+label_settings = ExtResource("28_5mc6f")
 
 [connection signal="body_entered" from="AnimatedSprite2D/Hitbox" to="FSM/Attacking" method="_on_hitbox_body_entered"]

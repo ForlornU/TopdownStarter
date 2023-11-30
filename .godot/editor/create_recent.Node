@@ -1,6 +1,6 @@
+Label
 GPUParticles2D
 Node
-Label
 CollisionShape2D
 Area2D
 StaticBody2D

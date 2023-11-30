@@ -32,6 +32,14 @@ window/stretch/scale_mode="integer"
 
 project/assembly_name="Topdown Starter"
 
+[file_customization]
+
+folder_colors={
+"res://Art/": "red",
+"res://Scenes/": "green",
+"res://Scripts/": "yellow"
+}
+
 [input]
 
 MoveLeft={

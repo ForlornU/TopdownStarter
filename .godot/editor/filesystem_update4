@@ -1,10 +1,12 @@
-res://Scenes/pickup_object.tscn
-res://Scenes/Levels/TileMap.tres
+res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn
 res://Art/Fonts/pixelized_label.tres
+res://Scenes/Levels/TileMap.tres
+res://Scripts/FiniteStateMachine.gd
+res://Scenes/Npc_OfficeWorker/NpcDialogueScript.gd
+res://Scenes/pickup_object.tscn
+res://Scripts/pickup_script.gd
 res://Scenes/Levels/MainFloor.tscn
 res://Scenes/Player/Player.tscn
-res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn
-res://Scenes/Enemy/Enemy.tscn
 res://Scenes/Levels/Basement01.tscn
 res://Scenes/SceneSettings.tscn
-res://Scripts/CharacterBase.gd
+res://Scripts/GameManager.gd
