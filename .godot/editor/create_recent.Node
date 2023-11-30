@@ -1,7 +1,7 @@
+GPUParticles2D
 Label
 Control
 CanvasLayer
-GPUParticles2D
 Node
 CollisionShape2D
 Area2D

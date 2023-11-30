@@ -121,7 +121,7 @@ offset_bottom = 1.0
 text = "Hit 'Enter' to leave"
 label_settings = ExtResource("7_tuycv")
 
-[node name="CanvasLayer" parent="." instance=ExtResource("11_6cy1t")]
+[node name="Score_UI" parent="." instance=ExtResource("11_6cy1t")]
 
 [connection signal="body_entered" from="Scene/AreaExit" to="Scene/AreaExit" method="_on_body_entered"]
 [connection signal="body_exited" from="Scene/AreaExit" to="Scene/AreaExit" method="_on_body_exited"]

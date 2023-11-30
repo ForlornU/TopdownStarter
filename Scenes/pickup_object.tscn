@@ -18,9 +18,12 @@ particle_flag_disable_z = true
 emission_shape_scale = Vector3(0, 0, 0)
 emission_shape = 1
 emission_sphere_radius = 99.0
+inherit_velocity_ratio = 0.784
 radial_velocity_min = -20.0
 radial_velocity_max = 20.0
 gravity = Vector3(0, -60, 0)
+radial_accel_min = 5.0
+radial_accel_max = 30.0
 tangential_accel_min = -10.0
 tangential_accel_max = 10.0
 damping_min = 1.0
@@ -51,12 +54,14 @@ texture = ExtResource("3_o4d4t")
 shape = SubResource("CircleShape2D_ea2ve")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-amount = 25
+amount = 40
 process_material = SubResource("ParticleProcessMaterial_7swun")
 texture = ExtResource("1_4gerp")
+lifetime = 0.8
 preprocess = 0.5
 randomness = 0.2
 trail_enabled = true
+trail_lifetime = 0.4
 trail_sections = 3
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
