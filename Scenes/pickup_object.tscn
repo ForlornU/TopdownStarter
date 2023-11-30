@@ -15,8 +15,9 @@ curve = SubResource("Curve_wq4n3")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7swun"]
 particle_flag_disable_z = true
-angle_min = -90.0
-angle_max = 90.0
+emission_shape_scale = Vector3(0, 0, 0)
+emission_shape = 1
+emission_sphere_radius = 99.0
 radial_velocity_min = -20.0
 radial_velocity_max = 20.0
 gravity = Vector3(0, -60, 0)
@@ -24,7 +25,7 @@ tangential_accel_min = -10.0
 tangential_accel_max = 10.0
 damping_min = 1.0
 damping_max = 10.0
-scale_min = 0.5
+scale_min = 0.3
 scale_max = 1.1
 alpha_curve = SubResource("CurveTexture_0qta0")
 turbulence_noise_speed = Vector3(0.5, 0.5, 0)

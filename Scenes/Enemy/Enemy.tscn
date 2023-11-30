@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bvt7e871e6jeg"]
+[gd_scene load_steps=38 format=3 uid="uid://bvt7e871e6jeg"]
 
 [ext_resource type="Script" path="res://Scenes/Enemy/Scripts/Enemy_main.gd" id="1_2r3hw"]
 [ext_resource type="Texture2D" uid="uid://d3u5e5gpffpwe" path="res://Scenes/Enemy/Sprites/Enemy09.png" id="1_chwbu"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://Scenes/Enemy/Scripts/States/enemy_chase.gd" id="22_svjvw"]
 [ext_resource type="Script" path="res://Scenes/Enemy/Scripts/States/enemy_attack.gd" id="23_qnihw"]
 [ext_resource type="Script" path="res://Scenes/Enemy/Scripts/States/enemy_death.gd" id="26_rci8i"]
+[ext_resource type="Texture2D" uid="uid://bw36ig60cpuaq" path="res://Art/Sprites/Square.png" id="27_0oljh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_toimg"]
 animations = [{
@@ -130,7 +131,27 @@ bg_color = Color(0.0352941, 0.0156863, 0.00784314, 0.427451)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w435t"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("attack_node", "chase_node", "sprite", "healthbar") groups=["Enemy"]]
+[sub_resource type="Curve" id="Curve_aelqt"]
+_data = [Vector2(0, 1), 0.0, 0.0278013, 0, 0, Vector2(0.331081, 0.373626), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.11722, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_dwv2q"]
+curve = SubResource("Curve_aelqt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6o6nb"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 6.5
+angle_min = -90.0
+angle_max = 90.0
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 80.0
+gravity = Vector3(0, 98, 0)
+color = Color(0, 0, 0, 1)
+alpha_curve = SubResource("CurveTexture_dwv2q")
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("attack_node", "chase_node", "sprite", "healthbar", "hit_particles") groups=["Enemy"]]
 texture_filter = 1
 scale = Vector2(2, 2)
 script = ExtResource("1_2r3hw")
@@ -140,6 +161,7 @@ sprite = NodePath("AnimatedSprite2D")
 healthbar = NodePath("ProgressBar")
 health = 75
 flipped_horizontal = true
+hit_particles = NodePath("HitParticles")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_toimg")
@@ -196,6 +218,14 @@ step = 1.0
 value = 51.0
 fill_mode = 2
 show_percentage = false
+
+[node name="HitParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 60
+process_material = SubResource("ParticleProcessMaterial_6o6nb")
+texture = ExtResource("27_0oljh")
+one_shot = true
+explosiveness = 0.9
 
 [connection signal="body_entered" from="AnimatedSprite2D/HitBox" to="FSM/enemy_attack_state" method="_on_hit_box_body_entered"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

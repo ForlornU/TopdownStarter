@@ -7,3 +7,4 @@ res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn
 res://Scenes/Enemy/Enemy.tscn
 res://Scenes/Levels/Basement01.tscn
 res://Scenes/SceneSettings.tscn
+res://Scripts/CharacterBase.gd

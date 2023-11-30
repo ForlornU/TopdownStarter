@@ -5,6 +5,7 @@ class_name CharacterBase
 @export var healthbar : ProgressBar
 @export var health : int
 @export var flipped_horizontal : bool
+@export var hit_particles : GPUParticles2D
 
 func _ready():
 	init_character()
@@ -27,6 +28,9 @@ func Turn():
 func _take_damage(amount):
 	health -= amount
 	healthbar.value = health;
+	if(hit_particles):
+		hit_particles.emitting = true
+	
 	if(health <= 0):
 		_die()
 		await get_tree().create_timer(1.0).timeout
