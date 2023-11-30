@@ -9,3 +9,4 @@ res://Scenes/SceneSettings.tscn
 res://Scenes/pickup_object.tscn
 res://Scripts/GameManager.gd
 res://Art/Fonts/pixelized_label_large.tres
+res://Scenes/score_tracker.tscn
