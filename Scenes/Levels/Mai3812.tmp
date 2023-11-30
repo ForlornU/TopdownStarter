@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dei3j88yw6omf"]
+[gd_scene load_steps=14 format=3 uid="uid://dei3j88yw6omf"]
 
 [ext_resource type="PackedScene" uid="uid://bvg5dny32iw0x" path="res://Scenes/Player/Player.tscn" id="1_v023b"]
 [ext_resource type="PackedScene" uid="uid://bvt7e871e6jeg" path="res://Scenes/Enemy/Enemy.tscn" id="2_gsqk0"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://Scenes/Levels/AreaExit.gd" id="9_0m0mm"]
 [ext_resource type="PackedScene" uid="uid://bt5yicfpmnlwk" path="res://Scenes/Levels/Basement01.tscn" id="10_hj57s"]
 [ext_resource type="Script" path="res://Scenes/Levels/GameUI.gd" id="11_fpac6"]
-[ext_resource type="LabelSettings" uid="uid://1cnb4418rr7" path="res://Art/Fonts/pixelized_label_large.tres" id="12_b17pm"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_n3tw7"]
 a = Vector2(17, 3)
@@ -58,10 +57,10 @@ position = Vector2(83, 260)
 
 [node name="Welcome Label" type="Label" parent="Scene"]
 texture_filter = 1
-offset_left = -224.0
-offset_top = -15.0
-offset_right = 44.0
-offset_bottom = 11.0
+offset_left = -325.0
+offset_top = -29.0
+offset_right = -57.0
+offset_bottom = -3.0
 text = "Welcome to the top-down project!"
 label_settings = ExtResource("7_tuycv")
 
@@ -115,23 +114,22 @@ position = Vector2(-0.5, 5)
 shape = SubResource("RectangleShape2D_gtoj4")
 
 [node name="Label" type="Label" parent="Scene/AreaExit"]
-offset_left = -16.0
-offset_top = -25.0
-offset_right = 96.0
-offset_bottom = 1.0
-text = "Hit 'Enter' to leave"
+offset_left = -14.0
+offset_top = -35.0
+offset_right = 98.0
+offset_bottom = -9.0
+text = "'Enter' to exit"
 label_settings = ExtResource("7_tuycv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
 
 [node name="GameUI" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("money_label")]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_left = -271.0
+offset_top = 39.0
+offset_right = -231.0
+offset_bottom = 79.0
 script = ExtResource("11_fpac6")
 money_label = NodePath("MoneyLabel")
 
@@ -142,7 +140,8 @@ offset_left = 2.0
 offset_top = 7.0
 offset_right = 42.0
 offset_bottom = 30.0
-label_settings = ExtResource("12_b17pm")
+text = "1"
+label_settings = ExtResource("7_tuycv")
 
 [connection signal="body_entered" from="Scene/AreaExit" to="Scene/AreaExit" method="_on_body_entered"]
 [connection signal="body_exited" from="Scene/AreaExit" to="Scene/AreaExit" method="_on_body_exited"]
