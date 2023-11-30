@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bblpsy4fvi76f"]
+[gd_scene load_steps=8 format=3 uid="uid://bblpsy4fvi76f"]
 
 [ext_resource type="Texture2D" uid="uid://bw36ig60cpuaq" path="res://Art/Sprites/Square.png" id="1_4gerp"]
 [ext_resource type="Script" path="res://Scripts/pickup_script.gd" id="1_jlt05"]
@@ -6,11 +6,39 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ea2ve"]
 
+[sub_resource type="Curve" id="Curve_wq4n3"]
+_data = [Vector2(0, 1), 0.0, -0.0784929, 0, 0, Vector2(0.973333, 0.021978), -3.35165, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0qta0"]
+curve = SubResource("Curve_wq4n3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7swun"]
+particle_flag_disable_z = true
+angle_min = -90.0
+angle_max = 90.0
+radial_velocity_min = -20.0
+radial_velocity_max = 20.0
+gravity = Vector3(0, -60, 0)
+tangential_accel_min = -10.0
+tangential_accel_max = 10.0
+damping_min = 1.0
+damping_max = 10.0
+scale_min = 0.5
+scale_max = 1.1
+alpha_curve = SubResource("CurveTexture_0qta0")
+turbulence_noise_speed = Vector3(0.5, 0.5, 0)
+turbulence_influence_min = 0.05
+turbulence_influence_max = 0.15
+turbulence_initial_displacement_max = 1.5
+
 [node name="Pickup" type="Sprite2D"]
+self_modulate = Color(0.941176, 0.988235, 0.403922, 1)
 rotation = 0.785398
 scale = Vector2(2, 2)
 texture = ExtResource("1_4gerp")
 script = ExtResource("1_jlt05")
+frequency = 1.5
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 0.3
@@ -20,5 +48,14 @@ texture = ExtResource("3_o4d4t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_ea2ve")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_7swun")
+texture = ExtResource("1_4gerp")
+preprocess = 0.5
+randomness = 0.2
+trail_enabled = true
+trail_sections = 3
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

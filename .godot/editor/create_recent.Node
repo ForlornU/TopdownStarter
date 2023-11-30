@@ -1,3 +1,4 @@
+GPUParticles2D
 Node
 Label
 CollisionShape2D
@@ -10,5 +11,4 @@ PointLight2D
 CanvasModulate
 Sprite2D
 CenterContainer
-GPUParticles2D
 Camera2D

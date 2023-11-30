@@ -28,6 +28,10 @@ window/size/viewport_height=360
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 
+[dotnet]
+
+project/assembly_name="Topdown Starter"
+
 [input]
 
 MoveLeft={
