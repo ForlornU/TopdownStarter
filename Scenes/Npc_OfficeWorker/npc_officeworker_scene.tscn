@@ -25,7 +25,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_pxhik"]
 radius = 13.0
 
-[node name="Area2D" type="Area2D" node_paths=PackedStringArray("speech")]
+[node name="NPC" type="Area2D" node_paths=PackedStringArray("speech")]
 script = ExtResource("3_xaw3v")
 speech = NodePath("NPC/CenterContainer/Label")
 line1 = ["Hello!", "Welcome!", "They don't pay me enough for this"]
@@ -50,15 +50,16 @@ anchors_preset = -1
 anchor_left = 0.5
 anchor_top = -0.79
 anchor_right = 0.5
-offset_left = -168.0
-offset_top = -45.72
-offset_right = 136.0
-offset_bottom = -21.0
+offset_left = -167.0
+offset_top = -20.72
+offset_right = 137.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Label" type="Label" parent="NPC/CenterContainer"]
 layout_mode = 2
+text = "I talk to the player!"
 label_settings = ExtResource("4_lx2dj")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

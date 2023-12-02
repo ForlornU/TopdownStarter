@@ -241,6 +241,7 @@ label_settings = ExtResource("28_5mc6f")
 emitting = false
 amount = 200
 process_material = SubResource("ParticleProcessMaterial_wrxbo")
+lifetime = 0.6
 one_shot = true
 explosiveness = 1.0
 
