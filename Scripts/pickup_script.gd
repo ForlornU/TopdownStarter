@@ -21,5 +21,5 @@ func body_hover(delta):
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
-		GameManager.add_money(5)
+		GameManager.add_money(value)
 		queue_free()
