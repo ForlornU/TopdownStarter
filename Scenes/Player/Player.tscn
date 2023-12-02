@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bvg5dny32iw0x"]
+[gd_scene load_steps=38 format=3 uid="uid://bvg5dny32iw0x"]
 
 [ext_resource type="Texture2D" uid="uid://b4rhu7tb8453t" path="res://Scenes/Player/Sprite/Player_Idle1.png" id="1_8ujai"]
 [ext_resource type="Texture2D" uid="uid://cgwb0bq0pw036" path="res://Scenes/Player/Sprite/Player_attack1.png" id="1_8w3ed"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_walking.gd" id="24_cprpa"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_death_state.gd" id="26_7iikd"]
 [ext_resource type="Texture2D" uid="uid://dyb5iqfj3tmwj" path="res://Art/Sprites/light.png" id="27_on0bn"]
+[ext_resource type="LabelSettings" uid="uid://da8inon5cmt2r" path="res://Art/Fonts/pixelized_label.tres" id="28_5mc6f"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uky13"]
 polygon = PackedVector2Array(-2, -13, -8, -13, -10, -11, -10, -2, -4, 2, -4, 10, 5, 10, 5, 2, 10, -1, 10, -10, 8, -13)
@@ -128,13 +129,36 @@ bg_color = Color(0.0352941, 0.0156863, 0.00784314, 0.427451)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0guox"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "healthbar") groups=["Player"]]
+[sub_resource type="Curve" id="Curve_h7vsg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.71062, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_j105i"]
+curve = SubResource("Curve_h7vsg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wrxbo"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 8.0
+angle_min = -90.0
+angle_max = 90.0
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 10.0
+initial_velocity_max = 80.0
+gravity = Vector3(0, 80, 0)
+scale_max = 4.0
+color = Color(0.992157, 0, 0, 1)
+alpha_curve = SubResource("CurveTexture_j105i")
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "healthbar", "hit_particles") groups=["Player"]]
 top_level = true
 texture_filter = 1
 script = ExtResource("1_h0qed")
 sprite = NodePath("AnimatedSprite2D")
-healthbar = NodePath("ProgressBar")
+healthbar = NodePath("Camera2D/ProgressBar")
 health = 200
+hit_particles = NodePath("hit_particle_blood")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_uky13")
@@ -180,21 +204,6 @@ player_sprite = NodePath("../../AnimatedSprite2D")
 [node name="Die" type="Node" parent="FSM"]
 script = ExtResource("26_7iikd")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-light_mask = 2
-visibility_layer = 2
-offset_left = -32.0
-offset_top = -21.0
-offset_right = -26.0
-offset_bottom = 43.0
-rotation = -1.57079
-theme_override_styles/background = SubResource("StyleBoxFlat_ub6e5")
-theme_override_styles/fill = SubResource("StyleBoxFlat_0guox")
-step = 1.0
-value = 25.0
-fill_mode = 2
-show_percentage = false
-
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 energy = 0.3
 shadow_enabled = true
@@ -204,5 +213,36 @@ texture = ExtResource("27_on0bn")
 scale = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+
+[node name="ProgressBar" type="ProgressBar" parent="Camera2D"]
+light_mask = 2
+visibility_layer = 2
+offset_left = -151.5
+offset_top = 82.5
+offset_right = -145.5
+offset_bottom = 146.5
+rotation = -1.57079
+theme_override_styles/background = SubResource("StyleBoxFlat_ub6e5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0guox")
+step = 1.0
+value = 25.0
+fill_mode = 2
+show_percentage = false
+
+[node name="Label" type="Label" parent="Camera2D"]
+offset_left = -151.5
+offset_top = 63.5
+offset_right = -105.5
+offset_bottom = 76.5
+text = "Health"
+label_settings = ExtResource("28_5mc6f")
+
+[node name="hit_particle_blood" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_wrxbo")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
 
 [connection signal="body_entered" from="AnimatedSprite2D/Hitbox" to="FSM/Attacking" method="_on_hitbox_body_entered"]

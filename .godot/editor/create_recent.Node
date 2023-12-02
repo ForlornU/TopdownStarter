@@ -1,5 +1,8 @@
-Node
+GPUParticles2D
 Label
+Control
+CanvasLayer
+Node
 CollisionShape2D
 Area2D
 StaticBody2D
@@ -9,6 +12,3 @@ DirectionalLight2D
 PointLight2D
 CanvasModulate
 Sprite2D
-CenterContainer
-GPUParticles2D
-Camera2D
