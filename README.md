@@ -8,9 +8,9 @@ This 2D Pixelart, TopDown action Starter Project include all the basics you need
 - A simple but fully functional enemy
 - Talking NPC's
 - Animated player that can attack and dash around
+-'Coins' to pick up
 - 2d Lights and shadows
-- Items to pick up
-- Particles
+- Modular scenes that can be reused
 
 # On the more technical side:
 - 18 different unique Scripts (.gd)
@@ -35,11 +35,16 @@ To get started with this project, follow these steps:
 1. Clone the repository to your local machine.
 2. Open the project with Godot 4.2 or later
 3. Play the included levels, explore the different scripts
+4. Continue working on the project and change things as you go
+	/ Import snippets or parts into your own projects
 
 I am also creating a series of videos to walk you though the different parts of this project as well as a written guide
 - Coming very soon
 
 Created by ForlornU
+Consider making me work faster with a coffee:
+https://www.buymeacoffee.com/forlornu
 
+Attribution:
 m3x6 font was created by Daniel Linssen
 https://managore.itch.io/m3x6

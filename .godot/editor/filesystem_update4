@@ -8,3 +8,5 @@ res://Scenes/Levels/Basement01.tscn
 res://Scenes/SceneSettings.tscn
 res://Scenes/pickup_object.tscn
 res://Scenes/score_tracker.tscn
+res://README.md
+res://Scripts/pickup_script.gd
