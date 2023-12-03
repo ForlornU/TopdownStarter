@@ -37,7 +37,9 @@ To get started with this project, follow these steps:
 3. Play the included levels, explore the different scripts
 
 I am also creating a series of videos to walk you though the different parts of this project as well as a written guide
-- Coming very soon
+Brief overview: 
+https://youtu.be/eD9dirVaffA
+- Detailed walkthroughs and tutorials for the different parts of this project coming! soon
 
 Created by ForlornU
 
