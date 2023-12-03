@@ -17,9 +17,14 @@ boot_splash/image="res://Art/Icons/icon.png"
 boot_splash/use_filter=false
 config/icon="res://Art/Icons/icon.png"
 
+[audio]
+
+buses/default_bus_layout=""
+
 [autoload]
 
 GameManager="*res://Scripts/GameManager.gd"
+AudioManager="*res://Scripts/AudioManager.gd"
 
 [display]
 
