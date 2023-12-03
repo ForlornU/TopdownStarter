@@ -13,7 +13,7 @@ signal DealDamage
 func Enter():
 	has_dealt_damage = false
 	hitbox.disabled = false
-	AudioManager.play_sound(AudioManager.PLAYER_ATTACK_SWING, 0.25)
+	AudioManager.play_sound(AudioManager.PLAYER_ATTACK_SWING, 0.25, 1)
 	
 	sprite.play("Attack")
 	
@@ -35,7 +35,7 @@ func _on_hitbox_body_entered(body):
 	if body.is_in_group("Enemy") and has_dealt_damage == false:
 		var enemy = body as EnemyMain
 		deal_damage(enemy)
-		AudioManager.play_sound(AudioManager.PLAYER_ATTACK_HIT, 0)
+		AudioManager.play_sound(AudioManager.PLAYER_ATTACK_HIT, 0, 1)
 
 func deal_damage(enemy):
 	hit_particles.emitting = true

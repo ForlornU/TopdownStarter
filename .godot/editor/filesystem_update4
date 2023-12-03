@@ -14,3 +14,4 @@ res://Scripts/AudioManager.gd
 res://Scenes/Player/Scripts/States/player_walking.gd
 res://Scenes/Levels/GameUI.gd
 res://README.md
+res://Scenes/Enemy/Scripts/States/enemy_attack.gd

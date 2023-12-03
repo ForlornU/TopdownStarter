@@ -11,6 +11,7 @@ This 2D Pixelart, TopDown action Starter Project include all the basics you need
 -'Coins' to pick up
 - 2d Lights and shadows
 - Modular scenes that can be reused
+- Music and sound effects
 
 # On the more technical side:
 - 20 different unique Scripts (.gd)
@@ -39,7 +40,9 @@ To get started with this project, follow these steps:
 	/ Import snippets or parts into your own projects
 
 I am also creating a series of videos to walk you though the different parts of this project as well as a written guide
-- Coming very soon
+Brief overview: 
+https://youtu.be/eD9dirVaffA
+- Detailed walkthroughs and tutorials for the different parts of this project coming soon
 
 Created by ForlornU
 Consider making me work faster with a coffee:

@@ -165,7 +165,7 @@ hit_particles = NodePath("HitParticles")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_toimg")
-animation = &"Idle"
+animation = &"Attack"
 autoplay = "Idle"
 
 [node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
