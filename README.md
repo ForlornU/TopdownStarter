@@ -13,7 +13,7 @@ This 2D Pixelart, TopDown action Starter Project include all the basics you need
 - Modular scenes that can be reused
 
 # On the more technical side:
-- 18 different unique Scripts (.gd)
+- 19 different unique Scripts (.gd)
 - Finite state machines on both player and enemies
 - Inheritance across similar classes like states and units (player and enemy)
 - Tweening
