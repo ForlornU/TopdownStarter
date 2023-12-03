@@ -25,17 +25,22 @@ func Turn():
 		sprite.scale.x = -direction
 	elif(velocity.x > 0):
 		sprite.scale.x = direction
+		
+func damage_effects():
+	AudioManager.play_sound(AudioManager.BLOODY_HIT, 0, -3)
+	if(hit_particles):
+		hit_particles.emitting = true
 	
 func _take_damage(amount):
 	health -= amount
 	healthbar.value = health;
-	if(hit_particles):
-		hit_particles.emitting = true
+	damage_effects()
 	
 	if(health <= 0):
 		_die()
 		await get_tree().create_timer(1.0).timeout
-		if(is_instance_valid(self)): #Remove/destroy this character once it's able to do so
+		 #Remove/destroy this character once it's able to do so unless its the player
+		if is_instance_valid(self) and not is_in_group("Player"):
 			queue_free()
 	
 func _die():

@@ -5,5 +5,4 @@ class_name die_state
 
 func Enter():
 	sprite.play("Death")
-	pass
-
+	

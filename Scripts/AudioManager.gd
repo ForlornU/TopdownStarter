@@ -21,5 +21,5 @@ func play_sound(audiostream : AudioStreamOggVorbis, offset : float, volume : flo
 #Instantiate an audiostream into the scene
 func initiate_audio_stream():
 	audio_player = AudioStreamPlayer.new()
-	audio_player.max_polyphony = 4
 	add_child(audio_player)
+	audio_player.max_polyphony = 4

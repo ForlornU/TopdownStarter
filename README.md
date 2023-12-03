@@ -14,7 +14,7 @@ This 2D Pixelart, TopDown action Starter Project include all the basics you need
 - Music and sound effects
 
 # On the more technical side:
-- 20 different unique Scripts (.gd)
+- 21 different unique Scripts (.gd)
 - Finite state machines on both player and enemies
 - Inheritance across similar classes like states and units (player and enemy)
 - Tweening

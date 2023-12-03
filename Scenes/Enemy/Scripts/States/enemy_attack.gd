@@ -38,7 +38,6 @@ func _on_hit_box_body_entered(body):
 #Connect and deal damage to the player
 func deal_damage_to_player(player):
 	hit_particles.emitting = true
-	AudioManager.play_sound(AudioManager.BLOODY_HIT, 0, -3)
 	
 	player.ConnectForDamage(self)
 	emit_signal("DealDamage", damage)
