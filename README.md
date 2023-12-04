@@ -42,6 +42,7 @@ To get started with this project, follow these steps:
 I am also creating a series of videos to walk you though the different parts of this project as well as a written guide
 Brief overview: 
 https://youtu.be/eD9dirVaffA
+
 - Detailed walkthroughs and tutorials for the different parts of this project coming soon
 
 Created by ForlornU
