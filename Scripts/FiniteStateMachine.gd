@@ -24,7 +24,8 @@ func _process(delta):
 		current_state.Update(delta)
 
 #region State Management
-
+#Use force_change_state cautiously, it immediately switches to a state regardless of any transitions.
+#This is used to force us into a 'death state' when killed
 func force_change_state(new_state : String):
 	var newState = states.get(new_state.to_lower())
 	
@@ -48,7 +49,7 @@ func force_change_state(new_state : String):
 	
 func change_state(old_state : State, new_state_name : String):
 	if old_state != current_state:
-		print("Invalid change_state, moving from: " + old_state.name + " but we are currently in: " + current_state.name)
+		print("Invalid change_state trying from: " + old_state.name + " but currently in: " + current_state.name)
 		return
 	
 	var new_state = states.get(new_state_name.to_lower())

@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://h61y6jpdtysp"]
+
+[ext_resource type="Script" path="res://Scripts/DeathScreen.gd" id="1_werga"]
+[ext_resource type="LabelSettings" uid="uid://1cnb4418rr7" path="res://Art/Fonts/pixelized_label_large.tres" id="2_a1bfr"]
+
+[node name="DeathScreen" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_werga")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You died!
+
+Press 'R' to restart"
+label_settings = ExtResource("2_a1bfr")
+horizontal_alignment = 1

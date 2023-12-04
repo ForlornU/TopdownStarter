@@ -1,7 +1,8 @@
-GPUParticles2D
 Label
 Control
 CanvasLayer
+AudioStreamPlayer
+GPUParticles2D
 Node
 CollisionShape2D
 Area2D
@@ -11,4 +12,3 @@ LightOccluder2D
 DirectionalLight2D
 PointLight2D
 CanvasModulate
-Sprite2D

@@ -24,6 +24,7 @@ func Update(delta : float):
 
 	if(Input.is_action_just_pressed("Dash") && can_dash):
 		start_dash(input_dir)
+		AudioManager.play_sound(AudioManager.PLAYER_ATTACK_SWING, 0.3, -1)
 		
 	if Input.is_action_just_pressed("Attack"):
 		Transition("Attacking")

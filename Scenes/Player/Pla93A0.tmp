@@ -1,0 +1,248 @@
+[gd_scene load_steps=38 format=3 uid="uid://bvg5dny32iw0x"]
+
+[ext_resource type="Texture2D" uid="uid://b4rhu7tb8453t" path="res://Scenes/Player/Sprite/Player_Idle1.png" id="1_8ujai"]
+[ext_resource type="Texture2D" uid="uid://cgwb0bq0pw036" path="res://Scenes/Player/Sprite/Player_attack1.png" id="1_8w3ed"]
+[ext_resource type="Script" path="res://Scenes/Player/Scripts/PlayerMovement.gd" id="1_h0qed"]
+[ext_resource type="Texture2D" uid="uid://rxt0tqq0by7h" path="res://Scenes/Player/Sprite/Player_attack2.png" id="2_2bwr0"]
+[ext_resource type="Texture2D" uid="uid://d1l8sveglv24y" path="res://Scenes/Player/Sprite/Player_Idle2.png" id="2_mad3e"]
+[ext_resource type="Texture2D" uid="uid://v3dbaq7ilxpe" path="res://Scenes/Player/Sprite/Player_Idle3.png" id="3_608ps"]
+[ext_resource type="Texture2D" uid="uid://dqeqwyttq2847" path="res://Scenes/Player/Sprite/Player_attack3.png" id="3_651u7"]
+[ext_resource type="Texture2D" uid="uid://cvenyq15dbqse" path="res://Scenes/Player/Sprite/Player_attack4.png" id="4_uudrv"]
+[ext_resource type="Texture2D" uid="uid://dyc433uhiyw8p" path="res://Scenes/Player/Sprite/Player_attack5.png" id="5_bups0"]
+[ext_resource type="Texture2D" uid="uid://bldncoskm2cbq" path="res://Scenes/Player/Sprite/Player_attack6.png" id="6_raqqn"]
+[ext_resource type="Texture2D" uid="uid://dqnsr6dy1gkqa" path="res://Scenes/Player/Sprite/Player_Dash1.png" id="7_mf1tp"]
+[ext_resource type="Texture2D" uid="uid://bpfg5t7wxluk8" path="res://Scenes/Player/Sprite/Player_Dash2.png" id="8_sf8vv"]
+[ext_resource type="Texture2D" uid="uid://c4en5s4gxspvf" path="res://Scenes/Player/Sprite/Player_Dash3.png" id="9_av65h"]
+[ext_resource type="Texture2D" uid="uid://ceypvgyam4lqc" path="res://Scenes/Player/Sprite/Player_Dash4.png" id="10_cdaiw"]
+[ext_resource type="Texture2D" uid="uid://ypfqnkd3bveh" path="res://Scenes/Player/Sprite/Player_Death1.png" id="11_es3h3"]
+[ext_resource type="Texture2D" uid="uid://csfbbp0qhifhd" path="res://Scenes/Player/Sprite/Player_Death2.png" id="12_6533w"]
+[ext_resource type="Texture2D" uid="uid://1kv3u1upp4p6" path="res://Scenes/Player/Sprite/Player_Death3.png" id="13_5tvst"]
+[ext_resource type="Texture2D" uid="uid://1f765f0dmf76" path="res://Scenes/Player/Sprite/Player_walk1.png" id="14_0v64p"]
+[ext_resource type="Texture2D" uid="uid://qe62u7g8d0dn" path="res://Scenes/Player/Sprite/Player_Death4.png" id="14_mf356"]
+[ext_resource type="Texture2D" uid="uid://bunnpmn3orp7m" path="res://Scenes/Player/Sprite/Player_walk2.png" id="15_1pdxl"]
+[ext_resource type="Script" path="res://Scripts/FiniteStateMachine.gd" id="21_54cjv"]
+[ext_resource type="PackedScene" uid="uid://b82yimbxiflml" path="res://Art/Particles/hit_particles.tscn" id="21_gooki"]
+[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_idle.gd" id="22_h12a8"]
+[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerAttacking.gd" id="23_yfq0n"]
+[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_walking.gd" id="24_cprpa"]
+[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_death_state.gd" id="26_7iikd"]
+[ext_resource type="Texture2D" uid="uid://dyb5iqfj3tmwj" path="res://Art/Sprites/light.png" id="27_on0bn"]
+[ext_resource type="LabelSettings" uid="uid://da8inon5cmt2r" path="res://Art/Fonts/pixelized_label.tres" id="28_5mc6f"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uky13"]
+polygon = PackedVector2Array(-2, -13, -8, -13, -10, -11, -10, -2, -4, 2, -4, 10, 5, 10, 5, 2, 10, -1, 10, -10, 8, -13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vax36"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("1_8w3ed")
+}, {
+"duration": 0.6,
+"texture": ExtResource("2_2bwr0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_651u7")
+}, {
+"duration": 1.25,
+"texture": ExtResource("4_uudrv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bups0")
+}, {
+"duration": 0.8,
+"texture": ExtResource("6_raqqn")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 0.25,
+"texture": ExtResource("7_mf1tp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sf8vv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_av65h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_cdaiw")
+}],
+"loop": false,
+"name": &"Dash",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_es3h3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6533w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_5tvst")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_mf356")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8ujai")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mad3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_608ps")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_0v64p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_1pdxl")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnp4c"]
+size = Vector2(20, 28)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r6nax"]
+radius = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ub6e5"]
+bg_color = Color(0.0352941, 0.0156863, 0.00784314, 0.427451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0guox"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_h7vsg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.71062, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_j105i"]
+curve = SubResource("Curve_h7vsg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wrxbo"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 8.0
+angle_min = -90.0
+angle_max = 90.0
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 10.0
+initial_velocity_max = 80.0
+gravity = Vector3(0, 80, 0)
+scale_max = 4.0
+color = Color(0.992157, 0, 0, 1)
+alpha_curve = SubResource("CurveTexture_j105i")
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "healthbar", "hit_particles") groups=["Player"]]
+top_level = true
+texture_filter = 1
+script = ExtResource("1_h0qed")
+sprite = NodePath("AnimatedSprite2D")
+healthbar = NodePath("Camera2D/ProgressBar")
+health = 200
+hit_particles = NodePath("hit_particle_blood")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_uky13")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_vax36")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="Hitbox" type="Area2D" parent="AnimatedSprite2D"]
+position = Vector2(21, 0)
+
+[node name="hitboxShape" type="CollisionShape2D" parent="AnimatedSprite2D/Hitbox"]
+shape = SubResource("RectangleShape2D_bnp4c")
+disabled = true
+
+[node name="HitParticles" parent="AnimatedSprite2D" instance=ExtResource("21_gooki")]
+position = Vector2(15, 5)
+rotation = 0.0
+
+[node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_r6nax")
+
+[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("21_54cjv")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="FSM" node_paths=PackedStringArray("sprite")]
+script = ExtResource("22_h12a8")
+sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="Attacking" type="Node" parent="FSM" node_paths=PackedStringArray("sprite")]
+script = ExtResource("23_yfq0n")
+sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="Moving" type="Node" parent="FSM" node_paths=PackedStringArray("player_sprite")]
+script = ExtResource("24_cprpa")
+movespeed = 140
+player_sprite = NodePath("../../AnimatedSprite2D")
+
+[node name="Die" type="Node" parent="FSM"]
+script = ExtResource("26_7iikd")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+energy = 0.3
+shadow_enabled = true
+texture = ExtResource("27_on0bn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="ProgressBar" type="ProgressBar" parent="Camera2D"]
+light_mask = 2
+visibility_layer = 2
+offset_left = -151.5
+offset_top = 82.5
+offset_right = -145.5
+offset_bottom = 146.5
+rotation = -1.57079
+theme_override_styles/background = SubResource("StyleBoxFlat_ub6e5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0guox")
+step = 1.0
+value = 25.0
+fill_mode = 2
+show_percentage = false
+
+[node name="Label" type="Label" parent="Camera2D"]
+offset_left = -151.5
+offset_top = 63.5
+offset_right = -105.5
+offset_bottom = 76.5
+text = "Health"
+label_settings = ExtResource("28_5mc6f")
+
+[node name="hit_particle_blood" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_wrxbo")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+
+[connection signal="body_entered" from="AnimatedSprite2D/Hitbox" to="FSM/Attacking" method="_on_hitbox_body_entered"]
