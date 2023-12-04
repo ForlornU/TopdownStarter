@@ -5,6 +5,7 @@ const PLAYER_ATTACK_HIT = preload("res://Art/Audio/Effects/AttackHit.ogg")
 const PLAYER_ATTACK_SWING = preload("res://Art/Audio/Effects/AttackSwing.ogg")
 const ENEMY_HIT = preload("res://Art/Audio/Effects/Enemy_hit.ogg")
 const BLOODY_HIT = preload("res://Art/Audio/Effects/bloody_hit.ogg")
+const COIN_PICK = preload("res://Art/Audio/Effects/coin_pick.ogg")
 
 var audio_player : AudioStreamPlayer 
 
