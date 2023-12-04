@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bvg5dny32iw0x" path="res://Scenes/Player/Player.tscn" id="1_v023b"]
 [ext_resource type="PackedScene" uid="uid://bvt7e871e6jeg" path="res://Scenes/Enemy/Enemy.tscn" id="2_gsqk0"]
-[ext_resource type="PackedScene" uid="uid://bblpsy4fvi76f" path="res://Scenes/pickup_object.tscn" id="3_qfkdr"]
+[ext_resource type="PackedScene" uid="uid://bblpsy4fvi76f" path="res://Scenes/Coin.tscn" id="3_qfkdr"]
 [ext_resource type="PackedScene" uid="uid://cx8kkqawojm0m" path="res://Scenes/SceneSettings.tscn" id="4_8uhxl"]
 [ext_resource type="Texture2D" uid="uid://dyb5iqfj3tmwj" path="res://Art/Sprites/light.png" id="5_numcg"]
 [ext_resource type="TileSet" uid="uid://b3n0bklwwny1b" path="res://Scenes/Levels/TileMap.tres" id="7_n5jbx"]

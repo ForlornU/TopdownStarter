@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://b3n0bklwwny1b" path="res://Scenes/Levels/TileMap.tres" id="2_wbjck"]
 [ext_resource type="PackedScene" uid="uid://bvg5dny32iw0x" path="res://Scenes/Player/Player.tscn" id="3_ppqb8"]
 [ext_resource type="Texture2D" uid="uid://dyb5iqfj3tmwj" path="res://Art/Sprites/light.png" id="4_4dura"]
-[ext_resource type="PackedScene" uid="uid://bblpsy4fvi76f" path="res://Scenes/pickup_object.tscn" id="4_hswsu"]
+[ext_resource type="PackedScene" uid="uid://bblpsy4fvi76f" path="res://Scenes/Coin.tscn" id="4_hswsu"]
 [ext_resource type="PackedScene" uid="uid://ckp2r52hlcfxn" path="res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn" id="5_wxx7c"]
 [ext_resource type="PackedScene" uid="uid://bvt7e871e6jeg" path="res://Scenes/Enemy/Enemy.tscn" id="6_insxp"]
 [ext_resource type="PackedScene" uid="uid://b6xb8nhlqtuhf" path="res://Scenes/score_tracker.tscn" id="7_hbxrs"]
@@ -85,6 +85,12 @@ position = Vector2(679, -44)
 
 [node name="Sprite2D4" parent="Pickups" instance=ExtResource("4_hswsu")]
 position = Vector2(416, 152)
+
+[node name="Pickup" parent="Pickups" instance=ExtResource("4_hswsu")]
+position = Vector2(441, 150)
+
+[node name="Pickup2" parent="Pickups" instance=ExtResource("4_hswsu")]
+position = Vector2(471, 154)
 
 [node name="Player" parent="." instance=ExtResource("3_ppqb8")]
 position = Vector2(-90, -18)
