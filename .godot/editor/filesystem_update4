@@ -13,3 +13,5 @@ res://Scripts/pickup_script.gd
 res://Scripts/AudioManager.gd
 res://Scenes/Enemy/Scripts/Enemy_main.gd
 res://Scenes/Enemy/Scripts/States/enemy_attack.gd
+res://Scenes/Player/Scripts/PlayerMovement.gd
+res://Art/Fonts/pixelized_label_large.tres
