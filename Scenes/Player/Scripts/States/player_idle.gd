@@ -13,4 +13,3 @@ func Update(_delta : float):
 		
 	if Input.is_action_just_pressed("Attack"):
 		state_transition.emit(self, "Attacking")
-
