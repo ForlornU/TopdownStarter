@@ -40,10 +40,16 @@ To get started with this project, follow these steps:
 	/ Import snippets or parts into your own projects
 
 I am also creating a series of videos to walk you though the different parts of this project as well as a written guide
-Brief overview: 
-https://youtu.be/eD9dirVaffA
 
-- Detailed walkthroughs and tutorials for the different parts of this project coming soon
+- Brief overview: 
+	- https://youtu.be/eD9dirVaffA
+- Finite State Machine:
+	- https://youtu.be/i0Y6anqiJ-g
+- Coming soon:
+	- Tutorials for the different parts of this project
+
+Godot Asset Library Link:
+https://godotengine.org/asset-library/asset/2397
 
 Created by ForlornU
 Consider making me work faster with a coffee:

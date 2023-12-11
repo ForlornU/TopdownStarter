@@ -1,7 +1,7 @@
 [gd_scene load_steps=38 format=3 uid="uid://bvt7e871e6jeg"]
 
-[ext_resource type="Script" path="res://Scenes/Enemy/Scripts/Enemy_main.gd" id="1_2r3hw"]
 [ext_resource type="Texture2D" uid="uid://d3u5e5gpffpwe" path="res://Scenes/Enemy/Sprites/Enemy09.png" id="1_chwbu"]
+[ext_resource type="Script" path="res://Scenes/Enemy/Scripts/EnemyMain.gd" id="1_db41y"]
 [ext_resource type="Texture2D" uid="uid://de0yo10inq5nw" path="res://Scenes/Enemy/Sprites/Enemy10.png" id="2_jk28b"]
 [ext_resource type="Texture2D" uid="uid://blvrwqioo13gp" path="res://Scenes/Enemy/Sprites/Enemy11.png" id="3_sc4cj"]
 [ext_resource type="Texture2D" uid="uid://qant813fe8we" path="res://Scenes/Enemy/Sprites/Enemy12.png" id="4_nu70l"]
@@ -154,7 +154,7 @@ alpha_curve = SubResource("CurveTexture_dwv2q")
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("attack_node", "chase_node", "sprite", "healthbar", "hit_particles") groups=["Enemy"]]
 texture_filter = 1
 scale = Vector2(2, 2)
-script = ExtResource("1_2r3hw")
+script = ExtResource("1_db41y")
 attack_node = NodePath("FSM/enemy_attack_state")
 chase_node = NodePath("FSM/enemy_chase_state")
 sprite = NodePath("AnimatedSprite2D")
@@ -202,6 +202,7 @@ script = ExtResource("22_svjvw")
 
 [node name="enemy_attack_state" type="Node" parent="FSM"]
 script = ExtResource("23_qnihw")
+damage_frames = Array[int]([3, 4])
 
 [node name="enemy_death_state" type="Node" parent="FSM"]
 script = ExtResource("26_rci8i")

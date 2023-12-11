@@ -25,6 +25,8 @@ func Exit():
 	hitbox.disabled = true
 	
 func Update(_delta):
+	#Hardcoded check to see if we are currently on the damage frames
+	#The enemy has these values exported which is better, letting this remain here as an example
 	if sprite.frame == 3 || sprite.frame == 4: #Damage frames
 		if has_dealt_damage == false:
 			hitbox.disabled = false

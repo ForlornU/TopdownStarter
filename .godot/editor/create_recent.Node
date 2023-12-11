@@ -1,3 +1,5 @@
+State
+PointLight2D
 Label
 Control
 CanvasLayer
@@ -10,5 +12,4 @@ StaticBody2D
 TileMap
 LightOccluder2D
 DirectionalLight2D
-PointLight2D
 CanvasModulate

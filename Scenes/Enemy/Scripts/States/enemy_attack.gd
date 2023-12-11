@@ -1,8 +1,10 @@
 extends State
 class_name enemy_attack_state
 
+@export var damage_frames : Array[int]
 var on_frame_four = false 
 var has_dealt_damage
+
 signal DealDamage
 @export var damage = 25
 
@@ -25,9 +27,11 @@ func Exit():
 	hitbox.disabled = true
 	
 func Update(_delta):
-	if sprite.frame == 3 || sprite.frame == 4: #Damage frames
+	#If we are currently on the damage frames, thats frame 3 and 4, allow damage to be dealt
+	if damage_frames.has(sprite.frame):
 		if has_dealt_damage == false:
 			hitbox.disabled = false
+			#Play a sound if weapon only hits the ground
 			if(sprite.frame == 4 and on_frame_four != true):
 				on_frame_four = true
 				AudioManager.play_sound(AudioManager.ENEMY_HIT, 0, -10)

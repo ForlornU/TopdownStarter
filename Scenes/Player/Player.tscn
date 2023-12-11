@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b4rhu7tb8453t" path="res://Scenes/Player/Sprite/Player_Idle1.png" id="1_8ujai"]
 [ext_resource type="Texture2D" uid="uid://cgwb0bq0pw036" path="res://Scenes/Player/Sprite/Player_attack1.png" id="1_8w3ed"]
-[ext_resource type="Script" path="res://Scenes/Player/Scripts/PlayerMovement.gd" id="1_h0qed"]
+[ext_resource type="Script" path="res://Scenes/Player/Scripts/PlayerMain.gd" id="1_y5oq4"]
 [ext_resource type="Texture2D" uid="uid://rxt0tqq0by7h" path="res://Scenes/Player/Sprite/Player_attack2.png" id="2_2bwr0"]
 [ext_resource type="Texture2D" uid="uid://d1l8sveglv24y" path="res://Scenes/Player/Sprite/Player_Idle2.png" id="2_mad3e"]
 [ext_resource type="Texture2D" uid="uid://v3dbaq7ilxpe" path="res://Scenes/Player/Sprite/Player_Idle3.png" id="3_608ps"]
@@ -154,7 +154,7 @@ alpha_curve = SubResource("CurveTexture_j105i")
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "healthbar", "hit_particles") groups=["Player"]]
 top_level = true
 texture_filter = 1
-script = ExtResource("1_h0qed")
+script = ExtResource("1_y5oq4")
 sprite = NodePath("AnimatedSprite2D")
 healthbar = NodePath("Camera2D/ProgressBar")
 health = 200
