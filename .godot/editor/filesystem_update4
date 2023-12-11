@@ -11,3 +11,4 @@ res://Scenes/Enemy/Enemy.tscn
 res://Scenes/DeathScreen.tscn
 res://README.md
 res://Scenes/Enemy/Scripts/States/enemy_attack.gd
+res://Scenes/Player/Scripts/States/PlayerAttacking.gd
