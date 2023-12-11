@@ -1,8 +1,7 @@
-res://Scenes/Player/Player.tscn
+res://Scenes/Levels/MainFloor.tscn
 res://Art/Fonts/pixelized_label.tres
 res://Scenes/Levels/TileMap.tres
-res://Scripts/FiniteStateMachine.gd
-res://Scenes/Levels/MainFloor.tscn
+res://Scenes/Player/Player.tscn
 res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn
 res://Scenes/Levels/Basement01.tscn
 res://Scenes/SceneSettings.tscn
@@ -10,3 +9,4 @@ res://Scenes/Coin.tscn
 res://Scenes/score_tracker.tscn
 res://Scenes/Enemy/Enemy.tscn
 res://Scenes/DeathScreen.tscn
+res://README.md
