@@ -7,6 +7,8 @@ class_name CharacterBase
 @export var flipped_horizontal : bool
 @export var hit_particles : GPUParticles2D
 
+var is_dead = false
+
 func _ready():
 	init_character()
 	
@@ -44,7 +46,10 @@ func _take_damage(amount):
 			queue_free()
 	
 func _die():
-	pass #Called on inheriting subclasses
+	if(is_dead):
+		return
+	is_dead = true
+	
 	
 func ConnectForDamage(node : Node):
 	#Make sure we are not already connected
