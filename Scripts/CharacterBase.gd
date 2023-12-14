@@ -27,7 +27,8 @@ func Turn():
 		sprite.scale.x = -direction
 	elif(velocity.x > 0):
 		sprite.scale.x = direction
-		
+
+#Play universal damage sound effect for any character taking damage
 func damage_effects():
 	AudioManager.play_sound(AudioManager.BLOODY_HIT, 0, -3)
 	if(hit_particles):
@@ -40,19 +41,21 @@ func _take_damage(amount):
 	
 	if(health <= 0):
 		_die()
-		await get_tree().create_timer(1.0).timeout
-		 #Remove/destroy this character once it's able to do so unless its the player
-		if is_instance_valid(self) and not is_in_group("Player"):
-			queue_free()
 	
 func _die():
 	if(is_dead):
 		return
+		
 	is_dead = true
 	
-	
+	#Remove/destroy this character once it's able to do so unless its the player
+	await get_tree().create_timer(1.0).timeout
+	if is_instance_valid(self) and not is_in_group("Player"):
+		queue_free()
+
+#Right before taking damage, whatever is attacking us must first connect their damage signal
+#to out _take_damage function here
 func ConnectForDamage(node : Node):
-	#Make sure we are not already connected
 	if(not node.is_connected("DealDamage", _take_damage)):
 		node.DealDamage.connect(_take_damage)
 
