@@ -47,7 +47,6 @@ func _die():
 		return
 		
 	is_dead = true
-	
 	#Remove/destroy this character once it's able to do so unless its the player
 	await get_tree().create_timer(1.0).timeout
 	if is_instance_valid(self) and not is_in_group("Player"):

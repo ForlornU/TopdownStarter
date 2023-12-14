@@ -28,6 +28,7 @@ func _on_detection_area_body_exited(body):
 		fsm.change_state(chase_node, "enemy_idle_state")
 		
 func _die():
+	super()
 	fsm.force_change_state("enemy_death_state")
 	
 	
