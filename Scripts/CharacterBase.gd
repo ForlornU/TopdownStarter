@@ -15,10 +15,12 @@ func _ready():
 func _process(_delta):
 	Turn()
 	
+#Add anything here that needs to be initialized on the character
 func init_character():
 	healthbar.max_value = health
 	healthbar.value = health
 
+#Flip charater sprites based on their current velocity
 func Turn():
 	#This ternary lets us flip a sprite if its drawn the wrong way
 	var direction = -1 if flipped_horizontal == true else 1
@@ -27,6 +29,8 @@ func Turn():
 		sprite.scale.x = -direction
 	elif(velocity.x > 0):
 		sprite.scale.x = direction
+
+#region Taking Damage
 
 #Play universal damage sound effect for any character taking damage
 func damage_effects():
@@ -57,4 +61,6 @@ func _die():
 func ConnectForDamage(node : Node):
 	if(not node.is_connected("DealDamage", _take_damage)):
 		node.DealDamage.connect(_take_damage)
+		
+#endregion
 

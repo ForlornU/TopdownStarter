@@ -1,6 +1,8 @@
 extends Sprite2D
 var starting_scale : Vector2
 
+#NOTE This class animates an object by changing its scale, it is currently not applied to anything
+
 func _ready():
 	visible = false
 	starting_scale = scale
