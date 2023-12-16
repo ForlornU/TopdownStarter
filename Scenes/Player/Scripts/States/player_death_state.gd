@@ -1,8 +1,8 @@
 extends State
 class_name die_state
 
-@onready var sprite = $"../../AnimatedSprite2D"
+@export var animator : AnimationPlayer
 
 func Enter():
-	sprite.play("Death")
-	
+	animator.play("Death")
+

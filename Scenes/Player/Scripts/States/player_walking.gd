@@ -2,19 +2,16 @@ extends State
 class_name PlayerWalking
 
 @export var movespeed := int(350)
-
-var dashspeed := int(100)
 @export var dash_max := int(500)
+var dashspeed := int(100)
 var can_dash := bool(false)
 var dash_direction := Vector2(0,0)
 
 var player : CharacterBody2D
-#@export var player_sprite : AnimatedSprite2D
 @export var animator : AnimationPlayer
 
 func Enter():
 	player = get_tree().get_first_node_in_group("Player")
-	#player_sprite.play("Walk")
 	animator.play("Walk")
 
 func Update(delta : float):
@@ -45,7 +42,6 @@ func Move(input_dir):
 func start_dash(input_dir):
 	dash_direction = input_dir.normalized()
 	dashspeed = dash_max
-	#player_sprite.play("Dash")
 	animator.play("Dash")
 	can_dash = false
 
@@ -63,9 +59,6 @@ func LessenDash(delta):
 		can_dash = true
 		dash_direction = Vector2.ZERO
 		
-	#if(player_sprite.animation == "Dash"):
-	#	await player_sprite.animation_finished
-	#	player_sprite.play("Walk")
 	if(animator.current_animation == "Dash"):
 		await animator.animation_finished
 		animator.play("Walk")

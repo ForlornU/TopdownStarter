@@ -1,12 +1,10 @@
 extends State
 class_name PlayerIdle
 
-@export var sprite : AnimatedSprite2D
 @export var animator : AnimationPlayer
 
 func Enter():
 	animator.play("Idle")
-	#sprite.play("Idle")
 	pass
 	
 func Update(_delta : float):

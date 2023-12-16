@@ -22,8 +22,8 @@ func play_sound(audiostream : AudioStreamOggVorbis, offset : float, volume : flo
 	if(not audio_player or not audio_player2):
 		initiate_audio_stream()
 	
+	#Play the second audioplayer if the first is already busy
 	var player = audio_player
-	
 	if(audio_player.playing == true):
 		player = audio_player2
 
@@ -32,7 +32,7 @@ func play_sound(audiostream : AudioStreamOggVorbis, offset : float, volume : flo
 	player.volume_db = volume
 	player.play(offset)
 
-#Instantiate an audiostream into the scene, this only happens if none already exists
+#Instantiate two audiostreams into the scene, this only happens if none already exists
 func initiate_audio_stream():
 	audio_player = AudioStreamPlayer.new()
 	audio_player2 = AudioStreamPlayer.new()
