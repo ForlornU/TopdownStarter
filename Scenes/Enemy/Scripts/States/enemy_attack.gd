@@ -2,7 +2,7 @@ extends State
 class_name enemy_attack_state
 
 @export var damage_frames : Array[int]
-var on_frame_four = false 
+var has_made_sound = false 
 var has_dealt_damage
 
 signal DealDamage
@@ -14,7 +14,7 @@ signal DealDamage
 @onready var hit_particles = $"../../AnimatedSprite2D/HitParticles"
 
 func Enter():
-	on_frame_four = false
+	has_made_sound = false
 	has_dealt_damage = false
 	hitbox.disabled = true
 
@@ -31,11 +31,9 @@ func Update(_delta):
 	if damage_frames.has(sprite.frame):
 		if has_dealt_damage == false:
 			hitbox.disabled = false
-			#Play a sound if weapon only hits the ground
-			if(sprite.frame == 4 and on_frame_four != true):
-				on_frame_four = true
+			if(has_made_sound == false):
 				AudioManager.play_sound(AudioManager.ENEMY_HIT, 0, -10)
-				pass
+				has_made_sound = true
 	else:
 		hitbox.disabled = true
 

@@ -11,6 +11,7 @@ const COIN_PICK = preload("res://Art/Audio/Effects/coin_pick.ogg")
 
 #endregion
 var audio_player : AudioStreamPlayer 
+var audio_player2 : AudioStreamPlayer 
 
 #Play a sound, call this function from anywhere
 #offset lets you start the sound with an offset, like starting the sound at 0.1s into the clip
@@ -18,16 +19,22 @@ var audio_player : AudioStreamPlayer
 #Example when calling this function:
 #AudioManager.play_sound(AudioManager.PLAYER_ATTACK_SWING, 0.25, 1)
 func play_sound(audiostream : AudioStreamOggVorbis, offset : float, volume : float):
-	if(not audio_player):
+	if(not audio_player or not audio_player2):
 		initiate_audio_stream()
+	
+	var player = audio_player
+	
+	if(audio_player.playing == true):
+		player = audio_player2
 
-	audio_player.stream = audiostream
-	audio_player.pitch_scale = randf_range(0.9, 1.1)
-	audio_player.volume_db = volume
-	audio_player.play(offset)
+	player.stream = audiostream
+	player.pitch_scale = randf_range(0.9, 1.1)
+	player.volume_db = volume
+	player.play(offset)
 
 #Instantiate an audiostream into the scene, this only happens if none already exists
 func initiate_audio_stream():
 	audio_player = AudioStreamPlayer.new()
+	audio_player2 = AudioStreamPlayer.new()
 	add_child(audio_player)
-	audio_player.max_polyphony = 4
+	add_child(audio_player2)
