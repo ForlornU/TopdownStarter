@@ -1,3 +1,5 @@
+Sprite2D
+AnimationPlayer
 State
 PointLight2D
 Label
@@ -10,6 +12,3 @@ CollisionShape2D
 Area2D
 StaticBody2D
 TileMap
-LightOccluder2D
-DirectionalLight2D
-CanvasModulate
