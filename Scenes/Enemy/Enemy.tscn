@@ -190,9 +190,24 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FSM/enemy_attack_state")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_hitground_sound"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_1r6mx"]
 resource_name = "Death"
+length = 0.55
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -220,7 +235,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_lw05y"]
 resource_name = "Idle"
-length = 0.8
+length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -241,7 +256,7 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
@@ -298,8 +313,9 @@ hit_particles = NodePath("HitParticles")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_toimg")
-animation = &"Walk"
+animation = &"Attack"
 autoplay = "Idle"
+frame = 4
 
 [node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
 
