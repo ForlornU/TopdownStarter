@@ -2,11 +2,9 @@ extends State
 class_name PlayerAttacking
 
 @export var animator : AnimationPlayer
-
 var has_dealt_damage = false
 @export var damage = 50
 signal DealDamage
-
 @onready var hit_particles = $"../../AnimatedSprite2D/HitParticles"
 
 func Enter():
@@ -18,6 +16,7 @@ func Enter():
 	await animator.animation_finished
 	state_transition.emit(self, "Idle")
 
+#Hitbox is turned on/off through the animationplayer, it an enemy is standing inside of it once that happens they take damage
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Enemy") and has_dealt_damage == false:
 		var enemy = body as EnemyMain

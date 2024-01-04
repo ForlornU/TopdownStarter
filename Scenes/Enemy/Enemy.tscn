@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bvt7e871e6jeg"]
+[gd_scene load_steps=43 format=3 uid="uid://bvt7e871e6jeg"]
 
 [ext_resource type="Texture2D" uid="uid://d3u5e5gpffpwe" path="res://Scenes/Enemy/Sprites/Enemy09.png" id="1_chwbu"]
 [ext_resource type="Script" path="res://Scenes/Enemy/Scripts/EnemyMain.gd" id="1_db41y"]
@@ -31,10 +31,10 @@
 [sub_resource type="SpriteFrames" id="SpriteFrames_toimg"]
 animations = [{
 "frames": [{
-"duration": 1.5,
+"duration": 1.0,
 "texture": ExtResource("1_chwbu")
 }, {
-"duration": 1.5,
+"duration": 1.0,
 "texture": ExtResource("2_jk28b")
 }, {
 "duration": 1.0,
@@ -57,7 +57,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -151,6 +151,139 @@ gravity = Vector3(0, 98, 0)
 color = Color(0, 0, 0, 1)
 alpha_curve = SubResource("CurveTexture_dwv2q")
 
+[sub_resource type="Animation" id="Animation_pya5h"]
+resource_name = "Attack"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Attack"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D/HitBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_1r6mx"]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_lw05y"]
+resource_name = "Idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_vh18e"]
+resource_name = "Chasing"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Walk"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i1jlq"]
+_data = {
+"Attack": SubResource("Animation_pya5h"),
+"Chasing": SubResource("Animation_vh18e"),
+"Death": SubResource("Animation_1r6mx"),
+"Idle": SubResource("Animation_lw05y")
+}
+
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("attack_node", "chase_node", "sprite", "healthbar", "hit_particles") groups=["Enemy"]]
 texture_filter = 1
 scale = Vector2(2, 2)
@@ -165,7 +298,7 @@ hit_particles = NodePath("HitParticles")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_toimg")
-animation = &"Attack"
+animation = &"Walk"
 autoplay = "Idle"
 
 [node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
@@ -181,6 +314,7 @@ disabled = true
 occluder = SubResource("OccluderPolygon2D_e04wa")
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, 3)
 shape = SubResource("CapsuleShape2D_4mbmt")
 
@@ -193,19 +327,21 @@ shape = SubResource("CircleShape2D_imcar")
 script = ExtResource("21_mb2dn")
 initial_state = NodePath("enemy_idle_state")
 
-[node name="enemy_idle_state" type="Node" parent="FSM" node_paths=PackedStringArray("sprite")]
+[node name="enemy_idle_state" type="Node" parent="FSM" node_paths=PackedStringArray("animator")]
 script = ExtResource("21_mks5l")
-sprite = NodePath("../../AnimatedSprite2D")
+animator = NodePath("../../AnimationPlayer")
 
-[node name="enemy_chase_state" type="Node" parent="FSM"]
+[node name="enemy_chase_state" type="Node" parent="FSM" node_paths=PackedStringArray("animator")]
 script = ExtResource("22_svjvw")
+animator = NodePath("../../AnimationPlayer")
 
-[node name="enemy_attack_state" type="Node" parent="FSM"]
+[node name="enemy_attack_state" type="Node" parent="FSM" node_paths=PackedStringArray("animator")]
 script = ExtResource("23_qnihw")
-damage_frames = Array[int]([3, 4])
+animator = NodePath("../../AnimationPlayer")
 
-[node name="enemy_death_state" type="Node" parent="FSM"]
+[node name="enemy_death_state" type="Node" parent="FSM" node_paths=PackedStringArray("animator")]
 script = ExtResource("26_rci8i")
+animator = NodePath("../../AnimationPlayer")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -14.0
@@ -227,6 +363,12 @@ process_material = SubResource("ParticleProcessMaterial_6o6nb")
 texture = ExtResource("27_0oljh")
 one_shot = true
 explosiveness = 0.9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i1jlq")
+}
+autoplay = "Idle"
 
 [connection signal="body_entered" from="AnimatedSprite2D/HitBox" to="FSM/enemy_attack_state" method="_on_hit_box_body_entered"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

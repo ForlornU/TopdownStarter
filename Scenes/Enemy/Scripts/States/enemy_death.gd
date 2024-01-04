@@ -1,8 +1,8 @@
 extends State
 
-@onready var sprite = $"../../AnimatedSprite2D"
+@export var animator : AnimationPlayer
 
 func Enter():
-	sprite.play("Death")
+	animator.play("Death")
 	pass
 

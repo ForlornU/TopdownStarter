@@ -1,7 +1,7 @@
 extends State
 class_name enemy_attack_state
 
-@export var damage_frames : Array[int]
+#@export var damage_frames : Array[int]
 var has_made_sound = false 
 var has_dealt_damage
 
@@ -9,37 +9,27 @@ signal DealDamage
 @export var damage = 25
 
 @onready var enemy = $"../.."
-@onready var sprite = $"../../AnimatedSprite2D"
 @onready var hitbox = $"../../AnimatedSprite2D/HitBox/CollisionShape2D"
 @onready var hit_particles = $"../../AnimatedSprite2D/HitParticles"
+@export var animator : AnimationPlayer
 
 func Enter():
 	has_made_sound = false
 	has_dealt_damage = false
 	hitbox.disabled = true
 
-	sprite.play("Attack")
-	await sprite.animation_finished
+	animator.play("Attack")
+	await animator.animation_finished
 	enemy.finished_attacking()
 	
 func Exit():
 	has_dealt_damage = false
 	hitbox.disabled = true
 	
-func Update(_delta):
-	#If we are currently on the damage frames, thats frame 3 and 4, allow damage to be dealt
-	if damage_frames.has(sprite.frame):
-		if has_dealt_damage == false:
-			hitbox.disabled = false
-			if(has_made_sound == false):
-				AudioManager.play_sound(AudioManager.ENEMY_HIT, 0, -10)
-				has_made_sound = true
-	else:
-		hitbox.disabled = true
-
 #During attack animation, Hitbox is activated and tries to find the player
 func _on_hit_box_body_entered(body):
 	if body.is_in_group("Player") and has_dealt_damage == false:
+		AudioManager.play_sound(AudioManager.ENEMY_HIT, 0, -10)
 		var player = body as PlayerMain
 		deal_damage_to_player(player)
 
