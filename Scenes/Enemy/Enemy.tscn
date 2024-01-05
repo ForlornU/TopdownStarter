@@ -262,6 +262,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BodyCollider:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_lw05y"]
 resource_name = "Idle"
@@ -314,9 +326,8 @@ hit_particles = NodePath("HitParticles")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_toimg")
-animation = &"Attack"
+animation = &"Death"
 autoplay = "Idle"
-frame = 2
 
 [node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
 
@@ -330,7 +341,6 @@ shape = SubResource("RectangleShape2D_cqf5a")
 occluder = SubResource("OccluderPolygon2D_e04wa")
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(1, 3)
 shape = SubResource("CapsuleShape2D_4mbmt")
 
