@@ -1,4 +1,4 @@
-@icon("res://Art/StateSprite.png")
+@icon("res://Art/Icons/StateSprite.png")
 extends Node
 class_name State
 

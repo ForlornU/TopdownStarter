@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c17din1lh04cf"
-path="res://.godot/imported/StateSprite.png-8b08c4107288286f6f1fadee3726193d.ctex"
+uid="uid://cra551251lbfb"
+path="res://.godot/imported/FSMSprite.png-2cb9e4ea0f72da016f862ec285d09455.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/StateSprite.png"
-dest_files=["res://.godot/imported/StateSprite.png-8b08c4107288286f6f1fadee3726193d.ctex"]
+source_file="res://Art/Icons/FSMSprite.png"
+dest_files=["res://.godot/imported/FSMSprite.png-2cb9e4ea0f72da016f862ec285d09455.ctex"]
 
 [params]
 

@@ -1,3 +1,4 @@
+@icon("res://Art/Icons/FSMSprite.png")
 extends Node
 class_name FiniteStateMachine
 
