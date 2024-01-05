@@ -9,3 +9,4 @@ res://Scenes/SceneSettings.tscn
 res://Scenes/Coin.tscn
 res://Scenes/score_tracker.tscn
 res://Scenes/DeathScreen.tscn
+res://Scenes/Enemy/Scripts/EnemyMain.gd
