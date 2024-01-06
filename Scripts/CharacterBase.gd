@@ -6,7 +6,7 @@ class_name CharacterBase
 @export var health : int
 @export var flipped_horizontal : bool
 @export var hit_particles : GPUParticles2D
-
+var invincible : bool = false
 var is_dead = false
 
 func _ready():
@@ -32,13 +32,29 @@ func Turn():
 
 #region Taking Damage
 
-#Play universal damage sound effect for any character taking damage
+#Play universal damage sound effect for any character taking damage and flashing red
 func damage_effects():
 	AudioManager.play_sound(AudioManager.BLOODY_HIT, 0, -3)
+	after_damage_iframes()
 	if(hit_particles):
 		hit_particles.emitting = true
+
+func after_damage_iframes():
+	invincible = true
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color.RED, 0.1)
+	tween.tween_property(self, "modulate", Color.WHITE, 0.1)
+	tween.tween_property(self, "modulate", Color.RED, 0.1)
+	tween.tween_property(self, "modulate", Color.WHITE, 0.1)
+	tween.tween_property(self, "modulate", Color.RED, 0.1)
+	tween.tween_property(self, "modulate", Color.WHITE, 0.1)
+	await tween.finished
+	invincible = false
 	
 func _take_damage(amount):
+	if(invincible == true):
+		return
+		
 	health -= amount
 	healthbar.value = health;
 	damage_effects()
