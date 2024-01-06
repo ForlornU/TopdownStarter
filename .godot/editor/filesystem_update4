@@ -12,3 +12,5 @@ res://Scenes/DeathScreen.tscn
 res://Scenes/Player/Scripts/States/PlayerAttacking.gd
 res://Scripts/AttackData.gd
 res://README.md
+res://Scripts/CharacterBase.gd
+res://Scenes/Enemy/Scripts/States/enemy_attack.gd

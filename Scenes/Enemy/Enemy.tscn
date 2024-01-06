@@ -326,7 +326,7 @@ hit_particles = NodePath("HitParticles")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_toimg")
-animation = &"Death"
+animation = &"Attack"
 autoplay = "Idle"
 
 [node name="HitBox" type="Area2D" parent="AnimatedSprite2D"]
@@ -334,6 +334,7 @@ autoplay = "Idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HitBox"]
 position = Vector2(-11.5, 0.75)
 shape = SubResource("RectangleShape2D_cqf5a")
+disabled = true
 
 [node name="HitParticles" parent="AnimatedSprite2D" instance=ExtResource("21_d5isq")]
 
