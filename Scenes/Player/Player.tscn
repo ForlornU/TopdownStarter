@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bvg5dny32iw0x"]
+[gd_scene load_steps=49 format=3 uid="uid://bvg5dny32iw0x"]
 
 [ext_resource type="Texture2D" uid="uid://b4rhu7tb8453t" path="res://Scenes/Player/Sprite/Player_Idle1.png" id="1_8ujai"]
 [ext_resource type="Texture2D" uid="uid://cgwb0bq0pw036" path="res://Scenes/Player/Sprite/Player_attack1.png" id="1_8w3ed"]
@@ -134,11 +134,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnp4c"]
-size = Vector2(20, 28)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wk4mn"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_r6nax"]
-radius = 8.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_mkwab"]
+radius = 25.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aueyc"]
+radius = 5.0
+height = 27.0069
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ub6e5"]
 bg_color = Color(0.0352941, 0.0156863, 0.00784314, 0.427451)
@@ -198,7 +201,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimatedSprite2D/Hitbox/hitboxShape:disabled")
+tracks/2/path = NodePath("AnimatedSprite2D/Hitboxes/Punch_Hitbox/hitboxShape:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -292,6 +295,46 @@ tracks/1/keys = {
 "values": [0, 1, 2]
 }
 
+[sub_resource type="Animation" id="Animation_7c1ec"]
+resource_name = "MoonKick"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"MoonKick"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D/Hitboxes/Kick_Hitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="Animation" id="Animation_wo7cn"]
 resource_name = "Walk"
 length = 0.4
@@ -321,34 +364,6 @@ tracks/1/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_7c1ec"]
-resource_name = "MoonKick"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"MoonKick"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gtuut"]
 _data = {
 "Attack": SubResource("Animation_jtcnw"),
@@ -374,23 +389,31 @@ occluder = SubResource("OccluderPolygon2D_uky13")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_vax36")
-animation = &"MoonKick"
-frame = 2
-
-[node name="Hitbox" type="Area2D" parent="AnimatedSprite2D"]
-position = Vector2(21, 0)
-
-[node name="hitboxShape" type="CollisionShape2D" parent="AnimatedSprite2D/Hitbox"]
-shape = SubResource("RectangleShape2D_bnp4c")
-disabled = true
+animation = &"Idle"
 
 [node name="HitParticles" parent="AnimatedSprite2D" instance=ExtResource("21_gooki")]
 position = Vector2(15, 5)
 rotation = 0.0
 
+[node name="Hitboxes" type="Node2D" parent="AnimatedSprite2D"]
+
+[node name="Punch_Hitbox" type="Area2D" parent="AnimatedSprite2D/Hitboxes"]
+
+[node name="hitboxShape" type="CollisionShape2D" parent="AnimatedSprite2D/Hitboxes/Punch_Hitbox"]
+position = Vector2(20, 0)
+shape = SubResource("RectangleShape2D_wk4mn")
+disabled = true
+
+[node name="Kick_Hitbox" type="Area2D" parent="AnimatedSprite2D/Hitboxes"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Hitboxes/Kick_Hitbox"]
+shape = SubResource("CircleShape2D_mkwab")
+disabled = true
+
 [node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7)
-shape = SubResource("CircleShape2D_r6nax")
+position = Vector2(0, 4.21)
+scale = Vector2(1, 0.725)
+shape = SubResource("CapsuleShape2D_aueyc")
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("21_54cjv")
@@ -459,4 +482,5 @@ libraries = {
 "": SubResource("AnimationLibrary_gtuut")
 }
 
-[connection signal="body_entered" from="AnimatedSprite2D/Hitbox" to="FSM/Attacking" method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="AnimatedSprite2D/Hitboxes/Punch_Hitbox" to="FSM/Attacking" method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="AnimatedSprite2D/Hitboxes/Kick_Hitbox" to="FSM/Attacking" method="_on_hitbox_body_entered"]

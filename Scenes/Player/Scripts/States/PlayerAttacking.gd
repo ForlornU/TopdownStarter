@@ -1,10 +1,10 @@
 extends State
 class_name PlayerAttacking
 
+signal DealDamage
 @export var animator : AnimationPlayer
 var has_dealt_damage = false
-@export var damage = 50
-signal DealDamage
+var current_attack : Attack_Data
 @onready var hit_particles = $"../../AnimatedSprite2D/HitParticles"
 
 func Enter():
@@ -12,11 +12,30 @@ func Enter():
 	AudioManager.play_sound(AudioManager.PLAYER_ATTACK_SWING, 0.3, 1)
 	
 	#Play the attack animation and wait for it to finish, transition from this state is handled by the animation player
-	animator.play("Attack")
+	DetermineAttack()
+	animator.play(current_attack.anim.resource_name)
 	await animator.animation_finished
 	state_transition.emit(self, "Idle")
 
+#With only two attacks, we can define them in code like this and have input decide which to perform
+#If many different types of attacks existed, we might make nodes with @export Attack_Data, where
+#we set the data on each attack on a node, and assign the nodes to this state
+func DetermineAttack():
+	var punch = Attack_Data.new()
+	punch.anim = animator.get_animation("Attack")
+	punch.damage = 60
+	
+	var kick = Attack_Data.new()
+	kick.anim = animator.get_animation("MoonKick")
+	kick.damage = 25
+	
+	if(Input.is_action_just_pressed("Punch")):
+		current_attack = punch
+	elif(Input.is_action_just_pressed("Kick")):
+		current_attack = kick
+
 #Hitbox is turned on/off through the animationplayer, it an enemy is standing inside of it once that happens they take damage
+#Both hitboxes call back to this function through signals
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Enemy") and has_dealt_damage == false:
 		var enemy = body as EnemyMain
@@ -26,5 +45,5 @@ func _on_hitbox_body_entered(body):
 func deal_damage(enemy):
 	hit_particles.emitting = true
 	enemy.ConnectForDamage(self)
-	emit_signal("DealDamage", damage)
+	emit_signal("DealDamage", current_attack.damage)
 	has_dealt_damage = true

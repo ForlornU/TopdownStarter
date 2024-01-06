@@ -24,7 +24,7 @@ func Update(delta : float):
 		start_dash(input_dir)
 		AudioManager.play_sound(AudioManager.PLAYER_ATTACK_SWING, 0.3, -1)
 		
-	if Input.is_action_just_pressed("Attack"):
+	if Input.is_action_just_pressed("Punch") or Input.is_action_just_pressed("Kick"):
 		Transition("Attacking")
 	
 func Move(input_dir):
