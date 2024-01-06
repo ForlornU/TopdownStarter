@@ -1,7 +1,6 @@
 extends State
 class_name PlayerAttacking
 
-signal DealDamage
 @export var animator : AnimationPlayer
 var has_dealt_damage = false
 var current_attack : Attack_Data
@@ -38,12 +37,10 @@ func DetermineAttack():
 #Both hitboxes call back to this function through signals
 func _on_hitbox_body_entered(body):
 	if body.is_in_group("Enemy") and has_dealt_damage == false:
-		var enemy = body as EnemyMain
-		deal_damage(enemy)
+		deal_damage(body)
 		AudioManager.play_sound(AudioManager.PLAYER_ATTACK_HIT, 0, 1)
 
-func deal_damage(enemy):
+func deal_damage(enemy : EnemyMain):
 	hit_particles.emitting = true
-	enemy.ConnectForDamage(self)
-	emit_signal("DealDamage", current_attack.damage)
 	has_dealt_damage = true
+	enemy._take_damage(current_attack.damage)

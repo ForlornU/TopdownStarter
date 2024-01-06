@@ -2,8 +2,6 @@ extends State
 class_name enemy_attack_state
 
 var has_dealt_damage #Only damage once during each attack
-
-signal DealDamage
 @export var damage = 25
 
 @onready var enemy = $"../.."
@@ -27,11 +25,9 @@ func _on_hit_box_body_entered(body):
 		deal_damage_to_player(player)
 
 #Connect and deal damage to the player
-func deal_damage_to_player(player):
+func deal_damage_to_player(player : PlayerMain):
 	hit_particles.emitting = true
-	
-	player.ConnectForDamage(self)
-	emit_signal("DealDamage", damage)
+	player._take_damage(damage)
 	has_dealt_damage = true
 	
 func play_hitground_sound():

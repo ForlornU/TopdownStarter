@@ -45,7 +45,7 @@ func _take_damage(amount):
 	
 	if(health <= 0):
 		_die()
-	
+		
 func _die():
 	if(is_dead):
 		return
@@ -56,11 +56,5 @@ func _die():
 	if is_instance_valid(self) and not is_in_group("Player"):
 		queue_free()
 
-#Right before taking damage, whatever is attacking us must first connect their damage signal
-#to out _take_damage function here
-func ConnectForDamage(node : Node):
-	if(not node.is_connected("DealDamage", _take_damage)):
-		node.DealDamage.connect(_take_damage)
-		
 #endregion
 

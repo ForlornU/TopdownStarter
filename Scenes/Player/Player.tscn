@@ -139,9 +139,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_mkwab"]
 radius = 25.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aueyc"]
-radius = 5.0
-height = 27.0069
+[sub_resource type="CircleShape2D" id="CircleShape2D_7m131"]
+radius = 8.06226
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ub6e5"]
 bg_color = Color(0.0352941, 0.0156863, 0.00784314, 0.427451)
@@ -377,6 +376,8 @@ _data = {
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "healthbar", "hit_particles") groups=["Player"]]
 top_level = true
 texture_filter = 1
+floor_stop_on_slope = false
+floor_block_on_wall = false
 script = ExtResource("1_y5oq4")
 sprite = NodePath("AnimatedSprite2D")
 healthbar = NodePath("Camera2D/ProgressBar")
@@ -411,9 +412,8 @@ shape = SubResource("CircleShape2D_mkwab")
 disabled = true
 
 [node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4.21)
-scale = Vector2(1, 0.725)
-shape = SubResource("CapsuleShape2D_aueyc")
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_7m131")
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("21_54cjv")
