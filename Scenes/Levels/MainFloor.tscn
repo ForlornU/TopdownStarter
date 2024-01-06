@@ -58,14 +58,16 @@ position = Vector2(83, 260)
 
 [node name="Welcome Label" type="Label" parent="Scene"]
 texture_filter = 1
-offset_left = -281.0
-offset_top = -182.0
-offset_right = -13.0
-offset_bottom = -121.0
+offset_left = -302.0
+offset_top = -179.0
+offset_right = -34.0
+offset_bottom = -86.0
 text = "Welcome to the top-down project!
 WASD - Move
 SPACE - Dash
-LMB - Attack"
+
+LMB - Punch
+RMB - Spinning kick"
 label_settings = ExtResource("7_tuycv")
 
 [node name="TileMap" type="TileMap" parent="Scene"]

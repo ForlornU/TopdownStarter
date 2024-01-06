@@ -1,7 +1,9 @@
-res://Scenes/Levels/MainFloor.tscn
+res://Scenes/Player/Player.tscn
 res://Art/Fonts/pixelized_label.tres
 res://Scenes/Levels/TileMap.tres
-res://Scenes/Player/Player.tscn
+res://Scripts/AttackData.gd
+res://Scenes/Player/Scripts/States/PlayerAttacking.gd
+res://Scenes/Levels/MainFloor.tscn
 res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn
 res://Scenes/Levels/Basement01.tscn
 res://Scenes/SceneSettings.tscn
@@ -9,8 +11,4 @@ res://Scenes/Coin.tscn
 res://Scenes/score_tracker.tscn
 res://Scenes/Enemy/Enemy.tscn
 res://Scenes/DeathScreen.tscn
-res://Scenes/Player/Scripts/States/PlayerAttacking.gd
-res://Scripts/AttackData.gd
-res://README.md
-res://Scripts/CharacterBase.gd
 res://Scenes/Enemy/Scripts/States/enemy_attack.gd
