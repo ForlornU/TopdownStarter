@@ -135,6 +135,7 @@ line1 = ["Hello! Everything is fine! Nothing to see here! "]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_87j7f")
+volume_db = -1.0
 autoplay = true
 
 [node name="Enemy" parent="." instance=ExtResource("2_gsqk0")]

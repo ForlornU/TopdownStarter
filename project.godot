@@ -11,6 +11,8 @@ config_version=5
 [application]
 
 config/name="Topdown Starter"
+config/description="This 2D Pixelart, TopDown action Starter Project include all the basics you need to get started creating a game."
+config/version="1.4"
 run/main_scene="res://Scenes/Levels/MainFloor.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/image="res://Art/Icons/icon.png"
@@ -31,6 +33,7 @@ AudioManager="*res://Scripts/Managers/AudioManager.gd"
 window/size/viewport_width=640
 window/size/viewport_height=360
 window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
 window/stretch/scale_mode="integer"
 
 [dotnet]
