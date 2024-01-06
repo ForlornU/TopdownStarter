@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bvt7e871e6jeg"]
+[gd_scene load_steps=44 format=3 uid="uid://bvt7e871e6jeg"]
 
 [ext_resource type="Texture2D" uid="uid://d3u5e5gpffpwe" path="res://Scenes/Enemy/Sprites/Enemy09.png" id="1_chwbu"]
 [ext_resource type="Script" path="res://Scenes/Enemy/Scripts/EnemyMain.gd" id="1_db41y"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://Scenes/Enemy/Scripts/States/enemy_idle.gd" id="21_mks5l"]
 [ext_resource type="Script" path="res://Scenes/Enemy/Scripts/States/enemy_chase.gd" id="22_svjvw"]
 [ext_resource type="Script" path="res://Scenes/Enemy/Scripts/States/enemy_attack.gd" id="23_qnihw"]
+[ext_resource type="Script" path="res://Scripts/AttackData.gd" id="26_b28qd"]
 [ext_resource type="Script" path="res://Scenes/Enemy/Scripts/States/enemy_death.gd" id="26_rci8i"]
 [ext_resource type="Texture2D" uid="uid://bw36ig60cpuaq" path="res://Art/Sprites/Square.png" id="27_0oljh"]
 
@@ -362,9 +363,15 @@ animator = NodePath("../../AnimationPlayer")
 script = ExtResource("22_svjvw")
 animator = NodePath("../../AnimationPlayer")
 
-[node name="enemy_attack_state" type="Node" parent="FSM" node_paths=PackedStringArray("animator")]
+[node name="enemy_attack_state" type="Node" parent="FSM" node_paths=PackedStringArray("attack", "animator")]
 script = ExtResource("23_qnihw")
+attack = NodePath("MainAttack")
 animator = NodePath("../../AnimationPlayer")
+
+[node name="MainAttack" type="Node" parent="FSM/enemy_attack_state"]
+script = ExtResource("26_b28qd")
+anim = "Attack"
+damage = 30
 
 [node name="enemy_death_state" type="Node" parent="FSM" node_paths=PackedStringArray("animator")]
 script = ExtResource("26_rci8i")
