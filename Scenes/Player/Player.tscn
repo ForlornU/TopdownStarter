@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bvg5dny32iw0x"]
+[gd_scene load_steps=48 format=3 uid="uid://bvg5dny32iw0x"]
 
 [ext_resource type="Texture2D" uid="uid://b4rhu7tb8453t" path="res://Scenes/Player/Sprite/Player_Idle1.png" id="1_8ujai"]
 [ext_resource type="Texture2D" uid="uid://cgwb0bq0pw036" path="res://Scenes/Player/Sprite/Player_attack1.png" id="1_8w3ed"]
@@ -20,8 +20,11 @@
 [ext_resource type="Texture2D" uid="uid://1f765f0dmf76" path="res://Scenes/Player/Sprite/Player_walk1.png" id="14_0v64p"]
 [ext_resource type="Texture2D" uid="uid://qe62u7g8d0dn" path="res://Scenes/Player/Sprite/Player_Death4.png" id="14_mf356"]
 [ext_resource type="Texture2D" uid="uid://bunnpmn3orp7m" path="res://Scenes/Player/Sprite/Player_walk2.png" id="15_1pdxl"]
+[ext_resource type="Texture2D" uid="uid://yfjgk6manumt" path="res://Scenes/Player/Sprite/Player_MoonKick1.png" id="19_e6mmx"]
+[ext_resource type="Texture2D" uid="uid://cxelbexwa4xop" path="res://Scenes/Player/Sprite/Player_MoonKick2.png" id="20_46css"]
 [ext_resource type="Script" path="res://Scripts/FiniteStateMachine.gd" id="21_54cjv"]
 [ext_resource type="PackedScene" uid="uid://b82yimbxiflml" path="res://Art/Particles/hit_particles.tscn" id="21_gooki"]
+[ext_resource type="Texture2D" uid="uid://d3sffbaa38mbk" path="res://Scenes/Player/Sprite/Player_MoonKick3.png" id="21_sg1a0"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_idle.gd" id="22_h12a8"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerAttacking.gd" id="23_yfq0n"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_walking.gd" id="24_cprpa"]
@@ -104,6 +107,20 @@ animations = [{
 "loop": true,
 "name": &"Idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_e6mmx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_46css")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_sg1a0")
+}],
+"loop": false,
+"name": &"MoonKick",
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -304,12 +321,41 @@ tracks/1/keys = {
 "values": [0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_7c1ec"]
+resource_name = "MoonKick"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"MoonKick"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gtuut"]
 _data = {
 "Attack": SubResource("Animation_jtcnw"),
 "Dash": SubResource("Animation_a1dma"),
 "Death": SubResource("Animation_fkgk5"),
 "Idle": SubResource("Animation_1i780"),
+"MoonKick": SubResource("Animation_7c1ec"),
 "Walk": SubResource("Animation_wo7cn")
 }
 
@@ -328,7 +374,8 @@ occluder = SubResource("OccluderPolygon2D_uky13")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_vax36")
-animation = &"Attack"
+animation = &"MoonKick"
+frame = 2
 
 [node name="Hitbox" type="Area2D" parent="AnimatedSprite2D"]
 position = Vector2(21, 0)
