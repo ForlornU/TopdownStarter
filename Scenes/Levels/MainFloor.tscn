@@ -135,5 +135,8 @@ line1 = ["Hello! Everything is fine! Nothing to see here! "]
 stream = ExtResource("12_87j7f")
 autoplay = true
 
+[node name="Enemy" parent="." instance=ExtResource("2_gsqk0")]
+position = Vector2(-171, 71)
+
 [connection signal="body_entered" from="Scene/AreaExit" to="Scene/AreaExit" method="_on_body_entered"]
 [connection signal="body_exited" from="Scene/AreaExit" to="Scene/AreaExit" method="_on_body_exited"]
