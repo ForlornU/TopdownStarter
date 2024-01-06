@@ -1,0 +1,139 @@
+[gd_scene load_steps=15 format=3 uid="uid://dei3j88yw6omf"]
+
+[ext_resource type="PackedScene" uid="uid://bvg5dny32iw0x" path="res://Scenes/Player/Player.tscn" id="1_v023b"]
+[ext_resource type="PackedScene" uid="uid://bvt7e871e6jeg" path="res://Scenes/Enemy/Enemy.tscn" id="2_gsqk0"]
+[ext_resource type="PackedScene" uid="uid://bblpsy4fvi76f" path="res://Scenes/Coin.tscn" id="3_qfkdr"]
+[ext_resource type="PackedScene" uid="uid://cx8kkqawojm0m" path="res://Scenes/SceneSettings.tscn" id="4_8uhxl"]
+[ext_resource type="Texture2D" uid="uid://dyb5iqfj3tmwj" path="res://Art/Sprites/light.png" id="5_numcg"]
+[ext_resource type="TileSet" uid="uid://b3n0bklwwny1b" path="res://Scenes/Levels/TileMap.tres" id="7_n5jbx"]
+[ext_resource type="LabelSettings" uid="uid://da8inon5cmt2r" path="res://Art/Fonts/pixelized_label.tres" id="7_tuycv"]
+[ext_resource type="PackedScene" uid="uid://ckp2r52hlcfxn" path="res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn" id="8_30ow3"]
+[ext_resource type="Script" path="res://Scenes/Levels/AreaExit.gd" id="9_0m0mm"]
+[ext_resource type="PackedScene" uid="uid://bt5yicfpmnlwk" path="res://Scenes/Levels/Basement01.tscn" id="10_hj57s"]
+[ext_resource type="PackedScene" uid="uid://b6xb8nhlqtuhf" path="res://Scenes/score_tracker.tscn" id="11_6cy1t"]
+[ext_resource type="AudioStream" uid="uid://bia7rrlxphfg2" path="res://Art/Audio/corridorsOgg.ogg" id="12_87j7f"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_n3tw7"]
+a = Vector2(17, 3)
+b = Vector2(-11, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtoj4"]
+size = Vector2(25, 30)
+
+[node name="Scene_Root" type="Node2D"]
+texture_filter = 1
+
+[node name="Player" parent="." instance=ExtResource("1_v023b")]
+position = Vector2(-85, -117)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("2_gsqk0")]
+position = Vector2(67, 71)
+
+[node name="Pickups" type="Node" parent="."]
+
+[node name="Pickup4" parent="Pickups" instance=ExtResource("3_qfkdr")]
+position = Vector2(2, 74)
+amplitude = 12.0
+
+[node name="Pickup2" parent="Pickups" instance=ExtResource("3_qfkdr")]
+position = Vector2(195, 68)
+amplitude = 12.0
+
+[node name="Pickup3" parent="Pickups" instance=ExtResource("3_qfkdr")]
+position = Vector2(-284, 218)
+amplitude = 12.0
+
+[node name="Pickup5" parent="Pickups" instance=ExtResource("3_qfkdr")]
+position = Vector2(192, 255)
+amplitude = 12.0
+
+[node name="SceneSettings" parent="." instance=ExtResource("4_8uhxl")]
+
+[node name="Scene" type="Node" parent="."]
+
+[node name="NPC" parent="Scene" instance=ExtResource("8_30ow3")]
+position = Vector2(83, 260)
+
+[node name="Welcome Label" type="Label" parent="Scene"]
+texture_filter = 1
+offset_left = -281.0
+offset_top = -182.0
+offset_right = -13.0
+offset_bottom = -121.0
+text = "Welcome to the top-down project!
+WASD - Move
+SPACE - Dash
+LMB - Attack"
+label_settings = ExtResource("7_tuycv")
+
+[node name="TileMap" type="TileMap" parent="Scene"]
+z_index = -2
+texture_filter = 1
+tile_set = ExtResource("7_n5jbx")
+format = 2
+layer_0/tile_data = PackedInt32Array(262143, 65536, 2, 131065, 0, 1, 196601, 0, 1, 65529, 327680, 0, 65530, 393216, 0, 65531, 589824, 2, 65532, 458752, 0, 65533, 524288, 0, 0, 131072, 0, 131066, 131072, 1, 131067, 393216, 1, 131068, 393216, 1, 131069, 393216, 1, 196602, 393216, 1, 196603, 393216, 1, 196604, 393216, 1, 196605, 393216, 1, 196606, 196608, 1, 196607, 393216, 1, 262137, 0, 2, 262138, 65536, 2, 262140, 65536, 2, 262141, 65536, 2, 262142, 196608, 2, 131072, 393216, 1, 196608, 327680, 2, 65536, 65536, 1, 196609, 589824, 0, 131073, 393216, 2, 65537, 131072, 1, 2, 196608, 0, 65538, 196608, 1, 131074, 327680, 1, 196610, 327680, 2, 1, 262144, 0, 65534, 196608, 0, 131070, 196608, 1, 65535, 262144, 0, 131071, 131072, 1, 458753, 65536, 2, 458754, 65536, 1, 262145, 589824, 1, 327681, 589824, 2, 327682, 458752, 0, 327680, 0, 0, 393217, 393216, 1, 393216, 327680, 1, 393218, 65536, 1, 458752, 131072, 2, 196611, 327680, 2, 196612, 327680, 2, 131075, 327680, 1, 65539, 458752, 2, 3, 458752, 0, 4, 393216, 0, 5, 262144, 0, 65541, 131072, 1, 6, 196608, 0, 65542, 196608, 1, 131078, 524288, 2, 196614, 196608, 2, 196613, 589824, 0, 65540, 393216, 1, 131076, 393216, 1, 131077, 393216, 1, 262139, 589824, 0, 327675, 589824, 1, 393211, 589824, 2, 393208, 262144, 0, 393209, 327680, 0, 393210, 393216, 0, 393206, 0, 0, 458742, 0, 1, 524278, 0, 2, 393207, 65536, 0, 458743, 65536, 1, 524279, 65536, 2, 458744, 65536, 1, 524280, 65536, 2, 458745, 131072, 1, 524281, 131072, 2, 458746, 393216, 1, 524282, 65536, 2, 458747, 393216, 1, 524283, 131072, 2, 458748, 393216, 1, 524284, 65536, 2, 458751, 393216, 1, 458750, 393216, 1, 458749, 393216, 1, 524287, 65536, 2, 524286, 131072, 2, 524285, 65536, 2, 393214, 458752, 0, 393215, 524288, 0, 393212, 458752, 0, 393213, 524288, 0, 262149, 589824, 1, 327685, 589824, 2, 458757, 131072, 1, 524293, 131072, 2, 458758, 196608, 1, 524294, 196608, 2, 327686, 196608, 0, 393222, 196608, 1, 393219, 131072, 1, 393220, 393216, 1, 393221, 393216, 1, 458755, 131072, 1, 458756, 393216, 1, 524291, 65536, 2, 524292, 131072, 2, 524290, 0, 2, 327683, 393216, 0, 327684, 524288, 0, -262151, 0, 0, -196615, 0, 1, -131079, 0, 1, -65543, 0, 2, -262150, 262144, 0, -196614, 131072, 1, -131078, 393216, 1, -65542, 65536, 2, -262149, 458752, 0, -196613, 393216, 1, -131077, 393216, 1, -65541, 589824, 0, -5, 589824, 1, -262148, 393216, 0, -196612, 393216, 1, -131076, 393216, 1, -65540, 65536, 2, -262147, 327680, 0, -196611, 196608, 1, -131075, 196608, 1, -65539, 196608, 2)
+
+[node name="WindowLights2" type="Node" parent="Scene"]
+
+[node name="PointLight2D" type="PointLight2D" parent="Scene/WindowLights2"]
+position = Vector2(-176, 8)
+energy = 0.8
+shadow_enabled = true
+texture = ExtResource("5_numcg")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Scene/WindowLights2"]
+position = Vector2(-16, 8)
+energy = 0.8
+shadow_enabled = true
+texture = ExtResource("5_numcg")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Scene/WindowLights2"]
+position = Vector2(49, 9)
+energy = 0.8
+shadow_enabled = true
+texture = ExtResource("5_numcg")
+
+[node name="PointLight2D4" type="PointLight2D" parent="Scene/WindowLights2"]
+position = Vector2(176, 10)
+energy = 0.8
+shadow_enabled = true
+texture = ExtResource("5_numcg")
+
+[node name="DoorBlock" type="StaticBody2D" parent="Scene"]
+position = Vector2(13, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/DoorBlock"]
+position = Vector2(0, -7)
+shape = SubResource("SegmentShape2D_n3tw7")
+
+[node name="AreaExit" type="Area2D" parent="Scene"]
+position = Vector2(16, 9)
+script = ExtResource("9_0m0mm")
+basement_scene = ExtResource("10_hj57s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/AreaExit"]
+position = Vector2(-0.5, 5)
+shape = SubResource("RectangleShape2D_gtoj4")
+
+[node name="Label" type="Label" parent="Scene/AreaExit"]
+offset_left = -16.0
+offset_top = -25.0
+offset_right = 96.0
+offset_bottom = 1.0
+text = "Press 'Enter' to leave"
+label_settings = ExtResource("7_tuycv")
+
+[node name="NPC2" parent="Scene" instance=ExtResource("8_30ow3")]
+position = Vector2(-108, 104)
+line1 = ["Hello! Everything is fine! Nothing to see here! "]
+
+[node name="Score_UI" parent="." instance=ExtResource("11_6cy1t")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_87j7f")
+autoplay = true
+
+[connection signal="body_entered" from="Scene/AreaExit" to="Scene/AreaExit" method="_on_body_entered"]
+[connection signal="body_exited" from="Scene/AreaExit" to="Scene/AreaExit" method="_on_body_exited"]

@@ -1,10 +1,10 @@
 extends State
 class_name enemy_idle_state
 
-@export var sprite : AnimatedSprite2D
+@export var animator : AnimationPlayer
 
 func Enter():
-	sprite.play("Idle")
+	animator.play("Idle")
 	pass
 
 func Update(_delta):

@@ -1,15 +1,15 @@
 extends State
 class_name PlayerIdle
 
-@export var sprite : AnimatedSprite2D
+@export var animator : AnimationPlayer
 
 func Enter():
-	sprite.play("Idle")
+	animator.play("Idle")
 	pass
 	
 func Update(_delta : float):
 	if(Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown").normalized()):
 		state_transition.emit(self, "Moving")
 		
-	if Input.is_action_just_pressed("Attack"):
+	if Input.is_action_just_pressed("Punch")  or Input.is_action_just_pressed("Kick"):
 		state_transition.emit(self, "Attacking")

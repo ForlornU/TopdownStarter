@@ -1,3 +1,9 @@
+Node2D
+Node
+CollisionShape2D
+Area2D
+Sprite2D
+AnimationPlayer
 State
 PointLight2D
 Label
@@ -5,11 +11,5 @@ Control
 CanvasLayer
 AudioStreamPlayer
 GPUParticles2D
-Node
-CollisionShape2D
-Area2D
 StaticBody2D
 TileMap
-LightOccluder2D
-DirectionalLight2D
-CanvasModulate
