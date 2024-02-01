@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bt5yicfpmnlwk"]
+[gd_scene load_steps=12 format=3 uid="uid://bt5yicfpmnlwk"]
 
 [ext_resource type="PackedScene" uid="uid://cx8kkqawojm0m" path="res://Scenes/SceneSettings.tscn" id="1_4stwf"]
 [ext_resource type="TileSet" uid="uid://b3n0bklwwny1b" path="res://Scenes/Levels/TileMap.tres" id="2_wbjck"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bvt7e871e6jeg" path="res://Scenes/Enemy/Enemy.tscn" id="6_insxp"]
 [ext_resource type="PackedScene" uid="uid://b6xb8nhlqtuhf" path="res://Scenes/score_tracker.tscn" id="7_hbxrs"]
 [ext_resource type="AudioStream" uid="uid://b1lr5ey8e6pu3" path="res://Art/Audio/BasementOgg.ogg" id="8_u2hwu"]
+[ext_resource type="PackedScene" uid="uid://48vtm5vekhaq" path="res://Scenes/quest_start.tscn" id="10_qjwpn"]
+[ext_resource type="Script" path="res://Scripts/QuestGeneral/Quest.gd" id="11_mfrjl"]
 
 [node name="Basement01" type="Node2D"]
 
@@ -101,3 +103,13 @@ position = Vector2(-90, -18)
 stream = ExtResource("8_u2hwu")
 volume_db = -3.0
 autoplay = true
+
+[node name="QuestStart" parent="." node_paths=PackedStringArray("quest") instance=ExtResource("10_qjwpn")]
+z_index = 1
+position = Vector2(22, 15)
+quest = NodePath("Quest")
+
+[node name="Quest" type="Node" parent="QuestStart"]
+script = ExtResource("11_mfrjl")
+quest_name = "Seek and destroy"
+quest_description = "Destroy the enemies!"
