@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b6xb8nhlqtuhf" path="res://Scenes/score_tracker.tscn" id="11_6cy1t"]
 [ext_resource type="AudioStream" uid="uid://bia7rrlxphfg2" path="res://Art/Audio/corridorsOgg.ogg" id="12_87j7f"]
 [ext_resource type="PackedScene" uid="uid://48vtm5vekhaq" path="res://Scenes/quest_start.tscn" id="13_fd737"]
-[ext_resource type="Script" path="res://Scripts/QuestGeneral/Quests/FirstQuest.gd" id="14_po54m"]
+[ext_resource type="Script" path="res://Scripts/QuestGeneral/Quest.gd" id="14_gf0hp"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_n3tw7"]
 a = Vector2(17, 3)
@@ -148,9 +148,9 @@ position = Vector2(-143, -11)
 quest = NodePath("Node")
 
 [node name="Node" type="Node" parent="QuestStart"]
-script = ExtResource("14_po54m")
+script = ExtResource("14_gf0hp")
 quest_name = "Explore"
-quest_description = "Search this floor"
+quest_description = "Search this floor for a way forward"
 
 [connection signal="body_entered" from="Scene/AreaExit" to="Scene/AreaExit" method="_on_body_entered"]
 [connection signal="body_exited" from="Scene/AreaExit" to="Scene/AreaExit" method="_on_body_exited"]
