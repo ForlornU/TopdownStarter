@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dei3j88yw6omf"]
+[gd_scene load_steps=18 format=3 uid="uid://dei3j88yw6omf"]
 
 [ext_resource type="PackedScene" uid="uid://bvg5dny32iw0x" path="res://Scenes/Player/Player.tscn" id="1_v023b"]
 [ext_resource type="PackedScene" uid="uid://bvt7e871e6jeg" path="res://Scenes/Enemy/Enemy.tscn" id="2_gsqk0"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://bt5yicfpmnlwk" path="res://Scenes/Levels/Basement01.tscn" id="10_hj57s"]
 [ext_resource type="PackedScene" uid="uid://b6xb8nhlqtuhf" path="res://Scenes/score_tracker.tscn" id="11_6cy1t"]
 [ext_resource type="AudioStream" uid="uid://bia7rrlxphfg2" path="res://Art/Audio/corridorsOgg.ogg" id="12_87j7f"]
+[ext_resource type="Script" path="res://Scripts/QuestGeneral/QuestGiver.gd" id="13_s225m"]
+[ext_resource type="Script" path="res://Scripts/QuestGeneral/Quests/FirstQuest.gd" id="14_po54m"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_n3tw7"]
 a = Vector2(17, 3)
@@ -19,6 +21,9 @@ b = Vector2(-11, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gtoj4"]
 size = Vector2(25, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1rge"]
+size = Vector2(81, 48)
 
 [node name="Scene_Root" type="Node2D"]
 texture_filter = 1
@@ -141,5 +146,18 @@ autoplay = true
 [node name="Enemy" parent="." instance=ExtResource("2_gsqk0")]
 position = Vector2(-171, 71)
 
+[node name="QuestStart" type="Area2D" parent="." node_paths=PackedStringArray("quest")]
+position = Vector2(-149, -70)
+script = ExtResource("13_s225m")
+quest = NodePath("Quest")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="QuestStart"]
+position = Vector2(13.5, 7)
+shape = SubResource("RectangleShape2D_n1rge")
+
+[node name="Quest" type="Node" parent="QuestStart"]
+script = ExtResource("14_po54m")
+
 [connection signal="body_entered" from="Scene/AreaExit" to="Scene/AreaExit" method="_on_body_entered"]
 [connection signal="body_exited" from="Scene/AreaExit" to="Scene/AreaExit" method="_on_body_exited"]
+[connection signal="body_entered" from="QuestStart" to="QuestStart" method="_on_body_entered"]

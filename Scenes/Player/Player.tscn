@@ -32,7 +32,7 @@
 [ext_resource type="Script" path="res://Scripts/AttackData.gd" id="28_wb7jg"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerWalkState.gd" id="29_bdbrv"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerDeathState.gd" id="30_ecf44"]
-[ext_resource type="Script" path="res://Scripts/Quests/QuestTracker.gd" id="33_nivie"]
+[ext_resource type="Script" path="res://Scripts/QuestGeneral/QuestTracker.gd" id="33_2eisr"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uky13"]
 polygon = PackedVector2Array(-2, -13, -8, -13, -10, -11, -10, -2, -4, 2, -4, 10, 5, 10, 5, 2, 10, -1, 10, -10, 8, -13)
@@ -523,7 +523,7 @@ libraries = {
 [node name="Quests" type="Node2D" parent="."]
 
 [node name="QuestTracker" type="Node" parent="Quests" node_paths=PackedStringArray("quest_label")]
-script = ExtResource("33_nivie")
+script = ExtResource("33_2eisr")
 quest_label = NodePath("../Label")
 
 [node name="Label" type="Label" parent="Quests"]
