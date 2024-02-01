@@ -25,13 +25,13 @@
 [ext_resource type="Script" path="res://Scripts/FiniteStateMachine.gd" id="21_54cjv"]
 [ext_resource type="PackedScene" uid="uid://b82yimbxiflml" path="res://Art/Particles/hit_particles.tscn" id="21_gooki"]
 [ext_resource type="Texture2D" uid="uid://d3sffbaa38mbk" path="res://Scenes/Player/Sprite/Player_MoonKick3.png" id="21_sg1a0"]
-[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_idle.gd" id="22_h12a8"]
-[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerAttacking.gd" id="23_yfq0n"]
-[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_walking.gd" id="24_cprpa"]
-[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_death_state.gd" id="26_7iikd"]
+[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerIdleState.gd" id="26_28u22"]
+[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerAttackState.gd" id="27_j1lrx"]
 [ext_resource type="Texture2D" uid="uid://dyb5iqfj3tmwj" path="res://Art/Sprites/light.png" id="27_on0bn"]
 [ext_resource type="LabelSettings" uid="uid://da8inon5cmt2r" path="res://Art/Fonts/pixelized_label.tres" id="28_5mc6f"]
 [ext_resource type="Script" path="res://Scripts/AttackData.gd" id="28_wb7jg"]
+[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerWalkState.gd" id="29_bdbrv"]
+[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerDeathState.gd" id="30_ecf44"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uky13"]
 polygon = PackedVector2Array(-2, -13, -8, -13, -10, -11, -10, -2, -4, 2, -4, 10, 5, 10, 5, 2, 10, -1, 10, -10, 8, -13)
@@ -446,11 +446,11 @@ script = ExtResource("21_54cjv")
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="FSM" node_paths=PackedStringArray("animator")]
-script = ExtResource("22_h12a8")
+script = ExtResource("26_28u22")
 animator = NodePath("../../AnimationPlayer")
 
 [node name="Attacking" type="Node" parent="FSM" node_paths=PackedStringArray("animator", "attacks")]
-script = ExtResource("23_yfq0n")
+script = ExtResource("27_j1lrx")
 animator = NodePath("../../AnimationPlayer")
 attacks = [NodePath("PunchAttack"), NodePath("KickAttack")]
 
@@ -465,12 +465,12 @@ anim = "MoonKick"
 damage = 25
 
 [node name="Moving" type="Node" parent="FSM" node_paths=PackedStringArray("animator")]
-script = ExtResource("24_cprpa")
+script = ExtResource("29_bdbrv")
 movespeed = 140
 animator = NodePath("../../AnimationPlayer")
 
 [node name="Die" type="Node" parent="FSM" node_paths=PackedStringArray("animator")]
-script = ExtResource("26_7iikd")
+script = ExtResource("30_ecf44")
 animator = NodePath("../../AnimationPlayer")
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
@@ -518,6 +518,8 @@ explosiveness = 1.0
 libraries = {
 "": SubResource("AnimationLibrary_gtuut")
 }
+
+[node name="QuestTracker" type="Node" parent="."]
 
 [connection signal="body_entered" from="AnimatedSprite2D/Hitboxes/Punch_Hitbox" to="FSM/Attacking" method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="AnimatedSprite2D/Hitboxes/Kick_Hitbox" to="FSM/Attacking" method="_on_hitbox_body_entered"]
