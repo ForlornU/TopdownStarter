@@ -1,4 +1,6 @@
 extends Node
+class_name Quest
 
-var objective_text : String
+var quest_name : String
+var quest_description : String
 

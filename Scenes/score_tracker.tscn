@@ -19,8 +19,8 @@ money_label = NodePath("MoneyLabel")
 [node name="MoneyLabel" type="Label" parent="GameUI"]
 z_index = 1
 layout_mode = 0
-offset_left = 2.0
-offset_top = 7.0
-offset_right = 42.0
-offset_bottom = 30.0
+offset_left = 533.0
+offset_top = 9.0
+offset_right = 573.0
+offset_bottom = 35.0
 label_settings = ExtResource("2_ygwdu")

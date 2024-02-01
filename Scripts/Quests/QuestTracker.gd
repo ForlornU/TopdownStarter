@@ -1,10 +1,10 @@
 extends Node
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var current_quest : Quest
+@export var quest_label : Label
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func new_quest(new_quest : Quest):
+	quest_label.text = new_quest.quest_name + "\n" + new_quest.quest_description
 	pass
+
+
