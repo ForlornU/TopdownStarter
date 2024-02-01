@@ -124,7 +124,7 @@ offset_left = -16.0
 offset_top = -25.0
 offset_right = 96.0
 offset_bottom = 1.0
-text = "Press 'Enter' to leave"
+text = "Press 'E' To Enter"
 label_settings = ExtResource("7_tuycv")
 
 [node name="NPC2" parent="Scene" instance=ExtResource("8_30ow3")]
