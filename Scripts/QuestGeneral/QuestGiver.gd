@@ -38,7 +38,6 @@ func can_update_quest(body):
 	player_quest_tracker = body.find_child("QuestTracker") as QuestTracker
 		
 	if !body.is_in_group("Player") || !quest || !player_quest_tracker:
-		print("Something wrong, could not update quest!")
 		return false
 	else:
 		return true
