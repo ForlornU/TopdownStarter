@@ -16,6 +16,7 @@ func _on_body_entered(body):
 		print("No tracker on player...?")
 		return
 
+	#Call correct function depending on type enum
 	match type:
 		1: give_quest()
 		2: update_quest()
