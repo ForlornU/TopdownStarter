@@ -11,6 +11,9 @@ config_version=5
 [application]
 
 config/name="Topdown Starter"
+config/description="This 2D Pixelart, TopDown action Starter Project include all the basics you need to get started creating a game."
+config/version="1.4"
+config/tags=PackedStringArray("starterkit")
 run/main_scene="res://Scenes/Levels/MainFloor.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/image="res://Art/Icons/icon.png"
@@ -31,6 +34,7 @@ AudioManager="*res://Scripts/Managers/AudioManager.gd"
 window/size/viewport_width=640
 window/size/viewport_height=360
 window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
 window/stretch/scale_mode="integer"
 
 [dotnet]
@@ -84,7 +88,7 @@ Dash={
 }
 Enter={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"echo":false,"script":null)
 ]
 }
 Restart={

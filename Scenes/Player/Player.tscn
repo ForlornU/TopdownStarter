@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bvg5dny32iw0x"]
+[gd_scene load_steps=52 format=3 uid="uid://bvg5dny32iw0x"]
 
 [ext_resource type="Texture2D" uid="uid://b4rhu7tb8453t" path="res://Scenes/Player/Sprite/Player_Idle1.png" id="1_8ujai"]
 [ext_resource type="Texture2D" uid="uid://cgwb0bq0pw036" path="res://Scenes/Player/Sprite/Player_attack1.png" id="1_8w3ed"]
@@ -25,12 +25,15 @@
 [ext_resource type="Script" path="res://Scripts/FiniteStateMachine.gd" id="21_54cjv"]
 [ext_resource type="PackedScene" uid="uid://b82yimbxiflml" path="res://Art/Particles/hit_particles.tscn" id="21_gooki"]
 [ext_resource type="Texture2D" uid="uid://d3sffbaa38mbk" path="res://Scenes/Player/Sprite/Player_MoonKick3.png" id="21_sg1a0"]
-[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_idle.gd" id="22_h12a8"]
-[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerAttacking.gd" id="23_yfq0n"]
-[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_walking.gd" id="24_cprpa"]
-[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/player_death_state.gd" id="26_7iikd"]
+[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerIdleState.gd" id="26_28u22"]
+[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerAttackState.gd" id="27_j1lrx"]
 [ext_resource type="Texture2D" uid="uid://dyb5iqfj3tmwj" path="res://Art/Sprites/light.png" id="27_on0bn"]
 [ext_resource type="LabelSettings" uid="uid://da8inon5cmt2r" path="res://Art/Fonts/pixelized_label.tres" id="28_5mc6f"]
+[ext_resource type="Script" path="res://Scripts/AttackData.gd" id="28_wb7jg"]
+[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerWalkState.gd" id="29_bdbrv"]
+[ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerDeathState.gd" id="30_ecf44"]
+[ext_resource type="Script" path="res://Scripts/QuestGeneral/QuestTracker.gd" id="33_2eisr"]
+[ext_resource type="LabelSettings" uid="uid://1cnb4418rr7" path="res://Art/Fonts/pixelized_label_large.tres" id="34_aqkdi"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uky13"]
 polygon = PackedVector2Array(-2, -13, -8, -13, -10, -11, -10, -2, -4, 2, -4, 10, 5, 10, 5, 2, 10, -1, 10, -10, 8, -13)
@@ -445,20 +448,31 @@ script = ExtResource("21_54cjv")
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="FSM" node_paths=PackedStringArray("animator")]
-script = ExtResource("22_h12a8")
+script = ExtResource("26_28u22")
 animator = NodePath("../../AnimationPlayer")
 
-[node name="Attacking" type="Node" parent="FSM" node_paths=PackedStringArray("animator")]
-script = ExtResource("23_yfq0n")
+[node name="Attacking" type="Node" parent="FSM" node_paths=PackedStringArray("animator", "attacks")]
+script = ExtResource("27_j1lrx")
 animator = NodePath("../../AnimationPlayer")
+attacks = [NodePath("PunchAttack"), NodePath("KickAttack")]
+
+[node name="PunchAttack" type="Node" parent="FSM/Attacking"]
+script = ExtResource("28_wb7jg")
+anim = "Attack"
+damage = 55
+
+[node name="KickAttack" type="Node" parent="FSM/Attacking"]
+script = ExtResource("28_wb7jg")
+anim = "MoonKick"
+damage = 25
 
 [node name="Moving" type="Node" parent="FSM" node_paths=PackedStringArray("animator")]
-script = ExtResource("24_cprpa")
+script = ExtResource("29_bdbrv")
 movespeed = 140
 animator = NodePath("../../AnimationPlayer")
 
 [node name="Die" type="Node" parent="FSM" node_paths=PackedStringArray("animator")]
-script = ExtResource("26_7iikd")
+script = ExtResource("30_ecf44")
 animator = NodePath("../../AnimationPlayer")
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
@@ -469,7 +483,7 @@ texture = ExtResource("27_on0bn")
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(2, 2)
 position_smoothing_enabled = true
-position_smoothing_speed = 10.0
+position_smoothing_speed = 15.0
 
 [node name="ProgressBar" type="ProgressBar" parent="Camera2D"]
 light_mask = 2
@@ -506,6 +520,32 @@ explosiveness = 1.0
 libraries = {
 "": SubResource("AnimationLibrary_gtuut")
 }
+
+[node name="QuestTracker" type="Node2D" parent="." node_paths=PackedStringArray("quest_info", "quest_announcement")]
+script = ExtResource("33_2eisr")
+quest_info = NodePath("QuestText")
+quest_announcement = NodePath("QuestAnnounceText")
+
+[node name="QuestText" type="Label" parent="QuestTracker"]
+offset_left = -303.0
+offset_top = -166.0
+offset_right = -151.0
+offset_bottom = -137.0
+label_settings = ExtResource("28_5mc6f")
+
+[node name="QuestAnnounceText" type="Label" parent="QuestTracker"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = -98.0
+offset_right = 64.0
+offset_bottom = -72.0
+grow_horizontal = 2
+text = "announcement"
+label_settings = ExtResource("34_aqkdi")
+horizontal_alignment = 1
+uppercase = true
 
 [connection signal="body_entered" from="AnimatedSprite2D/Hitboxes/Punch_Hitbox" to="FSM/Attacking" method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="AnimatedSprite2D/Hitboxes/Kick_Hitbox" to="FSM/Attacking" method="_on_hitbox_body_entered"]

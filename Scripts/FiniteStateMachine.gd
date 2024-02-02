@@ -50,7 +50,8 @@ func force_change_state(new_state : String):
 	
 func change_state(source_state : State, new_state_name : String):
 	if source_state != current_state:
-		print("Invalid change_state trying from: " + source_state.name + " but currently in: " + current_state.name)
+		#print("Invalid change_state trying from: " + source_state.name + " but currently in: " + current_state.name)
+		#This typically only happens when trying to switch from death state following a force_change
 		return
 	
 	var new_state = states.get(new_state_name.to_lower())
