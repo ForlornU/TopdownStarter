@@ -1,3 +1,4 @@
+@icon("res://Art/Icons/QuestSprite.png")
 extends Node
 class_name Quest
 
