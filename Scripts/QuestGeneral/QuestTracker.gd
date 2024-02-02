@@ -52,14 +52,14 @@ func update_quest(source_quest : Quest):
 		
 	current_quest_step += 1
 	quest_info.text = current_quest.quest_name + "\n" + source_quest.quest_objective[current_quest_step]
-	announce_quest("Quest updated!", 2)
+	announce_quest("Quest updated!", 1.5)
 
 #Not in use.. finish quest and give reward here
 func complete_quest(quest : Quest):
 	GameManager.add_money(quest.quest_reward)
 	announce_quest("Quest completed!", 3)
 	quest_info.text = ""
-	quest.free() #is this really a good idea?
+	quest.free() #probably not necessary
 
 #Show an announcement
 func announce_quest(text : String, time : float):

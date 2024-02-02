@@ -1,26 +1,28 @@
 # TopdownStarter
 ![Top-down Starter Project By ForlornU](https://github.com/ForlornU/TopdownStarter/assets/101473036/5158caec-a7d6-42a1-af80-54cbdb25588b)
 
-This 2D Pixelart, TopDown action Starter Project include all the basics you need to get started creating a game.
+2D Pixelart, TopDown, action Starter Project
+Contains all the basic ingredients you need to get started creating a game.
 
 # This project includes:
-- 2 Levels with different tile-sets
+- 2 unique levels with different tile-sets
 - A simple but fully functional enemy
 - Talking NPC's
-- Animated player that can attack and dash around
--'Coins' to pick up
+- Quest tracker system
+- 'Coins' to pick up
 - 2d Lights and shadows
-- Modular scenes that can be reused
 - Music and sound effects
+- Custom icons
+
+# Good examples of:
+	- Signals
+	- Tweening
+	- Timers
 
 # On the more technical side:
-- 22 different unique Scripts (.gd)
+- 25 different unique Scripts (.gd)
 - Finite state machines on both player and enemies
 - Inheritance across similar classes like states and units (player and enemy)
-- Tweening
-- Waiting Timers
-- Examples of signals connected both through editor and code
-- Use of callables
 
 # Screenshots
 ![Screenshot](https://github.com/ForlornU/Images/blob/5aa19b63af0e5c04387c91e10b24adf1ae322eef/GameplayPic.png)
