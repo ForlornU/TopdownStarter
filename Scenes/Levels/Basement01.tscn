@@ -113,3 +113,4 @@ quest = NodePath("Quest")
 script = ExtResource("11_mfrjl")
 quest_name = "Seek and destroy"
 quest_description = "Destroy the enemies!"
+quest_reward = 20

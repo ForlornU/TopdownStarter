@@ -151,6 +151,7 @@ quest = NodePath("Node")
 script = ExtResource("14_gf0hp")
 quest_name = "Explore"
 quest_description = "Search this floor for a way forward"
+quest_reward = 5
 
 [connection signal="body_entered" from="Scene/AreaExit" to="Scene/AreaExit" method="_on_body_entered"]
 [connection signal="body_exited" from="Scene/AreaExit" to="Scene/AreaExit" method="_on_body_exited"]
