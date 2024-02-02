@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bvt7e871e6jeg" path="res://Scenes/Enemy/Enemy.tscn" id="6_insxp"]
 [ext_resource type="PackedScene" uid="uid://b6xb8nhlqtuhf" path="res://Scenes/ScoreTracker.tscn" id="7_hbxrs"]
 [ext_resource type="AudioStream" uid="uid://b1lr5ey8e6pu3" path="res://Art/Audio/BasementOgg.ogg" id="8_u2hwu"]
-[ext_resource type="PackedScene" uid="uid://48vtm5vekhaq" path="res://Scenes/QuestStart.tscn" id="10_qjwpn"]
-[ext_resource type="Script" path="res://Scripts/QuestGeneral/Quest.gd" id="11_mfrjl"]
+[ext_resource type="PackedScene" uid="uid://48vtm5vekhaq" path="res://Scenes/QuestUpdate.tscn" id="10_qjwpn"]
+[ext_resource type="Script" path="res://Scripts/QuestGeneral/Quest.gd" id="11_oc6f3"]
 
 [node name="Basement01" type="Node2D"]
 
@@ -104,13 +104,20 @@ stream = ExtResource("8_u2hwu")
 volume_db = -3.0
 autoplay = true
 
-[node name="QuestStart" parent="." node_paths=PackedStringArray("quest") instance=ExtResource("10_qjwpn")]
+[node name="QuestUpdate" parent="." node_paths=PackedStringArray("quest") instance=ExtResource("10_qjwpn")]
 z_index = 1
-position = Vector2(22, 15)
-quest = NodePath("Quest")
+position = Vector2(10, 14)
+quest = NodePath("../BasementQuest")
+type = 1
 
-[node name="Quest" type="Node" parent="QuestStart"]
-script = ExtResource("11_mfrjl")
-quest_name = "Seek and destroy"
-quest_description = "Destroy the enemies!"
-quest_reward = 20
+[node name="QuestUpdate2" parent="." node_paths=PackedStringArray("quest") instance=ExtResource("10_qjwpn")]
+position = Vector2(660, 6)
+quest = NodePath("../BasementQuest")
+type = 3
+
+[node name="BasementQuest" type="Node" parent="."]
+script = ExtResource("11_oc6f3")
+quest_id = 2
+quest_name = "Search the basement"
+quest_objective = Array[String](["Find the end of the basement"])
+quest_reward = 15

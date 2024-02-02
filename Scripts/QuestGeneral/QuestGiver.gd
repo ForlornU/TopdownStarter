@@ -10,28 +10,22 @@ func _on_body_entered(body):
 	if !can_update_quest(body):
 		return
 
-	player_quest_tracker = body.find_child("QuestTracker") as QuestTracker
-
-	if(!player_quest_tracker):
-		print("No tracker on player...?")
-		return
-
 	#Call correct function depending on type enum
 	match type:
 		1: give_quest()
 		2: update_quest()
 		3: complete_quest()
 
+	AudioManager.play_sound(AudioManager.QUEST_SOUND, 0, -10)
 	queue_free()
 
 func give_quest():
 	print("Giving Player a quest!")
-	AudioManager.play_sound(AudioManager.COIN_PICK, 0, -10)
 	player_quest_tracker.start_new_quest(quest)
 
 func update_quest():
 	print("Updating a quest")
-	player_quest_tracker.update_quest(quest, "Phase 2 of this quest!")
+	player_quest_tracker.update_quest(quest)
 	pass
 	
 func complete_quest():
@@ -41,7 +35,10 @@ func complete_quest():
 
 func can_update_quest(body):
 	#Only player is eligible and quest must be assigned. '!quest' means quest is null
-	if !body.is_in_group("Player") || !quest:
+	player_quest_tracker = body.find_child("QuestTracker") as QuestTracker
+		
+	if !body.is_in_group("Player") || !quest || !player_quest_tracker:
+		print("Something wrong, could not update quest!")
 		return false
 	else:
 		return true
