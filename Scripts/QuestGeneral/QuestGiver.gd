@@ -1,6 +1,7 @@
 extends Node
 
 @export var quest : Quest
+enum Function {GIVE, UPDATE, COMPLETE}
 
 #When player enters: Give quest, play a sound, destroy self
 func _on_body_entered(body):
