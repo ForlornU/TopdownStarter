@@ -49,8 +49,10 @@ I am also creating a series of videos to walk you though the different parts of 
 	- https://youtu.be/eD9dirVaffA
 - Finite State Machine:
 	- https://youtu.be/i0Y6anqiJ-g
+ - Update 1.3 & 1.4 - Quests, combat and animations
+ 	- https://youtu.be/mayNWb_DpJ8
 - Coming soon:
-	- Tutorials for the different parts of this project
+	- More tutorials for the different parts of this project
 
 Godot Asset Library Link:
 https://godotengine.org/asset-library/asset/2397
