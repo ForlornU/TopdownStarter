@@ -57,6 +57,9 @@ I am also creating a series of videos to walk you though the different parts of 
 Godot Asset Library Link:
 https://godotengine.org/asset-library/asset/2397
 
+My other Godot starter project:
+https://github.com/ForlornU/Fishy-example-game/tree/main
+
 Created by ForlornU
 Consider making me work faster with a coffee:
 https://www.buymeacoffee.com/forlornu
