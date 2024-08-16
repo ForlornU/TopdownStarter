@@ -28,10 +28,20 @@ texture_filter = 1
 [node name="Player" parent="." instance=ExtResource("1_v023b")]
 position = Vector2(-85, -117)
 
-[node name="Enemies" type="Node" parent="."]
+[node name="NPCs" type="Node" parent="."]
 
-[node name="Enemy" parent="Enemies" instance=ExtResource("2_gsqk0")]
+[node name="Enemy" parent="NPCs" instance=ExtResource("2_gsqk0")]
 position = Vector2(67, 71)
+
+[node name="Enemy2" parent="NPCs" instance=ExtResource("2_gsqk0")]
+position = Vector2(-171, 71)
+
+[node name="NPC" parent="NPCs" instance=ExtResource("8_30ow3")]
+position = Vector2(83, 260)
+
+[node name="NPC2" parent="NPCs" instance=ExtResource("8_30ow3")]
+position = Vector2(-108, 104)
+line1 = ["Hello! Everything is fine! Nothing to see here! "]
 
 [node name="Pickups" type="Node" parent="."]
 
@@ -54,9 +64,6 @@ amplitude = 12.0
 [node name="SceneSettings" parent="." instance=ExtResource("4_8uhxl")]
 
 [node name="Scene" type="Node" parent="."]
-
-[node name="NPC" parent="Scene" instance=ExtResource("8_30ow3")]
-position = Vector2(83, 260)
 
 [node name="Welcome Label" type="Label" parent="Scene"]
 texture_filter = 1
@@ -122,10 +129,6 @@ offset_bottom = 1.0
 text = "Press 'E' To Enter"
 label_settings = ExtResource("7_tuycv")
 
-[node name="NPC2" parent="Scene" instance=ExtResource("8_30ow3")]
-position = Vector2(-108, 104)
-line1 = ["Hello! Everything is fine! Nothing to see here! "]
-
 [node name="TileMap" type="TileMapLayer" parent="Scene"]
 z_index = -1
 texture_filter = 1
@@ -133,36 +136,35 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAD//wMAAAABAAIAAAD5/wEAAAAAAAEAAAD5/wIAAAAAAAEAAAD5/wAAAAAFAAAAAAD6/wAAAAAGAAAAAAD7/wAAAAAJAAIAAAD8/wAAAAAHAAAAAAD9/wAAAAAIAAAAAAAAAAAAAAACAAAAAAD6/wEAAAACAAEAAAD7/wEAAAAGAAEAAAD8/wEAAAAGAAEAAAD9/wEAAAAGAAEAAAD6/wIAAAAGAAEAAAD7/wIAAAAGAAEAAAD8/wIAAAAGAAEAAAD9/wIAAAAGAAEAAAD+/wIAAAADAAEAAAD//wIAAAAGAAEAAAD5/wMAAAAAAAIAAAD6/wMAAAABAAIAAAD8/wMAAAABAAIAAAD9/wMAAAABAAIAAAD+/wMAAAADAAIAAAAAAAIAAAAGAAEAAAAAAAMAAAAFAAIAAAAAAAEAAAABAAEAAAABAAMAAAAJAAAAAAABAAIAAAAGAAIAAAABAAEAAAACAAEAAAACAAAAAAADAAAAAAACAAEAAAAGAAEAAAACAAIAAAAFAAEAAAACAAMAAAAFAAIAAAABAAAAAAAEAAAAAAD+/wAAAAADAAAAAAD+/wEAAAADAAEAAAD//wAAAAAEAAAAAAD//wEAAAACAAEAAAABAAcAAAABAAIAAAACAAcAAAABAAEAAAABAAQAAAAJAAEAAAABAAUAAAAJAAIAAAACAAUAAAAHAAAAAAAAAAUAAAAAAAAAAAABAAYAAAAGAAEAAAAAAAYAAAAFAAEAAAACAAYAAAABAAEAAAAAAAcAAAACAAIAAAADAAMAAAAFAAIAAAAEAAMAAAAFAAIAAAADAAIAAAAFAAEAAAADAAEAAAAGAAEAAAADAAAAAAAHAAAAAAAEAAAAAAAGAAAAAAAFAAAAAAAEAAAAAAAFAAEAAAACAAEAAAAGAAAAAAADAAAAAAAGAAEAAAADAAEAAAAGAAIAAAAIAAIAAAAGAAMAAAADAAIAAAAFAAMAAAAJAAAAAAAEAAEAAAAGAAEAAAAEAAIAAAAGAAEAAAAFAAIAAAAGAAEAAAD7/wMAAAAJAAAAAAD7/wQAAAAJAAEAAAD7/wUAAAAJAAIAAAD4/wUAAAAEAAAAAAD5/wUAAAAFAAAAAAD6/wUAAAAGAAAAAAD2/wUAAAAAAAAAAAD2/wYAAAAAAAEAAAD2/wcAAAAAAAIAAAD3/wUAAAABAAAAAAD3/wYAAAABAAEAAAD3/wcAAAABAAIAAAD4/wYAAAABAAEAAAD4/wcAAAABAAIAAAD5/wYAAAACAAEAAAD5/wcAAAACAAIAAAD6/wYAAAAGAAEAAAD6/wcAAAABAAIAAAD7/wYAAAAGAAEAAAD7/wcAAAACAAIAAAD8/wYAAAAGAAEAAAD8/wcAAAABAAIAAAD//wYAAAAGAAEAAAD+/wYAAAAGAAEAAAD9/wYAAAAGAAEAAAD//wcAAAABAAIAAAD+/wcAAAACAAIAAAD9/wcAAAABAAIAAAD+/wUAAAAHAAAAAAD//wUAAAAIAAAAAAD8/wUAAAAHAAAAAAD9/wUAAAAIAAAAAAAFAAQAAAAJAAEAAAAFAAUAAAAJAAIAAAAFAAcAAAACAAEAAAAFAAgAAAACAAIAAAAGAAcAAAADAAEAAAAGAAgAAAADAAIAAAAGAAUAAAADAAAAAAAGAAYAAAADAAEAAAADAAYAAAACAAEAAAAEAAYAAAAGAAEAAAAFAAYAAAAGAAEAAAADAAcAAAACAAEAAAAEAAcAAAAGAAEAAAADAAgAAAABAAIAAAAEAAgAAAACAAIAAAACAAgAAAAAAAIAAAADAAUAAAAGAAAAAAAEAAUAAAAIAAAAAAD5//v/AAAAAAAAAAD5//z/AAAAAAEAAAD5//3/AAAAAAEAAAD5//7/AAAAAAIAAAD6//v/AAAEAAAAAAD6//z/AAACAAEAAAD6//3/AAAGAAEAAAD6//7/AAABAAIAAAD7//v/AAAHAAAAAAD7//z/AAAGAAEAAAD7//3/AAAGAAEAAAD7//7/AAAJAAAAAAD7////AAAJAAEAAAD8//v/AAAGAAAAAAD8//z/AAAGAAEAAAD8//3/AAAGAAEAAAD8//7/AAABAAIAAAD9//v/AAAFAAAAAAD9//z/AAADAAEAAAD9//3/AAADAAEAAAD9//7/AAADAAIAAAA=")
 tile_set = ExtResource("7_n5jbx")
 
-[node name="Score_UI" parent="." instance=ExtResource("11_6cy1t")]
+[node name="Quests" type="Node" parent="Scene"]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_87j7f")
-volume_db = -1.0
-autoplay = true
-
-[node name="Enemy" parent="." instance=ExtResource("2_gsqk0")]
-position = Vector2(-171, 71)
-
-[node name="QuestStart" parent="." node_paths=PackedStringArray("quest") instance=ExtResource("13_fd737")]
+[node name="QuestStart" parent="Scene/Quests" node_paths=PackedStringArray("quest") instance=ExtResource("13_fd737")]
 position = Vector2(-143, -11)
 quest = NodePath("../FirstQuest")
 type = 1
 
-[node name="QuestUpdate" parent="." node_paths=PackedStringArray("quest") instance=ExtResource("13_fd737")]
+[node name="QuestUpdate" parent="Scene/Quests" node_paths=PackedStringArray("quest") instance=ExtResource("13_fd737")]
 position = Vector2(11, 211)
 quest = NodePath("../FirstQuest")
 type = 2
 
-[node name="QuestFinish" parent="." node_paths=PackedStringArray("quest") instance=ExtResource("13_fd737")]
+[node name="QuestFinish" parent="Scene/Quests" node_paths=PackedStringArray("quest") instance=ExtResource("13_fd737")]
 position = Vector2(32, 23)
 quest = NodePath("../FirstQuest")
 type = 3
 
-[node name="FirstQuest" type="Node" parent="."]
+[node name="FirstQuest" type="Node" parent="Scene/Quests"]
 script = ExtResource("14_itxyw")
 quest_id = 1
 quest_name = "Explore"
 quest_objective = Array[String](["Expore the corridoors", "Find a way past the enemy"])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Scene"]
+stream = ExtResource("12_87j7f")
+volume_db = -1.0
+autoplay = true
+
+[node name="Score_UI" parent="." instance=ExtResource("11_6cy1t")]
 
 [connection signal="body_entered" from="Scene/AreaExit" to="Scene/AreaExit" method="_on_body_entered"]
 [connection signal="body_exited" from="Scene/AreaExit" to="Scene/AreaExit" method="_on_body_exited"]
