@@ -24,6 +24,3 @@ func deal_damage_to_player(player : PlayerMain):
 func play_hitground_sound():
 	AudioManager.play_sound(AudioManager.ENEMY_HIT, 0, -10)
 	
-
-
-
