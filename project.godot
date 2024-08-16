@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Topdown Starter"
 config/description="This 2D Pixelart, TopDown action Starter Project include all the basics you need to get started creating a game."
-config/version="1.4"
+config/version="1.5"
 config/tags=PackedStringArray("starterkit")
 run/main_scene="res://Scenes/Levels/MainFloor.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
@@ -101,3 +101,4 @@ Restart={
 
 textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+2d/snap/snap_2d_transforms_to_pixel=true
