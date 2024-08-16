@@ -69,8 +69,11 @@ lifetime = 0.8
 preprocess = 0.8
 speed_scale = 0.5
 randomness = 0.2
+interpolate = false
+fract_delta = false
 trail_enabled = true
 trail_lifetime = 0.4
-trail_sections = 3
+trail_sections = 2
+trail_section_subdivisions = 1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
