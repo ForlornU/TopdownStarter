@@ -67,7 +67,6 @@ autoplay = true
 [node name="QuestUpdate" parent="Scene/Quests" node_paths=PackedStringArray("quest") instance=ExtResource("10_qjwpn")]
 position = Vector2(10, 14)
 quest = NodePath("../BasementQuest")
-type = 1
 
 [node name="QuestUpdate2" parent="Scene/Quests" node_paths=PackedStringArray("quest") instance=ExtResource("10_qjwpn")]
 position = Vector2(879, -37)
@@ -94,7 +93,7 @@ position = Vector2(358, 145)
 position = Vector2(355, -46)
 
 [node name="Enemy4" parent="NPCs" instance=ExtResource("6_insxp")]
-position = Vector2(659, 22)
+position = Vector2(877, 114)
 
 [node name="Enemy5" parent="NPCs" instance=ExtResource("6_insxp")]
 position = Vector2(547, -46)

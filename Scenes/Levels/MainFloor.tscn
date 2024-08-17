@@ -141,7 +141,6 @@ tile_set = ExtResource("7_n5jbx")
 [node name="QuestStart" parent="Scene/Quests" node_paths=PackedStringArray("quest") instance=ExtResource("13_fd737")]
 position = Vector2(-143, -11)
 quest = NodePath("../FirstQuest")
-type = 1
 
 [node name="QuestUpdate" parent="Scene/Quests" node_paths=PackedStringArray("quest") instance=ExtResource("13_fd737")]
 position = Vector2(11, 211)
