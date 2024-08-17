@@ -1,18 +1,17 @@
 extends Node
 
 #This class preloads all of our sound effects so that they can be played at a momets notice
-#region New Code Region
-
+#region Preloaded Sounds
 const PLAYER_ATTACK_HIT = preload("res://Art/Audio/Effects/AttackHit.ogg")
 const PLAYER_ATTACK_SWING = preload("res://Art/Audio/Effects/AttackSwing.ogg")
 const ENEMY_HIT = preload("res://Art/Audio/Effects/Enemy_hit.ogg")
 const BLOODY_HIT = preload("res://Art/Audio/Effects/bloody_hit.ogg")
 const COIN_PICK = preload("res://Art/Audio/Effects/coin_pick.ogg")
 const QUEST_SOUND = preload("res://Art/Audio/Effects/QuestSound.ogg")
-
 #endregion
+
 var audio_player : AudioStreamPlayer 
-var audio_player2 : AudioStreamPlayer 
+var audio_player2 : AudioStreamPlayer
 
 #Play a sound, call this function from anywhere
 #offset lets you start the sound with an offset, like starting the sound at 0.1s into the clip
@@ -39,3 +38,5 @@ func initiate_audio_stream():
 	audio_player2 = AudioStreamPlayer.new()
 	add_child(audio_player)
 	add_child(audio_player2)
+	audio_player.max_polyphony = 2
+	audio_player2.max_polyphony = 2
