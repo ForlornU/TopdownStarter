@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4l1gom0wsk8p"]
+[gd_scene load_steps=4 format=3 uid="uid://b4l1gom0wsk8p"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/AreaExit.gd" id="1_yw3df"]
-[ext_resource type="PackedScene" uid="uid://bt5yicfpmnlwk" path="res://Scenes/Levels/Basement01.tscn" id="2_78000"]
 [ext_resource type="LabelSettings" uid="uid://da8inon5cmt2r" path="res://Art/Fonts/pixelized_label.tres" id="3_u4810"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gtoj4"]
@@ -10,7 +9,6 @@ size = Vector2(25, 30)
 [node name="AreaExit" type="Area2D"]
 position = Vector2(16, 9)
 script = ExtResource("1_yw3df")
-basement_scene = ExtResource("2_78000")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 5)
