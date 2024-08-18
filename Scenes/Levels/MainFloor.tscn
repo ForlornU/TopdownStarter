@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dei3j88yw6omf"]
+[gd_scene load_steps=16 format=4 uid="uid://dei3j88yw6omf"]
 
 [ext_resource type="PackedScene" uid="uid://bvg5dny32iw0x" path="res://Scenes/Player/Player.tscn" id="1_v023b"]
 [ext_resource type="PackedScene" uid="uid://bvt7e871e6jeg" path="res://Scenes/Enemy/Enemy.tscn" id="2_gsqk0"]
@@ -8,19 +8,13 @@
 [ext_resource type="TileSet" uid="uid://b3n0bklwwny1b" path="res://Scenes/Levels/TileMap.tres" id="7_n5jbx"]
 [ext_resource type="LabelSettings" uid="uid://da8inon5cmt2r" path="res://Art/Fonts/pixelized_label.tres" id="7_tuycv"]
 [ext_resource type="PackedScene" uid="uid://ckp2r52hlcfxn" path="res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn" id="8_30ow3"]
-[ext_resource type="Script" path="res://Scenes/Levels/AreaExit.gd" id="9_0m0mm"]
+[ext_resource type="PackedScene" uid="uid://ceoo6gamb4olk" path="res://Scenes/Levels/Area_Blocker.tscn" id="8_hs0w2"]
+[ext_resource type="PackedScene" uid="uid://b4l1gom0wsk8p" path="res://Scenes/Levels/area_exit.tscn" id="8_s7mva"]
 [ext_resource type="PackedScene" uid="uid://bt5yicfpmnlwk" path="res://Scenes/Levels/Basement01.tscn" id="10_hj57s"]
 [ext_resource type="PackedScene" uid="uid://b6xb8nhlqtuhf" path="res://Scenes/ScoreTracker.tscn" id="11_6cy1t"]
 [ext_resource type="AudioStream" uid="uid://bia7rrlxphfg2" path="res://Art/Audio/corridorsOgg.ogg" id="12_87j7f"]
 [ext_resource type="PackedScene" uid="uid://48vtm5vekhaq" path="res://Scenes/QuestUpdate.tscn" id="13_fd737"]
 [ext_resource type="Script" path="res://Scripts/QuestGeneral/Quest.gd" id="14_itxyw"]
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_n3tw7"]
-a = Vector2(17, 3)
-b = Vector2(-11, 3)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtoj4"]
-size = Vector2(25, 30)
 
 [node name="Scene_Root" type="Node2D"]
 texture_filter = 1
@@ -105,29 +99,10 @@ energy = 0.8
 shadow_enabled = true
 texture = ExtResource("5_numcg")
 
-[node name="DoorBlock" type="StaticBody2D" parent="Scene"]
-position = Vector2(13, 9)
+[node name="AreaBlocker" parent="Scene" instance=ExtResource("8_hs0w2")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/DoorBlock"]
-position = Vector2(0, -7)
-shape = SubResource("SegmentShape2D_n3tw7")
-
-[node name="AreaExit" type="Area2D" parent="Scene"]
-position = Vector2(16, 9)
-script = ExtResource("9_0m0mm")
-basement_scene = ExtResource("10_hj57s")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene/AreaExit"]
-position = Vector2(-0.5, 5)
-shape = SubResource("RectangleShape2D_gtoj4")
-
-[node name="Label" type="Label" parent="Scene/AreaExit"]
-offset_left = -16.0
-offset_top = -25.0
-offset_right = 96.0
-offset_bottom = 1.0
-text = "Press 'E' To Enter"
-label_settings = ExtResource("7_tuycv")
+[node name="AreaExit" parent="Scene" instance=ExtResource("8_s7mva")]
+next_scene = ExtResource("10_hj57s")
 
 [node name="TileMap" type="TileMapLayer" parent="Scene"]
 z_index = -1
@@ -164,6 +139,3 @@ volume_db = -1.0
 autoplay = true
 
 [node name="Score_UI" parent="." instance=ExtResource("11_6cy1t")]
-
-[connection signal="body_entered" from="Scene/AreaExit" to="Scene/AreaExit" method="_on_body_entered"]
-[connection signal="body_exited" from="Scene/AreaExit" to="Scene/AreaExit" method="_on_body_exited"]
