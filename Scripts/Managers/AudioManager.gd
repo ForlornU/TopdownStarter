@@ -41,7 +41,7 @@ func play_sound(audiostream : AudioStreamOggVorbis, offset : float, volume : flo
 	available_player.volume_db = volume
 	available_player.play(offset)
 
-#Instantiate 3 audiostreams into the scene, this only happens if none already exists
+#Instantiate audiostreams into the scene
 func initiate_audio_stream():
 	for i in range(starting_players):
 		var player = AudioStreamPlayer.new()
