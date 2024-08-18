@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://h61y6jpdtysp"]
 
-[ext_resource type="Script" path="res://Scripts/Reset.gd" id="1_werga"]
-[ext_resource type="LabelSettings" uid="uid://1cnb4418rr7" path="res://Art/Fonts/pixelized_label_large.tres" id="2_a1bfr"]
+[ext_resource type="Script" path="res://Scripts/Reset.gd" id="1_y2wu1"]
+[ext_resource type="LabelSettings" uid="uid://1cnb4418rr7" path="res://Art/Fonts/pixelized_label_large.tres" id="2_k8myw"]
 
 [node name="DeathScreen" type="CanvasLayer"]
 layer = 2
-script = ExtResource("1_werga")
+script = ExtResource("1_y2wu1")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -27,5 +27,5 @@ text = "You died!
 Press 'R' to restart
 or
 Press 'Escape' to quit"
-label_settings = ExtResource("2_a1bfr")
+label_settings = ExtResource("2_k8myw")
 horizontal_alignment = 1

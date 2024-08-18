@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5btk4icxp61c"]
 
-[ext_resource type="Script" path="res://Scripts/Reset.gd" id="1_gp7ef"]
-[ext_resource type="LabelSettings" uid="uid://1cnb4418rr7" path="res://Art/Fonts/pixelized_label_large.tres" id="1_u8fmy"]
-[ext_resource type="LabelSettings" uid="uid://da8inon5cmt2r" path="res://Art/Fonts/pixelized_label.tres" id="2_s7r31"]
+[ext_resource type="Script" path="res://Scripts/Reset.gd" id="1_745pd"]
+[ext_resource type="LabelSettings" uid="uid://1cnb4418rr7" path="res://Art/Fonts/pixelized_label_large.tres" id="2_32rlp"]
+[ext_resource type="LabelSettings" uid="uid://da8inon5cmt2r" path="res://Art/Fonts/pixelized_label.tres" id="3_qoi86"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -11,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_gp7ef")
+script = ExtResource("1_745pd")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -28,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "VICTORY!
 YOU HAVE WON THE GAME!"
-label_settings = ExtResource("1_u8fmy")
+label_settings = ExtResource("2_32rlp")
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 1
@@ -47,4 +47,4 @@ text = "Starter Project Created by ForlornU
 Please use this and turn it into an actual game :)
 
 Press 'Escape' to leave"
-label_settings = ExtResource("2_s7r31")
+label_settings = ExtResource("3_qoi86")
