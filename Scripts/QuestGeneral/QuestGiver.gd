@@ -2,7 +2,7 @@ extends Node
 
 enum QuestFunction {GIVE=1, UPDATE=2, COMPLETE=3}
 @export var quest : Quest
-@export var type : QuestFunction = 1
+@export var type : QuestFunction = QuestFunction.GIVE
 var player_quest_tracker : QuestTracker
 
 #When player enters: update quest, destroy self
