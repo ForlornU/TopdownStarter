@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6xb8nhlqtuhf"]
 
-[ext_resource type="Script" path="res://Scenes/Levels/GameUI.gd" id="1_3k7kl"]
+[ext_resource type="Script" path="res://Scripts/GameUI.gd" id="1_3k7kl"]
 [ext_resource type="LabelSettings" uid="uid://1cnb4418rr7" path="res://Art/Fonts/pixelized_label_large.tres" id="2_ygwdu"]
 
 [node name="Score_tracker_layer" type="CanvasLayer"]

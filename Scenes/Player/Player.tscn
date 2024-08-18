@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bunnpmn3orp7m" path="res://Scenes/Player/Sprite/Player_walk2.png" id="15_1pdxl"]
 [ext_resource type="Texture2D" uid="uid://yfjgk6manumt" path="res://Scenes/Player/Sprite/Player_MoonKick1.png" id="19_e6mmx"]
 [ext_resource type="Texture2D" uid="uid://cxelbexwa4xop" path="res://Scenes/Player/Sprite/Player_MoonKick2.png" id="20_46css"]
-[ext_resource type="Script" path="res://Scripts/FiniteStateMachine.gd" id="21_54cjv"]
+[ext_resource type="Script" path="res://Scripts/FSM/FiniteStateMachine.gd" id="21_54cjv"]
 [ext_resource type="PackedScene" uid="uid://b82yimbxiflml" path="res://Art/Particles/hit_particles.tscn" id="21_gooki"]
 [ext_resource type="Texture2D" uid="uid://d3sffbaa38mbk" path="res://Scenes/Player/Sprite/Player_MoonKick3.png" id="21_sg1a0"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerIdleState.gd" id="26_28u22"]

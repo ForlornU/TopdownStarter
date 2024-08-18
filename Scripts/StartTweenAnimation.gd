@@ -22,5 +22,3 @@ func shrink():
 	tween.tween_property(self, "scale", starting_scale * 1.2, 1)
 	await tween.finished
 	grow()
-
-

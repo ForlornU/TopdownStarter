@@ -1,19 +1,19 @@
 [gd_scene load_steps=15 format=4 uid="uid://bt5yicfpmnlwk"]
 
-[ext_resource type="PackedScene" uid="uid://cx8kkqawojm0m" path="res://Scenes/SceneSettings.tscn" id="1_4stwf"]
-[ext_resource type="TileSet" uid="uid://b3n0bklwwny1b" path="res://Scenes/Levels/TileMap.tres" id="2_wbjck"]
+[ext_resource type="PackedScene" uid="uid://cx8kkqawojm0m" path="res://Scenes/Misc/SceneSettings.tscn" id="1_4stwf"]
+[ext_resource type="TileSet" uid="uid://b3n0bklwwny1b" path="res://Art/TileMap.tres" id="2_wbjck"]
 [ext_resource type="PackedScene" uid="uid://bvg5dny32iw0x" path="res://Scenes/Player/Player.tscn" id="3_ppqb8"]
 [ext_resource type="Texture2D" uid="uid://dyb5iqfj3tmwj" path="res://Art/Sprites/light.png" id="4_4dura"]
-[ext_resource type="PackedScene" uid="uid://bblpsy4fvi76f" path="res://Scenes/Coin.tscn" id="4_hswsu"]
-[ext_resource type="PackedScene" uid="uid://ckp2r52hlcfxn" path="res://Scenes/Npc_OfficeWorker/npc_officeworker_scene.tscn" id="5_wxx7c"]
-[ext_resource type="PackedScene" uid="uid://bvt7e871e6jeg" path="res://Scenes/Enemy/Enemy.tscn" id="6_insxp"]
+[ext_resource type="PackedScene" uid="uid://bblpsy4fvi76f" path="res://Scenes/Interactables/Coin.tscn" id="4_hswsu"]
+[ext_resource type="PackedScene" uid="uid://ckp2r52hlcfxn" path="res://Scenes/NPC's/Npc_OfficeWorker/npc_officeworker_scene.tscn" id="5_wxx7c"]
+[ext_resource type="PackedScene" uid="uid://bvt7e871e6jeg" path="res://Scenes/NPC's/Enemy/Enemy.tscn" id="6_insxp"]
 [ext_resource type="PackedScene" uid="uid://b6xb8nhlqtuhf" path="res://Scenes/ScoreTracker.tscn" id="7_hbxrs"]
 [ext_resource type="AudioStream" uid="uid://b1lr5ey8e6pu3" path="res://Art/Audio/BasementOgg.ogg" id="8_u2hwu"]
-[ext_resource type="PackedScene" uid="uid://b4l1gom0wsk8p" path="res://Scenes/Levels/area_exit.tscn" id="10_eko0k"]
+[ext_resource type="PackedScene" uid="uid://b4l1gom0wsk8p" path="res://Scenes/Interactables/area_exit.tscn" id="10_eko0k"]
 [ext_resource type="PackedScene" uid="uid://48vtm5vekhaq" path="res://Scenes/QuestUpdate.tscn" id="10_qjwpn"]
-[ext_resource type="PackedScene" uid="uid://c5btk4icxp61c" path="res://Scenes/VictoryScreen.tscn" id="11_h37ha"]
+[ext_resource type="PackedScene" uid="uid://c5btk4icxp61c" path="res://Scenes/Levels/VictoryScreen.tscn" id="11_h37ha"]
 [ext_resource type="Script" path="res://Scripts/QuestGeneral/Quest.gd" id="11_oc6f3"]
-[ext_resource type="PackedScene" uid="uid://ceoo6gamb4olk" path="res://Scenes/Levels/Area_Blocker.tscn" id="11_xe2ch"]
+[ext_resource type="PackedScene" uid="uid://ceoo6gamb4olk" path="res://Scenes/Interactables/Area_Blocker.tscn" id="11_xe2ch"]
 
 [node name="Basement01" type="Node2D"]
 
@@ -122,7 +122,7 @@ position = Vector2(441, 150)
 position = Vector2(471, 154)
 
 [node name="AreaExit" parent="Pickups" instance=ExtResource("10_eko0k")]
-position = Vector2(879, -51)
+position = Vector2(879, -47)
 next_scene = ExtResource("11_h37ha")
 
 [node name="AreaBlocker" parent="Pickups" instance=ExtResource("11_xe2ch")]
