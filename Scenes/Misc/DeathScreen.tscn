@@ -24,8 +24,11 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "You died!
 
-Press 'R' to restart
+Press:
+'R' to restart level
 or
-Press 'Escape' to quit"
+'Escape' to quit
+or
+'E' to return to first level"
 label_settings = ExtResource("2_k8myw")
 horizontal_alignment = 1
