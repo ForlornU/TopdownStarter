@@ -84,6 +84,13 @@ quest_name = "Search the basement"
 quest_objective = Array[String](["Find the end of the basement"])
 quest_reward = 15
 
+[node name="AreaExit" parent="Scene" instance=ExtResource("10_eko0k")]
+position = Vector2(879, -47)
+next_scene = ExtResource("11_h37ha")
+
+[node name="AreaBlocker" parent="Scene" instance=ExtResource("11_xe2ch")]
+position = Vector2(876, -62)
+
 [node name="NPCs" type="Node" parent="."]
 
 [node name="Enemy" parent="NPCs" instance=ExtResource("6_insxp")]
@@ -120,13 +127,6 @@ position = Vector2(441, 150)
 
 [node name="Pickup2" parent="Pickups" instance=ExtResource("4_hswsu")]
 position = Vector2(471, 154)
-
-[node name="AreaExit" parent="Pickups" instance=ExtResource("10_eko0k")]
-position = Vector2(879, -47)
-next_scene = ExtResource("11_h37ha")
-
-[node name="AreaBlocker" parent="Pickups" instance=ExtResource("11_xe2ch")]
-position = Vector2(876, -62)
 
 [node name="Player" parent="." instance=ExtResource("3_ppqb8")]
 position = Vector2(-90, -18)
