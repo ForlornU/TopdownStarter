@@ -418,7 +418,7 @@ occluder = SubResource("OccluderPolygon2D_uky13")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_vax36")
-animation = &"Death"
+animation = &"Dash"
 
 [node name="HitParticles" parent="AnimatedSprite2D" instance=ExtResource("21_gooki")]
 position = Vector2(15, 5)
@@ -482,7 +482,6 @@ texture = ExtResource("27_on0bn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(2, 2)
-position_smoothing_enabled = true
 position_smoothing_speed = 15.0
 
 [node name="ProgressBar" type="ProgressBar" parent="Camera2D"]
