@@ -5,8 +5,8 @@ var talking = false
 @export var speech : Label
 @export var line1 = []
 
-@export var show_text_duration = 1.0
-@export var silence_duration = 1.0
+@export var show_text_duration : float = 1.0
+@export var silence_duration : float = 1.0
 
 #NOTE Displays the text above an NPC and removes it after a slight delay
 

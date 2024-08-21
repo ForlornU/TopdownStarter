@@ -5,4 +5,3 @@ class_name die_state
 
 func Enter():
 	animator.play("Death")
-
