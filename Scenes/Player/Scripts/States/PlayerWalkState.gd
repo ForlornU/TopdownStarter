@@ -16,18 +16,16 @@ func Enter():
 
 func Update(delta : float):
 	var input_dir = Input.get_vector("MoveLeft", "MoveRight", "MoveUp", "MoveDown").normalized()
-	
 	Move(input_dir)
 	LessenDash(delta)
 
 	if(Input.is_action_just_pressed("Dash") && can_dash):
 		start_dash(input_dir)
-		AudioManager.play_sound(AudioManager.PLAYER_ATTACK_SWING, 0.3, -1)
 		
 	if Input.is_action_just_pressed("Punch") or Input.is_action_just_pressed("Kick"):
 		Transition("Attacking")
 	
-func Move(input_dir):
+func Move(input_dir : Vector2):
 	#Suddenly turning mid dash
 	if(dash_direction != Vector2.ZERO and dash_direction != input_dir):
 		dash_direction = Vector2.ZERO
@@ -39,7 +37,8 @@ func Move(input_dir):
 	if(input_dir.length() <= 0):
 		Transition("Idle")
 
-func start_dash(input_dir):
+func start_dash(input_dir : Vector2):
+	AudioManager.play_sound(AudioManager.PLAYER_ATTACK_SWING, 0.3, -1)
 	dash_direction = input_dir.normalized()
 	dashspeed = dash_max
 	animator.play("Dash")
@@ -64,6 +63,6 @@ func LessenDash(delta):
 		animator.play("Walk")
 
 #We cannot allow a transition before the dash is complete and the animation has stopped playing
-func Transition(newstate):
+func Transition(newstate : String):
 	if(dashspeed <= 0):
 		state_transition.emit(self, newstate)
