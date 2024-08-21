@@ -3,7 +3,7 @@ class_name PlayerWalking
 
 @export var movespeed := int(350)
 @export var dash_max := int(500)
-var dashspeed := int(100)
+var dashspeed := float(100)
 var can_dash := bool(false)
 var dash_direction := Vector2(0,0)
 
@@ -44,10 +44,10 @@ func start_dash(input_dir : Vector2):
 	animator.play("Dash")
 	can_dash = false
 
-func LessenDash(delta):
+func LessenDash(delta : float):
 	#Higher multiplier values makes the dash shorter
-	var multiplier = 4.0
-	var timemultiplier = 4.1
+	var multiplier : float = 4.0
+	var timemultiplier : float = 4.1
 	
 	#slow down the dash over time, both as a fraction of dashspeed and also time
 	#While clamping it between 0 and dash_max
