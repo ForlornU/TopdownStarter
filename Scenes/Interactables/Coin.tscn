@@ -71,7 +71,6 @@ speed_scale = 0.5
 randomness = 0.2
 interpolate = false
 fract_delta = false
-trail_enabled = true
 trail_lifetime = 0.4
 trail_sections = 2
 trail_section_subdivisions = 1
