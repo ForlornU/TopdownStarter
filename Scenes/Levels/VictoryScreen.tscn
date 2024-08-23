@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5btk4icxp61c"]
+
+[ext_resource type="Script" path="res://Scripts/Reset.gd" id="1_745pd"]
+[ext_resource type="LabelSettings" uid="uid://1cnb4418rr7" path="res://Art/Fonts/pixelized_label_large.tres" id="2_32rlp"]
+[ext_resource type="LabelSettings" uid="uid://da8inon5cmt2r" path="res://Art/Fonts/pixelized_label.tres" id="3_qoi86"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_745pd")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -60.0
+offset_right = 94.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "VICTORY!
+YOU HAVE WON THE GAME!"
+label_settings = ExtResource("2_32rlp")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -175.0
+offset_right = 101.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press:
+'Escape' to exit application
+'E' Return to the first level
+
+Starter Project Created by ForlornU
+Please use this and turn it into an actual game :)
+
+github.com/ForlornU"
+label_settings = ExtResource("3_qoi86")

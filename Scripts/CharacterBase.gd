@@ -72,4 +72,3 @@ func _die():
 		queue_free()
 
 #endregion
-

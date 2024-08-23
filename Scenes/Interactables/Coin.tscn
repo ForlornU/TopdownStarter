@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://bblpsy4fvi76f"]
+
+[ext_resource type="Texture2D" uid="uid://bw36ig60cpuaq" path="res://Art/Sprites/Square.png" id="1_4gerp"]
+[ext_resource type="Script" path="res://Scripts/CoinPickup.gd" id="2_c7iqs"]
+[ext_resource type="Texture2D" uid="uid://dyb5iqfj3tmwj" path="res://Art/Sprites/light.png" id="3_o4d4t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ea2ve"]
+
+[sub_resource type="Curve" id="Curve_wq4n3"]
+_data = [Vector2(0, 1), 0.0, -0.0784929, 0, 0, Vector2(0.973333, 0.021978), -3.35165, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0qta0"]
+curve = SubResource("Curve_wq4n3")
+
+[sub_resource type="Curve" id="Curve_y8f65"]
+_data = [Vector2(0, 1), 0.0, -0.019595, 0, 0, Vector2(1, 0), -3.45604, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_syqph"]
+curve = SubResource("Curve_y8f65")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7swun"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0, 0, 0)
+emission_shape = 1
+emission_sphere_radius = 99.0
+inherit_velocity_ratio = 0.784
+radial_velocity_min = -20.0
+radial_velocity_max = 20.0
+gravity = Vector3(0, -30, 0)
+radial_accel_min = 10.0
+radial_accel_max = 20.0
+tangential_accel_min = -10.0
+tangential_accel_max = 10.0
+damping_min = 1.0
+damping_max = 10.0
+scale_min = 0.3
+scale_max = 1.1
+scale_curve = SubResource("CurveTexture_syqph")
+alpha_curve = SubResource("CurveTexture_0qta0")
+turbulence_noise_speed = Vector3(0.5, 0.5, 0)
+turbulence_influence_min = 0.05
+turbulence_influence_max = 0.15
+turbulence_initial_displacement_max = 1.5
+
+[node name="Coin" type="Sprite2D"]
+self_modulate = Color(0.941176, 0.988235, 0.403922, 1)
+rotation = 0.785398
+scale = Vector2(2, 2)
+texture = ExtResource("1_4gerp")
+script = ExtResource("2_c7iqs")
+frequency = 1.5
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.3
+texture = ExtResource("3_o4d4t")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ea2ve")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_7swun")
+texture = ExtResource("1_4gerp")
+lifetime = 0.8
+preprocess = 0.8
+speed_scale = 0.5
+randomness = 0.2
+interpolate = false
+fract_delta = false
+trail_lifetime = 0.4
+trail_sections = 2
+trail_section_subdivisions = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

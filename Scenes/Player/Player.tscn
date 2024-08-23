@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bunnpmn3orp7m" path="res://Scenes/Player/Sprite/Player_walk2.png" id="15_1pdxl"]
 [ext_resource type="Texture2D" uid="uid://yfjgk6manumt" path="res://Scenes/Player/Sprite/Player_MoonKick1.png" id="19_e6mmx"]
 [ext_resource type="Texture2D" uid="uid://cxelbexwa4xop" path="res://Scenes/Player/Sprite/Player_MoonKick2.png" id="20_46css"]
-[ext_resource type="Script" path="res://Scripts/FiniteStateMachine.gd" id="21_54cjv"]
+[ext_resource type="Script" path="res://Scripts/FSM/FiniteStateMachine.gd" id="21_54cjv"]
 [ext_resource type="PackedScene" uid="uid://b82yimbxiflml" path="res://Art/Particles/hit_particles.tscn" id="21_gooki"]
 [ext_resource type="Texture2D" uid="uid://d3sffbaa38mbk" path="res://Scenes/Player/Sprite/Player_MoonKick3.png" id="21_sg1a0"]
 [ext_resource type="Script" path="res://Scenes/Player/Scripts/States/PlayerIdleState.gd" id="26_28u22"]
@@ -223,7 +223,7 @@ tracks/0/path = NodePath("AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-0.1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"Dash"]
@@ -235,7 +235,7 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.0333333, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
@@ -418,7 +418,8 @@ occluder = SubResource("OccluderPolygon2D_uky13")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_vax36")
-animation = &"Death"
+animation = &"Dash"
+frame = 3
 
 [node name="HitParticles" parent="AnimatedSprite2D" instance=ExtResource("21_gooki")]
 position = Vector2(15, 5)
@@ -482,7 +483,6 @@ texture = ExtResource("27_on0bn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(2, 2)
-position_smoothing_enabled = true
 position_smoothing_speed = 15.0
 
 [node name="ProgressBar" type="ProgressBar" parent="Camera2D"]
