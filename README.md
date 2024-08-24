@@ -43,16 +43,19 @@ To get started with this project, follow these steps:
 4. Continue working on the project and change things as you go
 	/ Import snippets or parts into your own projects
 
+## Videos
 I am also creating a series of videos to walk you though the different parts of this project as well as a written guide
 
 - Brief overview: 
 	- https://youtu.be/eD9dirVaffA
 - Finite State Machine:
 	- https://youtu.be/i0Y6anqiJ-g
+
+### Updates
  - Update 1.3 & 1.4 - Quests, combat and animations
  	- https://youtu.be/mayNWb_DpJ8
-- Coming soon:
-	- More tutorials for the different parts of this project
+ - Update 1.5
+	 - https://youtu.be/ngunoALFEII
 
 Godot Asset Library Link:
 https://godotengine.org/asset-library/asset/2397
