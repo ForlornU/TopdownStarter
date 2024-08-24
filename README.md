@@ -33,6 +33,8 @@ Contains all the basic ingredients you need to get started creating a game.
 
 ![Screenshot](https://github.com/ForlornU/Images/blob/6402e2b16b4515ed8c3ad3dccde223aca574fdc0/basement02pic.png)
 
+Created by ForlornU
+
 ## Getting Started
 
 To get started with this project, follow these steps:
@@ -57,16 +59,16 @@ I am also creating a series of videos to walk you though the different parts of 
  - Update 1.5
 	 - https://youtu.be/ngunoALFEII
 
+## Links
 Godot Asset Library Link:
 https://godotengine.org/asset-library/asset/2397
 
 My other Godot starter project:
 https://github.com/ForlornU/Fishy-example-game/tree/main
 
-Created by ForlornU
 Consider making me work faster with a coffee:
 https://www.buymeacoffee.com/forlornu
 
-Attribution:
+## Attribution
 m3x6 font was created by Daniel Linssen
 https://managore.itch.io/m3x6
